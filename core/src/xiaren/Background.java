@@ -11,7 +11,7 @@ public class Background {
 
 	public Background(String imagetoload) { // imagetoload is the file path of the image to load.
 
-		this.backgroundimage = imagetoload;
+		backgroundimage = imagetoload;
 
 	}
 
