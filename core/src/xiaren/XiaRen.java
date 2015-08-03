@@ -3,15 +3,32 @@
 package xiaren;
 
 
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class XiaRen {
 
-	public Texture loadPlayerTexture(PlayerRender playerobject) {
-		return new Texture(playerobject.texturepath);
+	public void renderPlayer(PlayerRender playerobject, SpriteBatch spritebatch, int xpos, int ypos) {
+		spritebatch.begin();
+
+		playerobject.xcoord = xpos;
+		playerobject.ycoord = ypos;
+		spritebatch.draw(playerobject.playertexture, playerobject.xcoord, playerobject.ycoord);
+
+		spritebatch.end();
 	}
 
-	public void renderPlayer(PlayerRender playerobject) {
+	public void renderBackground(OrthographicCamera camera, BackgroundRender background, SpriteBatch spritebatch) {
+		spritebatch.setProjectionMatrix(camera.combined);
+		spritebatch.begin();
 
+		spritebatch.draw(background.texture, background.backgroundsize.x, background.backgroundsize.y);
+
+		spritebatch.end();
 	}
+
+	public void SetCamera(OrthographicCamera camera, int windowwidth, int windowheight) {
+		camera.setToOrtho(false, windowwidth, windowheight);
+	}
+
 }

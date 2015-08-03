@@ -12,8 +12,9 @@ public class Main extends Game {
 
 	@Override
 	public void create() {
-		setScreen(new GameScreen());
-
+		setScreen(new GameScreen(this));
+		// TODO Create batchs, players, and stuff from here instead of doing it in a messy way
+		// in the renderer.
 	}
 
 	@Override

@@ -1,10 +1,12 @@
 package xiaren;
 
+import backend.Main;
+import backend.PlayerCharacter;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameScreen implements Screen {
@@ -12,45 +14,46 @@ public class GameScreen implements Screen {
 	public static final int windowwidth = 1024;
 	public static final int windowheight = 768;
 
-	public Texture player;
-	public Texture background;
-
 	private OrthographicCamera camera;
 
 	private SpriteBatch playerbatch;
 	private SpriteBatch backgroundbatch;
 
 	public PlayerRender shana;
+	public BackgroundRender background;
 	public XiaRen renderer = new XiaRen();
+
+	public PlayerCharacter player;
+	public Main game;
+
+	public GameScreen(final Main g) {
+		game = g;
+	}
 
 	@Override
 	public void show() {
 		shana = new PlayerRender("shana", "64x64shana.png", 100, 100);
-		player = renderer.loadPlayerTexture(shana);
-		background = new Texture("xbbackground.png");
+		background = new BackgroundRender("dusty", "xbbackground.png");
 
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, windowwidth, windowheight);
+		renderer.SetCamera(camera, windowwidth, windowheight);
 
 		playerbatch = new SpriteBatch();
 		backgroundbatch = new SpriteBatch();
+
+		player = new PlayerCharacter(renderer);
+
 	}
 
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // TODO Put these into XiaRen for it to handle cleanly.
 
-		backgroundbatch.setProjectionMatrix(camera.combined);
-		backgroundbatch.begin();
-		backgroundbatch.draw(background, 0, 0);
-		backgroundbatch.end();
-
-		playerbatch.begin();
-		shana.xcoord = 500;
-		shana.ycoord = 100;
-		playerbatch.draw(player, shana.xcoord, shana.ycoord);
-		playerbatch.end();
+		renderer.renderBackground(camera, background, backgroundbatch);
+		//renderer.renderPlayer(shana, playerbatch, 500, 100);
+		//renderer.scrollPlayer(shana, playerbatch);
+		player.scroll(shana, playerbatch);
 
 	}
 
@@ -81,6 +84,7 @@ public class GameScreen implements Screen {
 	@Override
 	public void dispose() {
 		playerbatch.dispose();
+		backgroundbatch.dispose();
 	}
 
 }

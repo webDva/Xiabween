@@ -7,7 +7,7 @@ public class PlayerRender {
 	public String charactername;
 	public String texturepath;
 
-	public static Texture playertexture;
+	public Texture playertexture;
 
 	public Rectangle playersize;
 
@@ -21,6 +21,9 @@ public class PlayerRender {
 
 		this.playersize.height = height;
 		this.playersize.width = width;
+		// What about the Rectangle's x and y?
+
+		this.playertexture = new Texture(path);
 	}
 
 }
