@@ -1,6 +1,6 @@
 package xiaren.desktop;
 
-import xiaren.XiaRen;
+import backend.Main;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
@@ -10,9 +10,9 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
 		config.title = "Xiabween";
-		config.width = XiaRen.windowwidth;
-		config.height = XiaRen.windowwidth;
+		config.width = 1024;
+		config.height = 768;
 
-		new LwjglApplication(new XiaRen(), config);
+		new LwjglApplication(new Main(), config);
 	}
 }

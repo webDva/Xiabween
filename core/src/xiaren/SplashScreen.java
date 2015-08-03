@@ -4,23 +4,28 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class SplashScreen implements Screen {
 
 	private SpriteBatch spriteBatch;
-	private Texture splash;
+	private Sprite splash;
+
+	@Override
+	public void render(float delta) {
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		spriteBatch.begin();
+		splash.draw(spriteBatch);
+		spriteBatch.end();
+	}
 
 	@Override
 	public void show() {
 		spriteBatch = new SpriteBatch();
-		splash = new Texture(Gdx.files.internal("xbsplash.png"));
-
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		spriteBatch.begin();
-		spriteBatch.draw(splash, 0, 0);
-		spriteBatch.end();
+		Texture splashTexture = new Texture("xbsplash.png");
+		splash = new Sprite(splashTexture);
 	}
 
 	@Override
@@ -49,14 +54,6 @@ public class SplashScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		splash.dispose();
 		spriteBatch.dispose();
 	}
-
-	@Override
-	public void render(float delta) {
-		// TODO Auto-generated method stub
-
-	}
-
 }
