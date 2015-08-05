@@ -1,10 +1,13 @@
 package backend;
 
-import xiaren.GameScreen;
+import xiaren.PlayScreen;
 
 import com.badlogic.gdx.Game;
 
 public class Main extends Game {
+
+	public static final String title = "Xiabween";
+	public static int WIDTH = 1024, HEIGHT = 768;
 
 	public Main() {
 		// TODO Auto-generated constructor stub
@@ -12,14 +15,11 @@ public class Main extends Game {
 
 	@Override
 	public void create() {
-		setScreen(new GameScreen(this));
-		// TODO Create batchs, players, and stuff from here instead of doing it in a messy way
-		// in the renderer.
+		setScreen(new PlayScreen(this));
 	}
 
 	@Override
 	public void render() {
 		super.render();
 	}
-
 }

@@ -2,13 +2,26 @@
 
 package xiaren;
 
+import renderobjects.BackgroundRenderer;
+import renderobjects.FireballRenderer;
+import renderobjects.PlayerRenderer;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class XiaRen {
+public class XBRenderer {
 
-	public void renderPlayer(PlayerRender playerobject, SpriteBatch spritebatch, int xpos, int ypos) {
+	public SpriteBatch batch;
+	public OrthographicCamera camera;
+
+	public XBRenderer(boolean createOwnRenders) {
+		if (createOwnRenders) {
+			this.batch = new SpriteBatch();
+			this.camera = new OrthographicCamera();
+		}
+	}
+
+	public void renderPlayer(PlayerRenderer playerobject, SpriteBatch spritebatch, int xpos, int ypos) {
 		spritebatch.begin();
 
 		playerobject.xcoord = xpos;
@@ -18,7 +31,7 @@ public class XiaRen {
 		spritebatch.end();
 	}
 
-	public void renderBackground(OrthographicCamera camera, BackgroundRender background, SpriteBatch spritebatch) {
+	public void renderBackground(OrthographicCamera camera, BackgroundRenderer background, SpriteBatch spritebatch) {
 		spritebatch.setProjectionMatrix(camera.combined);
 		spritebatch.begin();
 
@@ -29,6 +42,10 @@ public class XiaRen {
 
 	public void SetCamera(OrthographicCamera camera, int windowwidth, int windowheight) {
 		camera.setToOrtho(false, windowwidth, windowheight);
+	}
+
+	public void renderFireblast(FireballRenderer fireball, int x, int y) {
+
 	}
 
 }

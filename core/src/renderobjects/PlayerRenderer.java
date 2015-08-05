@@ -1,19 +1,20 @@
-package xiaren;
+package renderobjects;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
-public class PlayerRender {
+public class PlayerRenderer {
+
 	public String charactername;
 	public String texturepath;
 
 	public Texture playertexture;
 
-	public Rectangle playersize;
+	public Rectangle playersize; // For collision detection here instead of in the game logician.
 
 	public int xcoord, ycoord;
 
-	public PlayerRender(String name, String path, int height, int width) {
+	public PlayerRenderer(String name, String path, int height, int width) {
 		this.charactername = name;
 		this.texturepath = path;
 

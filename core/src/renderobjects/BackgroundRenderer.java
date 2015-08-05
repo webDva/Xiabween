@@ -1,9 +1,9 @@
-package xiaren;
+package renderobjects;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
-public class BackgroundRender {
+public class BackgroundRenderer {
 
 	public String backgroundname;
 	public Rectangle backgroundsize;
@@ -11,7 +11,7 @@ public class BackgroundRender {
 	public String texturepath;
 	public Texture texture;
 
-	public BackgroundRender(String name, String imagetoload) {
+	public BackgroundRenderer(String name, String imagetoload) {
 		this.backgroundname = name;
 		this.texturepath = imagetoload;
 		this.texture = new Texture(imagetoload);
