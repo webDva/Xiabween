@@ -12,15 +12,10 @@ public class PlayerCharacter {
 
 	public int x, y; // These aren't for rendering or collision detection, but are for instead actual gameplay mechanics
 						// and logic.
-	public final String name;
+	public String name;
+	public float health;
 
-	public PlayerCharacter(String name) {
-		this.name = name;
-	}
-
-	public void shootFireball() {
-
-	}
+	// Let a PlayerCharacterHandler handle the player's initial x, y position and even health.
 
 	public void test_scroll(XBRenderer renderer, PlayerRenderer playerobject, SpriteBatch spritebatch) {
 		renderer.renderPlayer(playerobject, spritebatch, test_xpos, 225);

@@ -4,6 +4,7 @@ import renderobjects.BackgroundRenderer;
 import renderobjects.PlayerRenderer;
 import backend.Main;
 import backend.PlayerCharacter;
+import backend.PlayerHandler;
 import backend.XBLogician;
 
 import com.badlogic.gdx.Gdx;
@@ -22,24 +23,36 @@ public class PlayScreen implements Screen {
 	public PlayerCharacter player;
 	public Main game;
 
+	public XBLogician determinator;
+
 	public PlayScreen(final Main g) {
 		game = g;
 	}
 
 	@Override
-	public void show() {
+	public void show() { // This is where Xiabween determines what happens initially...
+		determinator = new XBLogician();
+		player = PlayerHandler.createPlayer("shana", 0, 0, 100, determinator);
+
+		renderer = new XBRenderer(true);
+		renderer.SetCamera(renderer.camera, Main.WIDTH, Main.HEIGHT);
+
+		shana = renderer.createPlayerRendererObject(player);
+		background = new BackgroundRenderer("dusty", "xbbackground.png");
+
+		// above is testing new seperation logic
+
 		renderer = new XBRenderer(true);
 
-		shana = new PlayerRenderer("shana", "64x64shana.png", 100, 100);
+		shana = new PlayerRenderer("shana", "64x64shana.png", 0, 0);
 		background = new BackgroundRenderer("dusty", "xbbackground.png");
 
 		renderer.SetCamera(renderer.camera, Main.WIDTH, Main.HEIGHT);
 
-		player = new PlayerCharacter("shana");
 	}
 
 	@Override
-	public void render(float delta) {
+	public void render(float delta) { // ..and then from now on.
 		// Game logic first...
 		XBLogician.processStates();
 
