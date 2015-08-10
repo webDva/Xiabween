@@ -23,8 +23,10 @@ public class PlayScreen implements Screen {
 
 	public XBLogician determinator;
 
-	public String backgroundpath = "xbbackground.png"; // This can and will change with each new level/background to be
-														// rendered.
+	public String backgroundpath = "topdownbackground.png"; // This can and will change with each new level/background
+															// to be
+
+	// rendered.
 
 	public PlayScreen(final Main g) {
 		game = g;
