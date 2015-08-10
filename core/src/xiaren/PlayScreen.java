@@ -1,6 +1,5 @@
 package xiaren;
 
-import renderobjects.BackgroundRenderer;
 import backend.Main;
 import backend.PlayerCharacter;
 import backend.PlayerHandler;
@@ -12,17 +11,20 @@ import com.badlogic.gdx.graphics.GL20;
 
 public class PlayScreen implements Screen {
 
+	// Don't let there be any textures here and let the Renderer take care of those things.
+
 	public static final int windowwidth = 1024;
 	public static final int windowheight = 768;
 
-	// public PlayerRenderer shana_render;
-	public BackgroundRenderer background;
 	public XBRenderer renderer;
 
 	public PlayerCharacter shana;
 	public Main game;
 
 	public XBLogician determinator;
+
+	public String backgroundpath = "xbbackground.png"; // This can and will change with each new level/background to be
+														// rendered.
 
 	public PlayScreen(final Main g) {
 		game = g;
@@ -37,9 +39,7 @@ public class PlayScreen implements Screen {
 		renderer = new XBRenderer(true);
 		renderer.SetCamera(renderer.camera, Main.WIDTH, Main.HEIGHT);
 
-		// shana_render = renderer.createPlayerRendererObject(shana);
-		background = new BackgroundRenderer("dusty", "xbbackground.png");
-
+		renderer.loadBackground(backgroundpath);
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class PlayScreen implements Screen {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // TODO Put these into XiaRen for it to handle cleanly.
 
-		renderer.renderBackground(renderer.camera, background, renderer.batch);
+		renderer.renderBackground(0, 0, renderer.camera, renderer.batch);
 		renderer.renderStates(determinator);
 		// renderer.renderPlayer(shana, playerbatch, 500, 100);
 		// shana.test_scroll(renderer, shana_render, renderer.batch);

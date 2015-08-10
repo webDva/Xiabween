@@ -1,21 +1,23 @@
-// Forget about what to render right now, and just start rendering.
-
 package xiaren;
 
-import renderobjects.BackgroundRenderer;
-import renderobjects.PlayerRenderer;
+import java.util.List;
 
 import backend.Fireball;
 import backend.PlayerCharacter;
 import backend.XBLogician;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class XBRenderer {
 
 	public SpriteBatch batch;
 	public OrthographicCamera camera;
+
+	public Texture background;
 
 	public XBRenderer(boolean createOwnRenders) {
 		if (createOwnRenders) {
@@ -23,13 +25,21 @@ public class XBRenderer {
 			this.camera = new OrthographicCamera();
 		}
 
+		// TODO Should really put all rendering into here (such as loading textures/textureatlases/textureregions)
+		// instead of the Screen class.
+
+		// Load initial things using a load method.
 	}
 
-	public PlayerRenderer createPlayerRendererObject(PlayerCharacter playerinfo) {
-		String texturepath = playerinfo.name + ".png";
-		PlayerRenderer newrenderer = new PlayerRenderer(playerinfo.name, texturepath, playerinfo.x, playerinfo.x);
+	// Can be used for each new screen created, so make the arguments a list of things to load, such as:
+	// TextureAtlases to load, TextureRegions to load, regular Textures to load, and even Sprites.
+	public void loadThings(List<TextureAtlas> texture_atlases, List<TextureRegion> texture_regions,
+			List<Texture> textures) {
 
-		return newrenderer;
+	}
+
+	public void loadBackground(String path) {
+		this.background = new Texture(path);
 	}
 
 	public void renderPlayer(SpriteBatch spritebatch, PlayerCharacter playerinfo) {
@@ -40,11 +50,11 @@ public class XBRenderer {
 		spritebatch.end();
 	}
 
-	public void renderBackground(OrthographicCamera camera, BackgroundRenderer background, SpriteBatch spritebatch) {
+	public void renderBackground(int x, int y, OrthographicCamera camera, SpriteBatch spritebatch) {
 		spritebatch.setProjectionMatrix(camera.combined);
 		spritebatch.begin();
 
-		spritebatch.draw(background.texture, background.backgroundsize.x, background.backgroundsize.y);
+		spritebatch.draw(this.background, x, y);
 
 		spritebatch.end();
 	}
