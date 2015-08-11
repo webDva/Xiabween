@@ -28,16 +28,16 @@ public class Control { // Handles input from the player user. This goes into pro
 	public static void doIfKeyIsPressed(int keycode, PlayerCharacter player) {
 		switch (keycode) {
 		case Keys.W:
-			player.y += 1;
+			PlayerHandler.movePlayer(player, player.x, player.y + 1);
 			break;
 		case Keys.A:
-			player.x -= 1;
+			PlayerHandler.movePlayer(player, player.x - 1, player.y);
 			break;
 		case Keys.S:
-			player.y -= 1;
+			PlayerHandler.movePlayer(player, player.x, player.y - 1);
 			break;
 		case Keys.D:
-			player.x += 1;
+			PlayerHandler.movePlayer(player, player.x + 1, player.y);
 			break;
 		case 0:
 			// What to do here?
