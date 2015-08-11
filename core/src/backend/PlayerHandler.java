@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class PlayerHandler {
 
-	public static void movePlayer(PlayerCharacter player, int x, int y) { // Note that the player should only move left or right and maybe jump.
+	public static void movePlayer(PlayerCharacter player, int x, int y) {
 		player.x = x;
 		player.y = y;
 	}
@@ -14,7 +14,7 @@ public class PlayerHandler {
 		player.health = health;
 	}
 
-	public static PlayerCharacter createPlayer(String name, int x, int y, float health, XBLogician logician,
+	public static PlayerCharacter createPlayer(String name, int x, int y, float health, Logician logician,
 			String texturepath) {
 
 		PlayerCharacter newplayer = new PlayerCharacter();

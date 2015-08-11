@@ -3,7 +3,7 @@ package xiaren;
 import backend.Main;
 import backend.PlayerCharacter;
 import backend.PlayerHandler;
-import backend.XBLogician;
+import backend.Logician;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -16,12 +16,12 @@ public class PlayScreen implements Screen {
 	public static final int windowwidth = 1024;
 	public static final int windowheight = 768;
 
-	public XBRenderer renderer;
+	public Renderer renderer;
 
 	public PlayerCharacter shana;
 	public Main game;
 
-	public XBLogician determinator;
+	public Logician determinator;
 
 	public String backgroundpath = "topdownbackground.png"; // This can and will change with each new level/background
 															// to be
@@ -35,11 +35,11 @@ public class PlayScreen implements Screen {
 	@Override
 	public void show() { // This is where Xiabween determines what happens initially...
 
-		determinator = new XBLogician();
+		determinator = new Logician();
 		shana = PlayerHandler.createPlayer("shana", 0, 0, 100, determinator, "shana.png");
 
-		renderer = new XBRenderer(true);
-		renderer.SetCamera(renderer.camera, Main.WIDTH, Main.HEIGHT);
+		renderer = new Renderer(true);
+		renderer.SetCamera(renderer.camera, 1024, 480);
 
 		renderer.loadBackground(backgroundpath);
 	}
@@ -55,8 +55,6 @@ public class PlayScreen implements Screen {
 
 		renderer.renderBackground(0, 0, renderer.camera, renderer.batch);
 		renderer.renderStates(determinator);
-		// renderer.renderPlayer(shana, playerbatch, 500, 100);
-		// shana.test_scroll(renderer, shana_render, renderer.batch);
 
 	}
 
