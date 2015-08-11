@@ -29,12 +29,18 @@ public class Control { // Handles input from the player user. This goes into pro
 		switch (keycode) {
 		case Keys.W:
 			player.y += 1;
+			break;
 		case Keys.A:
 			player.x -= 1;
+			break;
 		case Keys.S:
 			player.y -= 1;
+			break;
 		case Keys.D:
 			player.x += 1;
+			break;
+		case 0:
+			// What to do here?
 		}
 	}
 }
