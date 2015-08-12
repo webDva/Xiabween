@@ -36,7 +36,7 @@ public class PlayScreen implements Screen {
 	public void show() { // This is where Xiabween determines what happens initially...
 
 		determinator = new Logician();
-		shana = PlayerHandler.createPlayer("shana", 0, 0, 100, determinator, "shana.png");
+		shana = PlayerHandler.createPlayer("shana", windowwidth / 2, windowheight / 2, 100, determinator, "shana.png");
 
 		renderer = new Renderer(true);
 		renderer.SetCamera(renderer.camera, 1024, 480);
