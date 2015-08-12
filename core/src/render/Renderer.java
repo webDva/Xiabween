@@ -1,9 +1,7 @@
-package xiaren;
+package render;
 
 import java.util.List;
 
-import backend.Fireball;
-import backend.PlayerCharacter;
 import backend.Logician;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -11,6 +9,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
+import entities.Fireball;
+import entities.PlayerCharacter;
 
 public class Renderer {
 
@@ -73,8 +74,7 @@ public class Renderer {
 		}
 
 		// TODO Use an abstract game object that can be generic for all types of game objects such as player entities,
-		// skill
-		// effects, mob entities, and environmental entities.
+		// skill effects, mob entities, and environmental entities.
 
 		for (Fireball fireball : logicdata.fireballs) {
 			this.renderFireblast(fireball, fireball.x, fireball.y);

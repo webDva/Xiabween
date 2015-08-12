@@ -1,11 +1,12 @@
-package backend;
+package entities;
 
 import com.badlogic.gdx.graphics.Texture;
 
-public class Fireball {
+public class PlayerCharacter {
 
 	public int x, y;
-	public float damage;
+	public String name;
+	public float health;
 
 	public Texture texture;
 

@@ -3,6 +3,9 @@ package backend;
 import java.util.ArrayList;
 import java.util.List;
 
+import entities.Fireball;
+import entities.PlayerCharacter;
+
 public class Logician { // The supreme class to handle game logic.
 
 	public List<PlayerCharacter> players;

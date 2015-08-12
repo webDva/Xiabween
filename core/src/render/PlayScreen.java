@@ -1,13 +1,14 @@
-package xiaren;
+package render;
 
 import backend.Main;
-import backend.PlayerCharacter;
 import backend.PlayerHandler;
 import backend.Logician;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+
+import entities.PlayerCharacter;
 
 public class PlayScreen implements Screen {
 
@@ -24,9 +25,7 @@ public class PlayScreen implements Screen {
 	public Logician determinator;
 
 	public String backgroundpath = "topdownbackground.png"; // This can and will change with each new level/background
-															// to be
-
-	// rendered.
+															// to be rendered.
 
 	public PlayScreen(final Main g) {
 		game = g;
@@ -40,7 +39,6 @@ public class PlayScreen implements Screen {
 
 		renderer = new Renderer(true);
 		renderer.SetCamera(renderer.camera, 1024, 480);
-
 		renderer.loadBackground(backgroundpath);
 	}
 

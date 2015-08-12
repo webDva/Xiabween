@@ -1,6 +1,6 @@
 package backend;
 
-import xiaren.PlayScreen;
+import render.PlayScreen;
 
 import com.badlogic.gdx.Game;
 

@@ -3,6 +3,8 @@ package backend;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 
+import entities.PlayerCharacter;
+
 public class Control { // Handles input from the player user. This goes into processStates since it deals with game
 
 	// logic.

@@ -1,4 +1,4 @@
-package xiaren;
+package render;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;

@@ -2,6 +2,8 @@ package backend;
 
 import com.badlogic.gdx.graphics.Texture;
 
+import entities.PlayerCharacter;
+
 public class PlayerHandler {
 
 	public static void movePlayer(PlayerCharacter player, int x, int y) {
