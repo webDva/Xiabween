@@ -16,7 +16,7 @@ public class Renderer {
 
 	public SpriteBatch batch;
 	public OrthographicCamera camera;
-	public int camera_width = 400, camera_height = 400; // These won't be final, because there may be a time when a screen object would want to change these.
+	public int camera_width = 480, camera_height = 480; // These won't be final, because there may be a time when a screen object would want to change these.
 
 	public Texture background;
 
@@ -53,8 +53,8 @@ public class Renderer {
 		spritebatch.end();
 	}
 
-	public void renderBackground(int x, int y, OrthographicCamera camera, SpriteBatch spritebatch) {
-		spritebatch.setProjectionMatrix(camera.combined);
+	public void renderBackground(int x, int y, SpriteBatch spritebatch) {
+		spritebatch.setProjectionMatrix(this.camera.combined);
 		spritebatch.begin();
 
 		spritebatch.draw(this.background, x, y);
@@ -70,6 +70,9 @@ public class Renderer {
 		for (PlayerCharacter player : logicdata.players) {
 			this.renderPlayer(batch, player);
 		}
+
+		this.camera.position.set(logicdata.players.get(0).x, logicdata.players.get(0).y, 0);
+		this.camera.update();
 
 		// TODO Use an abstract game object that can be generic for all types of game objects such as player entities,
 		// skill effects, mob entities, and environmental entities.
