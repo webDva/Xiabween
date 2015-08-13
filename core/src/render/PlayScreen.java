@@ -1,13 +1,12 @@
 package render;
 
-import backend.Main;
-import backend.PlayerHandler;
-import backend.Logician;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 
+import backend.Logician;
+import backend.Main;
+import backend.PlayerHandler;
 import entities.PlayerCharacter;
 
 public class PlayScreen implements Screen {
@@ -38,7 +37,6 @@ public class PlayScreen implements Screen {
 		shana = PlayerHandler.createPlayer("shana", windowwidth / 2, windowheight / 2, 100, determinator, "shana.png");
 
 		renderer = new Renderer(true);
-		renderer.SetCamera(renderer.camera, 1024, 480);
 		renderer.loadBackground(backgroundpath);
 	}
 

@@ -2,14 +2,13 @@ package render;
 
 import java.util.List;
 
-import backend.Logician;
-
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import backend.Logician;
 import entities.Fireball;
 import entities.PlayerCharacter;
 
@@ -17,6 +16,7 @@ public class Renderer {
 
 	public SpriteBatch batch;
 	public OrthographicCamera camera;
+	public int camera_width = 400, camera_height = 400; // These won't be final, because there may be a time when a screen object would want to change these.
 
 	public Texture background;
 
@@ -25,6 +25,8 @@ public class Renderer {
 			this.batch = new SpriteBatch();
 			this.camera = new OrthographicCamera();
 		}
+
+		camera.setToOrtho(false, this.camera_width, this.camera_height);
 
 		// TODO Should really put all rendering into here (such as loading textures/textureatlases/textureregions)
 		// instead of the Screen class.
@@ -58,10 +60,6 @@ public class Renderer {
 		spritebatch.draw(this.background, x, y);
 
 		spritebatch.end();
-	}
-
-	public void SetCamera(OrthographicCamera camera, int width, int height) {
-		camera.setToOrtho(false, width, height);
 	}
 
 	public void renderFireblast(Fireball fireball, int x, int y) {
