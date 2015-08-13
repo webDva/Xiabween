@@ -1,12 +1,19 @@
-package com.xiaren.desktop;
+package desktop;
+
+import backend.Main;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.xiaren.XiaRen;
 
 public class DesktopLauncher {
-	public static void main (String[] arg) {
+
+	public static void main(String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		new LwjglApplication(new XiaRen(), config);
+
+		config.title = Main.title;
+		config.width = Main.WIDTH;
+		config.height = Main.HEIGHT;
+
+		new LwjglApplication(new Main(), config);
 	}
 }
