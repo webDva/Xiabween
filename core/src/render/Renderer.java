@@ -7,6 +7,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 import backend.Logician;
 import entities.Fireball;
@@ -15,10 +18,14 @@ import entities.PlayerCharacter;
 public class Renderer {
 
 	public SpriteBatch batch;
-	public OrthographicCamera camera;
+	public OrthographicCamera camera, tile_camera;
 	public int camera_width = 480, camera_height = 480; // These won't be final, because there may be a time when a screen object would want to change these.
 
 	public Texture background;
+
+	TiledMap tiledmap;
+	OrthogonalTiledMapRenderer tile_renderer;
+	float unitscale = 1 / 32f;
 
 	public Renderer(boolean createOwnRenders) {
 		if (createOwnRenders) {
@@ -27,6 +34,12 @@ public class Renderer {
 		}
 
 		camera.setToOrtho(false, this.camera_width, this.camera_height);
+
+		tile_camera = new OrthographicCamera();
+		tile_camera.setToOrtho(false, 1024, 768);
+		tile_camera.update();
+		tiledmap = new TmxMapLoader().load("grass.tmx");
+		tile_renderer = new OrthogonalTiledMapRenderer(tiledmap, unitscale);
 
 		// TODO Should really put all rendering into here (such as loading textures/textureatlases/textureregions)
 		// instead of the Screen class.
@@ -67,6 +80,10 @@ public class Renderer {
 	}
 
 	public void renderStates(Logician logicdata) { // Will act as a main rendering loop.
+		tile_camera.update();
+		this.tile_renderer.setView(tile_camera);
+		this.tile_renderer.render();
+
 		for (PlayerCharacter player : logicdata.players) {
 			this.renderPlayer(batch, player);
 		}

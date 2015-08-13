@@ -37,7 +37,7 @@ public class PlayScreen implements Screen {
 		shana = PlayerHandler.createPlayer("shana", windowwidth / 2, windowheight / 2, 100, determinator, "shana.png");
 
 		renderer = new Renderer(true);
-		renderer.loadBackground(backgroundpath);
+		//renderer.loadBackground(backgroundpath);
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class PlayScreen implements Screen {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // TODO Put these into XiaRen for it to handle cleanly.
 
-		renderer.renderBackground(0, 0, renderer.batch);
+		//renderer.renderBackground(0, 0, renderer.batch);
 		renderer.renderStates(determinator);
 
 	}
