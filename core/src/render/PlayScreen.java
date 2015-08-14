@@ -1,12 +1,15 @@
 package render;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
+import java.util.ArrayList;
+import java.util.List;
 
 import backend.Logician;
 import backend.Main;
 import backend.PlayerHandler;
+
+import com.badlogic.gdx.Screen;
+
+import entities.Map_struct;
 import entities.PlayerCharacter;
 
 public class PlayScreen implements Screen {
@@ -23,8 +26,8 @@ public class PlayScreen implements Screen {
 
 	public Logician determinator;
 
-	public String backgroundpath = "topdownbackground.png"; // This can and will change with each new level/background
-															// to be rendered.
+	public Map_struct onlymap;
+	public List<Map_struct> tiledmaps;
 
 	public PlayScreen(final Main g) {
 		game = g;
@@ -34,10 +37,16 @@ public class PlayScreen implements Screen {
 	public void show() { // This is where Xiabween determines what happens initially...
 
 		determinator = new Logician();
-		shana = PlayerHandler.createPlayer("shana", 200, 200, 100, determinator, "shana.png");
+		shana = PlayerHandler.createPlayer("shana", 200, 200, 100, this.determinator, "shana.png");
 
-		renderer = new Renderer(true);
-		//renderer.loadBackground(backgroundpath);
+		onlymap = new Map_struct("grass.tmx");
+		tiledmaps = new ArrayList<Map_struct>();
+		tiledmaps.add(onlymap);
+
+		renderer = new Renderer(true, 400, 400);
+		renderer.loadMaps(tiledmaps);
+		renderer.setCurrentMap(tiledmaps.get(0));
+
 	}
 
 	@Override
@@ -46,10 +55,6 @@ public class PlayScreen implements Screen {
 		determinator.processStates();
 
 		// ...then rendering.
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // TODO Put these into XiaRen for it to handle cleanly.
-
-		//renderer.renderBackground(0, 0, renderer.batch);
 		renderer.renderStates(determinator);
 
 	}

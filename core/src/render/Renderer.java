@@ -2,18 +2,21 @@ package render;
 
 import java.util.List;
 
+import backend.Logician;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
-import backend.Logician;
 import entities.Fireball;
+import entities.Map_struct;
 import entities.PlayerCharacter;
 
 public class Renderer {
@@ -22,25 +25,18 @@ public class Renderer {
 	public OrthographicCamera camera;
 	public int camera_width = 1024, camera_height = 700; // These won't be final, because there may be a time when a screen object would want to change these.
 
-	public Texture background;
+	public Map_struct currentMap;
 
-	public TiledMap tiledmap;
-	public OrthogonalTiledMapRenderer tile_renderer;
-	public float unitscale = 1 / 32f;
-
-	public Renderer(boolean createOwnRenders) {
+	public Renderer(boolean createOwnRenders, int cameraViewPortWidth, int cameraViewPortHeight) {
 		if (createOwnRenders) {
 			this.batch = new SpriteBatch();
 			this.camera = new OrthographicCamera();
 		}
-		
-		batch.setProjectionMatrix(camera.combined);
 
-		this.tiledmap = new TmxMapLoader().load("grass.tmx");
-		this.tile_renderer = new OrthogonalTiledMapRenderer(tiledmap);
+		setCameraViewPorts(cameraViewPortWidth, cameraViewPortHeight);
 
-		camera.setToOrtho(false, 400, 400);
-		
+		//this.tiledmap = new TmxMapLoader().load("grass.tmx");
+		//this.tile_renderer = new OrthogonalTiledMapRenderer(tiledmap);
 
 		// TODO Should really put all rendering into here (such as loading textures/textureatlases/textureregions)
 		// instead of the Screen class.
@@ -55,8 +51,12 @@ public class Renderer {
 
 	}
 
-	public void loadBackground(String path) {
-		this.background = new Texture(path);
+	public void loadMaps(List<Map_struct> mapStructs) {
+		// Load all the tiled maps that belong to the Screen class caller that it has supplied to the Renderer.
+		for (Map_struct struct : mapStructs) {
+			struct.map = new TmxMapLoader().load(struct.path);
+			struct.mapRenderer = new OrthogonalTiledMapRenderer(struct.map);
+		}
 	}
 
 	public void renderPlayer(Batch batch, PlayerCharacter playerinfo) {
@@ -67,18 +67,28 @@ public class Renderer {
 		batch.end();
 	}
 
-
-
 	public void renderFireblast(Fireball fireball, int x, int y) {
 
 	}
 
+	public void setCameraViewPorts(int viewWidth, int viewHeight) {
+		this.camera.setToOrtho(false, viewWidth, viewHeight);
+	}
+
+	public void setCurrentMap(Map_struct map) {
+		this.currentMap = map;
+	}
+
+	// TODO: Have a way to tell a Renderer object from a caller to control a camera based on the requests of a caller.
 	public void renderStates(Logician logicdata) { // Will act as a main rendering loop.
-		tile_renderer.setView(camera);
-		tile_renderer.render();
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+		currentMap.mapRenderer.setView(camera);
+		currentMap.mapRenderer.render();
 
 		for (PlayerCharacter player : logicdata.players) {
-			this.renderPlayer(tile_renderer.getBatch(), player);
+			renderPlayer(currentMap.mapRenderer.getBatch(), player);
 		}
 
 		camera.position.set(logicdata.players.get(0).x + 50, logicdata.players.get(0).y + 50, 0); // I know that the character is 100 pixels high and wide.
@@ -88,7 +98,7 @@ public class Renderer {
 		// skill effects, mob entities, and environmental entities.
 
 		for (Fireball fireball : logicdata.fireballs) {
-			this.renderFireblast(fireball, fireball.x, fireball.y);
+			renderFireblast(fireball, fireball.x, fireball.y);
 		}
 	}
 
