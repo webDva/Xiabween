@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -18,28 +19,28 @@ import entities.PlayerCharacter;
 public class Renderer {
 
 	public SpriteBatch batch;
-	public OrthographicCamera camera, tile_camera;
-	public int camera_width = 480, camera_height = 480; // These won't be final, because there may be a time when a screen object would want to change these.
+	public OrthographicCamera camera;
+	public int camera_width = 1024, camera_height = 700; // These won't be final, because there may be a time when a screen object would want to change these.
 
 	public Texture background;
 
-	TiledMap tiledmap;
-	OrthogonalTiledMapRenderer tile_renderer;
-	float unitscale = 1 / 32f;
+	public TiledMap tiledmap;
+	public OrthogonalTiledMapRenderer tile_renderer;
+	public float unitscale = 1 / 32f;
 
 	public Renderer(boolean createOwnRenders) {
 		if (createOwnRenders) {
 			this.batch = new SpriteBatch();
 			this.camera = new OrthographicCamera();
 		}
+		
+		batch.setProjectionMatrix(camera.combined);
 
-		camera.setToOrtho(false, this.camera_width, this.camera_height);
+		this.tiledmap = new TmxMapLoader().load("grass.tmx");
+		this.tile_renderer = new OrthogonalTiledMapRenderer(tiledmap);
 
-		tile_camera = new OrthographicCamera();
-		tile_camera.setToOrtho(false, 1024, 768);
-		tile_camera.update();
-		tiledmap = new TmxMapLoader().load("grass.tmx");
-		tile_renderer = new OrthogonalTiledMapRenderer(tiledmap, unitscale);
+		camera.setToOrtho(false, 400, 400);
+		
 
 		// TODO Should really put all rendering into here (such as loading textures/textureatlases/textureregions)
 		// instead of the Screen class.
@@ -58,38 +59,30 @@ public class Renderer {
 		this.background = new Texture(path);
 	}
 
-	public void renderPlayer(SpriteBatch spritebatch, PlayerCharacter playerinfo) {
-		spritebatch.begin();
+	public void renderPlayer(Batch batch, PlayerCharacter playerinfo) {
+		batch.begin();
 
-		spritebatch.draw(playerinfo.texture, playerinfo.x, playerinfo.y);
+		batch.draw(playerinfo.texture, playerinfo.x, playerinfo.y);
 
-		spritebatch.end();
+		batch.end();
 	}
 
-	public void renderBackground(int x, int y, SpriteBatch spritebatch) {
-		spritebatch.setProjectionMatrix(this.camera.combined);
-		spritebatch.begin();
 
-		spritebatch.draw(this.background, x, y);
-
-		spritebatch.end();
-	}
 
 	public void renderFireblast(Fireball fireball, int x, int y) {
 
 	}
 
 	public void renderStates(Logician logicdata) { // Will act as a main rendering loop.
-		tile_camera.update();
-		this.tile_renderer.setView(tile_camera);
-		this.tile_renderer.render();
+		tile_renderer.setView(camera);
+		tile_renderer.render();
 
 		for (PlayerCharacter player : logicdata.players) {
-			this.renderPlayer(batch, player);
+			this.renderPlayer(tile_renderer.getBatch(), player);
 		}
 
-		this.camera.position.set(logicdata.players.get(0).x, logicdata.players.get(0).y, 0);
-		this.camera.update();
+		camera.position.set(logicdata.players.get(0).x + 50, logicdata.players.get(0).y + 50, 0); // I know that the character is 100 pixels high and wide.
+		camera.update();
 
 		// TODO Use an abstract game object that can be generic for all types of game objects such as player entities,
 		// skill effects, mob entities, and environmental entities.
