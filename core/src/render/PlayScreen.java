@@ -37,7 +37,9 @@ public class PlayScreen implements Screen {
 	public void show() { // This is where Xiabween determines what happens initially...
 
 		determinator = new Logician();
-		shana = PlayerHandler.createPlayer("shana", 200, 200, 100, this.determinator, "shana.png");
+		shana = PlayerHandler.createPlayer("shana", 200, 200, 100);
+		determinator.players.add(shana);
+		shana.texture = Loader.loadTexture("shana.png");
 
 		onlymap = new Map_struct("grass.tmx");
 		tiledmaps = new ArrayList<Map_struct>();

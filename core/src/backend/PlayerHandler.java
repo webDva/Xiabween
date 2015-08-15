@@ -1,7 +1,5 @@
 package backend;
 
-import com.badlogic.gdx.graphics.Texture;
-
 import entities.PlayerCharacter;
 
 public class PlayerHandler {
@@ -16,18 +14,16 @@ public class PlayerHandler {
 		player.health = health;
 	}
 
-	public static PlayerCharacter createPlayer(String name, int x, int y, float health, Logician logician,
-			String texturepath) {
+	public static PlayerCharacter createPlayer(String name, int x, int y, float health) {
 
 		PlayerCharacter newplayer = new PlayerCharacter();
+
 		newplayer.name = name;
 		newplayer.x = x;
 		newplayer.y = y;
 		newplayer.health = health;
 
-		newplayer.texture = new Texture(texturepath);
-
-		logician.players.add(newplayer);
+		// Don't load the texture here, but instead, load it in a Screen class.
 
 		return newplayer;
 	}

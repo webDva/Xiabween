@@ -20,6 +20,10 @@ public class Logician { // The supreme class to handle game logic.
 
 	}
 
+	public void setCurrentPlayerCharacter() { // This is for setting the player's character for the camera to follow.
+
+	}
+
 	public void processStates() {
 		keypress = Control.checkIfMovementKeyIsPressed();
 		Control.doIfKeyIsPressed(keypress, this.players.get(0)); // Will just do the first and only player for now.

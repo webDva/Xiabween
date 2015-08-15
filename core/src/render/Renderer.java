@@ -35,13 +35,9 @@ public class Renderer {
 
 		setCameraViewPorts(cameraViewPortWidth, cameraViewPortHeight);
 
-		//this.tiledmap = new TmxMapLoader().load("grass.tmx");
-		//this.tile_renderer = new OrthogonalTiledMapRenderer(tiledmap);
-
 		// TODO Should really put all rendering into here (such as loading textures/textureatlases/textureregions)
 		// instead of the Screen class.
 
-		// Load initial things using a load method.
 	}
 
 	// Can be used for each new screen created, so make the arguments a list of things to load, such as:
