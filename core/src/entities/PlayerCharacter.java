@@ -1,13 +1,9 @@
 package entities;
 
-import com.badlogic.gdx.graphics.Texture;
 
-public class PlayerCharacter {
+public class PlayerCharacter extends AbstractGameObject {
 
-	public int x, y;
 	public String name;
 	public float health;
-
-	public Texture texture;
 
 }

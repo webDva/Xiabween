@@ -26,8 +26,8 @@ public class Renderer {
 	public int camera_width = 1024, camera_height = 700; // These won't be final, because there may be a time when a screen object would want to change these.
 
 	public Map_struct currentMap;
-	public PlayerCharacter playerToFollow = null; // Note that it could be possible to follow something that isn't a player.
-													// Thus, an Abstract Game Object would be better.
+	public PlayerCharacter thingToFollow; // Note that it could be possible to follow something that isn't a player.
+											// Thus, an Abstract Game Object would be better.
 
 	public Renderer(boolean createOwnRenders, int cameraViewPortWidth, int cameraViewPortHeight) {
 		if (createOwnRenders) {
@@ -60,12 +60,12 @@ public class Renderer {
 	public void renderPlayer(Batch batch, PlayerCharacter playerinfo) {
 		batch.begin();
 
-		batch.draw(playerinfo.texture, playerinfo.x, playerinfo.y);
+		batch.draw(playerinfo.texture, playerinfo.position.x, playerinfo.position.y);
 
 		batch.end();
 	}
 
-	public void renderFireblast(Fireball fireball, int x, int y) {
+	public void renderFireblast(Fireball fireball, float x, float y) {
 
 	}
 
@@ -89,14 +89,15 @@ public class Renderer {
 			renderPlayer(currentMap.mapRenderer.getBatch(), player);
 		}
 
-		camera.position.set(logicdata.myPlayer.x + 50, logicdata.myPlayer.y + 50, 0); // I know that the character is 100 pixels high and wide.
+		this.thingToFollow = logicdata.myPlayer;
+		camera.position.set(thingToFollow.position.x + 50, thingToFollow.position.y + 50, 0); // I know that the character is 100 pixels high and wide.
 		camera.update();
 
 		// TODO Use an abstract game object that can be generic for all types of game objects such as player entities,
 		// skill effects, mob entities, and environmental entities.
 
 		for (Fireball fireball : logicdata.fireballs) {
-			renderFireblast(fireball, fireball.x, fireball.y);
+			renderFireblast(fireball, fireball.position.x, fireball.position.y);
 		}
 	}
 

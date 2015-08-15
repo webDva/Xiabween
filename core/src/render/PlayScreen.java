@@ -8,6 +8,7 @@ import backend.Main;
 import backend.PlayerHandler;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.math.Vector2;
 
 import entities.Map_struct;
 import entities.PlayerCharacter;
@@ -37,7 +38,7 @@ public class PlayScreen implements Screen {
 	public void show() { // This is where Xiabween determines what happens initially...
 
 		determinator = new Logician();
-		shana = PlayerHandler.createPlayer("shana", 200, 200, 100);
+		shana = PlayerHandler.createPlayer("shana", new Vector2(200, 200), 100);
 		determinator.players.add(shana);
 		determinator.setCurrentPlayerCharacter(shana);
 		shana.texture = Loader.loadTexture("shana.png");

@@ -1,12 +1,7 @@
 package entities;
 
-import com.badlogic.gdx.graphics.Texture;
+public class Fireball extends AbstractGameObject {
 
-public class Fireball {
-
-	public int x, y;
 	public float damage;
-
-	public Texture texture;
 
 }
