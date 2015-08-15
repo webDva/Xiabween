@@ -43,13 +43,13 @@ public class PlayScreen implements Screen {
 		determinator.setCurrentPlayerCharacter(shana);
 		shana.texture = Loader.loadTexture("shana.png");
 
-		onlymap = new Map_struct("grass.tmx");
 		tiledmaps = new ArrayList<Map_struct>();
+		onlymap = new Map_struct("grass.tmx");
 		tiledmaps.add(onlymap);
+		Loader.loadMaps(tiledmaps);
 
 		renderer = new Renderer(true, 400, 400);
-		renderer.loadMaps(tiledmaps);
-		renderer.setCurrentMap(tiledmaps.get(0));
+		renderer.setCurrentMap(onlymap);
 
 	}
 

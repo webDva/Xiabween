@@ -12,8 +12,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 import entities.Fireball;
 import entities.Map_struct;
@@ -47,14 +45,6 @@ public class Renderer {
 	public void loadThings(List<TextureAtlas> texture_atlases, List<TextureRegion> texture_regions,
 			List<Texture> textures) {
 
-	}
-
-	public void loadMaps(List<Map_struct> mapStructs) {
-		// Load all the tiled maps that belong to the Screen class caller that it has supplied to the Renderer.
-		for (Map_struct struct : mapStructs) {
-			struct.map = new TmxMapLoader().load(struct.filepath);
-			struct.mapRenderer = new OrthogonalTiledMapRenderer(struct.map);
-		}
 	}
 
 	public void renderPlayer(Batch batch, PlayerCharacter playerinfo) {
