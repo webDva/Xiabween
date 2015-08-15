@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import entities.AbstractGameObject;
 import entities.Fireball;
 import entities.Map_struct;
 import entities.PlayerCharacter;
@@ -21,19 +22,15 @@ public class Renderer {
 
 	public SpriteBatch batch;
 	public OrthographicCamera camera;
-	public int camera_width = 1024, camera_height = 700; // These won't be final, because there may be a time when a screen object would want to change these.
 
 	public Map_struct currentMap;
-	public PlayerCharacter thingToFollow; // Note that it could be possible to follow something that isn't a player.
-											// Thus, an Abstract Game Object would be better.
+	public AbstractGameObject thingToFollow;
 
-	public Renderer(boolean createOwnRenders, int cameraViewPortWidth, int cameraViewPortHeight) {
+	public Renderer(boolean createOwnRenders) {
 		if (createOwnRenders) {
 			this.batch = new SpriteBatch();
 			this.camera = new OrthographicCamera();
 		}
-
-		setCameraViewPorts(cameraViewPortWidth, cameraViewPortHeight);
 
 		// TODO Should really put all rendering into here (such as loading textures/textureatlases/textureregions)
 		// instead of the Screen class.
@@ -67,6 +64,10 @@ public class Renderer {
 		this.currentMap = map;
 	}
 
+	public void setThingToFollow(AbstractGameObject thing) {
+		this.thingToFollow = thing;
+	}
+
 	// TODO: Have a way to tell a Renderer object from a caller to control a camera based on the requests of a caller.
 	public void renderStates(Logician logicdata) { // Will act as a main rendering loop.
 		Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -79,7 +80,6 @@ public class Renderer {
 			renderPlayer(currentMap.mapRenderer.getBatch(), player);
 		}
 
-		this.thingToFollow = logicdata.myPlayer;
 		camera.position.set(thingToFollow.position.x + 50, thingToFollow.position.y + 50, 0); // I know that the character is 100 pixels high and wide.
 		camera.update();
 

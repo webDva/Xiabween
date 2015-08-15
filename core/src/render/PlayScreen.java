@@ -48,8 +48,10 @@ public class PlayScreen implements Screen {
 		tiledmaps.add(onlymap);
 		Loader.loadMaps(tiledmaps);
 
-		renderer = new Renderer(true, 400, 400);
+		renderer = new Renderer(true);
+		renderer.setCameraViewPorts(400, 400);
 		renderer.setCurrentMap(onlymap);
+		renderer.setThingToFollow(shana);
 
 	}
 
