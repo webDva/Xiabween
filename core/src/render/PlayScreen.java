@@ -17,8 +17,9 @@ public class PlayScreen implements Screen {
 
 	// Don't let there be any textures here and let the Renderer take care of those things.
 
-	public static final int windowwidth = 1024;
-	public static final int windowheight = 768;
+	public static final String windowTitle = "Xiabween";
+	public static int windowWidth = 800;
+	public static int windowHeight = 800;
 
 	public Renderer renderer;
 

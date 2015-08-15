@@ -1,5 +1,6 @@
 package desktop;
 
+import render.PlayScreen;
 import backend.Main;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
@@ -10,9 +11,9 @@ public class DesktopLauncher {
 	public static void main(String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
-		config.title = Main.title;
-		config.width = Main.WIDTH;
-		config.height = Main.HEIGHT;
+		config.title = PlayScreen.windowTitle;
+		config.width = PlayScreen.windowWidth;
+		config.height = PlayScreen.windowHeight;
 
 		new LwjglApplication(new Main(), config);
 	}
