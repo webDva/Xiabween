@@ -2,6 +2,7 @@ package backend;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.math.Vector2;
 
 import entities.PlayerCharacter;
 
@@ -30,16 +31,16 @@ public class Control { // Handles input from the player user. This goes into pro
 	public static void doIfKeyIsPressed(int keycode, PlayerCharacter player) {
 		switch (keycode) {
 		case Keys.W:
-			PlayerHandler.movePlayer(player, player.position.x, player.position.y + 1);
+			PlayerHandler.movePlayer(player, new Vector2(player.position.x, player.position.y + 1));
 			break;
 		case Keys.A:
-			PlayerHandler.movePlayer(player, player.position.x - 1, player.position.y);
+			PlayerHandler.movePlayer(player, new Vector2(player.position.x - 1, player.position.y));
 			break;
 		case Keys.S:
-			PlayerHandler.movePlayer(player, player.position.x, player.position.y - 1);
+			PlayerHandler.movePlayer(player, new Vector2(player.position.x, player.position.y - 1));
 			break;
 		case Keys.D:
-			PlayerHandler.movePlayer(player, player.position.x + 1, player.position.y);
+			PlayerHandler.movePlayer(player, new Vector2(player.position.x + 1, player.position.y));
 			break;
 		case 0:
 			// What to do here?

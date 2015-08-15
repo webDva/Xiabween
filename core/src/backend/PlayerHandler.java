@@ -6,9 +6,8 @@ import entities.PlayerCharacter;
 
 public class PlayerHandler {
 
-	public static void movePlayer(PlayerCharacter player, float x, float y) {
-		player.position.x = x;
-		player.position.y = y;
+	public static void movePlayer(PlayerCharacter player, Vector2 coordinates) {
+		player.position = coordinates;
 	}
 
 	public static void changeHealth(PlayerCharacter player, float health) {
