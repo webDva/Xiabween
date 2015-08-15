@@ -39,6 +39,7 @@ public class PlayScreen implements Screen {
 		determinator = new Logician();
 		shana = PlayerHandler.createPlayer("shana", 200, 200, 100);
 		determinator.players.add(shana);
+		determinator.setCurrentPlayerCharacter(shana);
 		shana.texture = Loader.loadTexture("shana.png");
 
 		onlymap = new Map_struct("grass.tmx");

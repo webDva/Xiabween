@@ -26,6 +26,8 @@ public class Renderer {
 	public int camera_width = 1024, camera_height = 700; // These won't be final, because there may be a time when a screen object would want to change these.
 
 	public Map_struct currentMap;
+	public PlayerCharacter playerToFollow = null; // Note that it could be possible to follow something that isn't a player.
+													// Thus, an Abstract Game Object would be better.
 
 	public Renderer(boolean createOwnRenders, int cameraViewPortWidth, int cameraViewPortHeight) {
 		if (createOwnRenders) {
@@ -50,7 +52,7 @@ public class Renderer {
 	public void loadMaps(List<Map_struct> mapStructs) {
 		// Load all the tiled maps that belong to the Screen class caller that it has supplied to the Renderer.
 		for (Map_struct struct : mapStructs) {
-			struct.map = new TmxMapLoader().load(struct.path);
+			struct.map = new TmxMapLoader().load(struct.filepath);
 			struct.mapRenderer = new OrthogonalTiledMapRenderer(struct.map);
 		}
 	}
@@ -87,7 +89,7 @@ public class Renderer {
 			renderPlayer(currentMap.mapRenderer.getBatch(), player);
 		}
 
-		camera.position.set(logicdata.players.get(0).x + 50, logicdata.players.get(0).y + 50, 0); // I know that the character is 100 pixels high and wide.
+		camera.position.set(logicdata.myPlayer.x + 50, logicdata.myPlayer.y + 50, 0); // I know that the character is 100 pixels high and wide.
 		camera.update();
 
 		// TODO Use an abstract game object that can be generic for all types of game objects such as player entities,
