@@ -45,7 +45,8 @@ public class PlayScreen implements Screen {
 		determinator.players.add(idlecat);
 		determinator.players.add(pink);
 		determinator.setCurrentPlayerCharacter(shana);
-		shana.texture = Loader.loadTexture("shanafront.png");
+		//shana.texture = Loader.loadTexture("faces/shanaleft.png");
+		shana.faces = Loader.loadCharacterFacesAtlas("faces/faces.atlas");
 		idlecat.texture = Loader.loadTexture("idlecat.png");
 		pink.texture = Loader.loadTexture("cat1purple.png");
 

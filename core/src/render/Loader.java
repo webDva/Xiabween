@@ -1,8 +1,12 @@
 package render;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
@@ -20,5 +24,16 @@ public class Loader {
 			struct.map = new TmxMapLoader().load(struct.filepath);
 			struct.mapRenderer = new OrthogonalTiledMapRenderer(struct.map);
 		}
+	}
+
+	public static Map<String, Sprite> loadCharacterFacesAtlas(String atlasPath) {
+		TextureAtlas newAtlas = new TextureAtlas(atlasPath);
+		Map<String, Sprite> newMap = new HashMap<String, Sprite>();
+
+		for (TextureAtlas.AtlasRegion newRegion : newAtlas.getRegions()) {
+			newMap.put(newRegion.name, newAtlas.createSprite(newRegion.name));
+		}
+
+		return newMap;
 	}
 }

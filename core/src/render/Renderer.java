@@ -46,7 +46,6 @@ public class Renderer {
 	public void renderPlayer(Batch batch, PlayerCharacter playerinfo) {
 		batch.begin();
 
-		//batch.draw(playerinfo.texture, playerinfo.position.x, playerinfo.position.y);
 		batch.draw(playerinfo.texture, playerinfo.position.x, playerinfo.position.y, 64, 64);
 
 		batch.end();

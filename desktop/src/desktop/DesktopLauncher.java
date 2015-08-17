@@ -1,10 +1,10 @@
 package desktop;
 
-import render.PlayScreen;
-import backend.Main;
-
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+
+import backend.Main;
+import render.PlayScreen;
 
 public class DesktopLauncher {
 

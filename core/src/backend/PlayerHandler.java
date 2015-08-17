@@ -8,6 +8,7 @@ public class PlayerHandler {
 
 	public static void movePlayer(PlayerCharacter player, Vector2 coordinates) {
 		player.position = coordinates;
+
 	}
 
 	public static void changeHealth(PlayerCharacter player, float health) {
@@ -24,6 +25,8 @@ public class PlayerHandler {
 		newplayer.health = health;
 
 		// Don't load the texture here, but instead, load it in a Screen class.
+
+		newplayer.direction = "down"; // Default direction that the player is facing upon creation.
 
 		return newplayer;
 	}
