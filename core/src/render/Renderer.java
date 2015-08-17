@@ -2,8 +2,6 @@ package render;
 
 import java.util.List;
 
-import backend.Logician;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -13,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import backend.Logician;
 import entities.AbstractGameObject;
 import entities.Fireball;
 import entities.Map_struct;
@@ -47,7 +46,8 @@ public class Renderer {
 	public void renderPlayer(Batch batch, PlayerCharacter playerinfo) {
 		batch.begin();
 
-		batch.draw(playerinfo.texture, playerinfo.position.x, playerinfo.position.y);
+		//batch.draw(playerinfo.texture, playerinfo.position.x, playerinfo.position.y);
+		batch.draw(playerinfo.texture, playerinfo.position.x, playerinfo.position.y, 64, 64);
 
 		batch.end();
 	}

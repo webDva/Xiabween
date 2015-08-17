@@ -3,13 +3,12 @@ package render;
 import java.util.ArrayList;
 import java.util.List;
 
-import backend.Logician;
-import backend.Main;
-import backend.PlayerHandler;
-
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.math.Vector2;
 
+import backend.Logician;
+import backend.Main;
+import backend.PlayerHandler;
 import entities.Map_struct;
 import entities.PlayerCharacter;
 
@@ -23,7 +22,7 @@ public class PlayScreen implements Screen {
 
 	public Renderer renderer;
 
-	public PlayerCharacter shana;
+	public PlayerCharacter shana, idlecat, pink;
 	public Main game;
 
 	public Logician determinator;
@@ -40,9 +39,15 @@ public class PlayScreen implements Screen {
 
 		determinator = new Logician();
 		shana = PlayerHandler.createPlayer("shana", new Vector2(200, 200), 100);
+		idlecat = PlayerHandler.createPlayer("cat", new Vector2(270, 270), 100);
+		pink = PlayerHandler.createPlayer("pink", new Vector2(320, 270), 100);
 		determinator.players.add(shana);
+		determinator.players.add(idlecat);
+		determinator.players.add(pink);
 		determinator.setCurrentPlayerCharacter(shana);
-		shana.texture = Loader.loadTexture("shana.png");
+		shana.texture = Loader.loadTexture("shanafront.png");
+		idlecat.texture = Loader.loadTexture("idlecat.png");
+		pink.texture = Loader.loadTexture("cat1purple.png");
 
 		tiledmaps = new ArrayList<Map_struct>();
 		onlymap = new Map_struct("grass.tmx");
