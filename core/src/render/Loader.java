@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -26,12 +25,12 @@ public class Loader {
 		}
 	}
 
-	public static Map<String, Sprite> loadCharacterFacesAtlas(String atlasPath) {
+	public static Map<String, TextureAtlas.AtlasRegion> loadCharacterFacesAtlas(String atlasPath) {
 		TextureAtlas newAtlas = new TextureAtlas(atlasPath);
-		Map<String, Sprite> newMap = new HashMap<String, Sprite>();
+		Map<String, TextureAtlas.AtlasRegion> newMap = new HashMap<String, TextureAtlas.AtlasRegion>();
 
 		for (TextureAtlas.AtlasRegion newRegion : newAtlas.getRegions()) {
-			newMap.put(newRegion.name, newAtlas.createSprite(newRegion.name));
+			newMap.put(newRegion.name, newAtlas.findRegion(newRegion.name));
 		}
 
 		return newMap;

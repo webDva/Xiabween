@@ -42,8 +42,8 @@ public class PlayScreen implements Screen {
 		idlecat = PlayerHandler.createPlayer("cat", new Vector2(270, 270), 100);
 		pink = PlayerHandler.createPlayer("pink", new Vector2(320, 270), 100);
 		determinator.players.add(shana);
-		determinator.players.add(idlecat);
-		determinator.players.add(pink);
+		//determinator.players.add(idlecat);
+		//determinator.players.add(pink);
 		determinator.setCurrentPlayerCharacter(shana);
 		//shana.texture = Loader.loadTexture("faces/shanaleft.png");
 		shana.faces = Loader.loadCharacterFacesAtlas("faces/faces.atlas");
