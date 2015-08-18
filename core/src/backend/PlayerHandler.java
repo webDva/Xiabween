@@ -24,7 +24,8 @@ public class PlayerHandler {
 			player.direction = "faces/right";
 		}
 
-		player.position = coordinates;
+		player.position.x += coordinates.x;
+		player.position.y += coordinates.y;
 	}
 
 	public static void changeHealth(PlayerCharacter player, float health) {
