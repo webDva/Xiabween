@@ -13,24 +13,29 @@ public class Control { // Handles input from the player user. This goes into pro
 	public static void checkIfMovementKeyIsPressed(PlayerCharacter player) {
 		if (Gdx.input.isKeyPressed(Keys.W) && Gdx.input.isKeyPressed(Keys.A)) {
 			PlayerHandler.movePlayer(player, new Vector2(player.position.x - 1, player.position.y + 1));
-		} else if (Gdx.input.isKeyPressed(Keys.W) && Gdx.input.isKeyPressed(Keys.D)) {
+		}
+		if (Gdx.input.isKeyPressed(Keys.W) && Gdx.input.isKeyPressed(Keys.D)) {
 			PlayerHandler.movePlayer(player, new Vector2(player.position.x + 1, player.position.y + 1));
-		} else if (Gdx.input.isKeyPressed(Keys.W)) {
+		}
+		if (Gdx.input.isKeyPressed(Keys.W)) {
 			PlayerHandler.movePlayer(player, new Vector2(player.position.x, player.position.y + 1));
 		}
 
-		else if (Gdx.input.isKeyPressed(Keys.A)) {
+		if (Gdx.input.isKeyPressed(Keys.A)) {
 			PlayerHandler.movePlayer(player, new Vector2(player.position.x - 1, player.position.y));
 
-		} else if (Gdx.input.isKeyPressed(Keys.S) && Gdx.input.isKeyPressed(Keys.A)) {
+		}
+		if (Gdx.input.isKeyPressed(Keys.S) && Gdx.input.isKeyPressed(Keys.A)) {
 			PlayerHandler.movePlayer(player, new Vector2(player.position.x - 1, player.position.y - 1));
-		} else if (Gdx.input.isKeyPressed(Keys.S) && Gdx.input.isKeyPressed(Keys.D)) {
+		}
+		if (Gdx.input.isKeyPressed(Keys.S) && Gdx.input.isKeyPressed(Keys.D)) {
 			PlayerHandler.movePlayer(player, new Vector2(player.position.x + 1, player.position.y - 1));
-		} else if (Gdx.input.isKeyPressed(Keys.S)) {
+		}
+		if (Gdx.input.isKeyPressed(Keys.S)) {
 			PlayerHandler.movePlayer(player, new Vector2(player.position.x, player.position.y - 1));
 		}
 
-		else if (Gdx.input.isKeyPressed(Keys.D)) {
+		if (Gdx.input.isKeyPressed(Keys.D)) {
 			PlayerHandler.movePlayer(player, new Vector2(player.position.x + 1, player.position.y));
 		}
 	}
