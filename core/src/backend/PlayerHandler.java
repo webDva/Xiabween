@@ -6,31 +6,15 @@ import entities.PlayerCharacter;
 
 public class PlayerHandler {
 
-	public static void movePlayer(PlayerCharacter player, Vector2 coordinates) {
-		float x_delta, y_delta; // Should really learn about variable naming conventions. Felt the underscore one here
-								// was necessary, because of their type and the x.
-		x_delta = player.position.x - coordinates.x;
-		y_delta = player.position.y - coordinates.y;
-
-		if (y_delta > 0) {
-			player.direction = "down";
-		} else if (y_delta < 0) {
-			player.direction = "up";
-		}
-
-		if (x_delta > 0) {
-			player.direction = "left";
-		} else if (x_delta < 0) {
-			player.direction = "right";
-		}
-
+	public static void movePlayer(PlayerCharacter player, String direction, Vector2 coordinates) {
+		player.direction = direction;
 		player.position.x += coordinates.x;
 		player.position.y += coordinates.y;
 	}
 
-	public static void changeHealth(PlayerCharacter player, float health) {
+	public static void changeHealth(PlayerCharacter player, float health_displacement) {
 
-		player.health = health;
+		player.health += health_displacement;
 	}
 
 	public static PlayerCharacter createPlayer(String name, Vector2 coordinates, float health) {
@@ -43,7 +27,7 @@ public class PlayerHandler {
 
 		// Don't load the texture here, but instead, load it in a Screen class.
 
-		newplayer.direction = "down"; // Default direction that the player is facing upon creation.
+		newplayer.direction = PlayerCharacter.DOWN; // Default direction that the player is facing upon creation.
 
 		return newplayer;
 	}
