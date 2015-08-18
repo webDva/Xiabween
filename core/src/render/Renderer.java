@@ -46,7 +46,8 @@ public class Renderer {
 	public void renderPlayer(Batch batch, PlayerCharacter playerinfo) {
 		batch.begin();
 
-		batch.draw(playerinfo.faces.get(playerinfo.direction), playerinfo.position.x, playerinfo.position.y, 64, 64);
+		batch.draw(playerinfo.faces.get("faces/" + playerinfo.direction), playerinfo.position.x, playerinfo.position.y,
+				64, 64);
 
 		batch.end();
 	}

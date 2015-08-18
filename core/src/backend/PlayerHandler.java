@@ -13,15 +13,15 @@ public class PlayerHandler {
 		y_delta = player.position.y - coordinates.y;
 
 		if (y_delta > 0) {
-			player.direction = "faces/down";
+			player.direction = "down";
 		} else if (y_delta < 0) {
-			player.direction = "faces/up";
+			player.direction = "up";
 		}
 
 		if (x_delta > 0) {
-			player.direction = "faces/left";
+			player.direction = "left";
 		} else if (x_delta < 0) {
-			player.direction = "faces/right";
+			player.direction = "right";
 		}
 
 		player.position.x += coordinates.x;
@@ -43,7 +43,7 @@ public class PlayerHandler {
 
 		// Don't load the texture here, but instead, load it in a Screen class.
 
-		newplayer.direction = "faces/down"; // Default direction that the player is facing upon creation.
+		newplayer.direction = "down"; // Default direction that the player is facing upon creation.
 
 		return newplayer;
 	}
