@@ -12,16 +12,16 @@ public class PlayerHandler {
 		x_delta = player.position.x - coordinates.x;
 		y_delta = player.position.y - coordinates.y;
 
-		if (x_delta > 0) {
-			player.direction = "faces/left";
-		} else if (x_delta < 0) {
-			player.direction = "faces/right";
-		}
-
 		if (y_delta > 0) {
 			player.direction = "faces/down";
 		} else if (y_delta < 0) {
 			player.direction = "faces/up";
+		}
+
+		if (x_delta > 0) {
+			player.direction = "faces/left";
+		} else if (x_delta < 0) {
+			player.direction = "faces/right";
 		}
 
 		player.position = coordinates;

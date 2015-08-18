@@ -27,8 +27,7 @@ public class Logician { // The supreme class to handle game logic.
 	}
 
 	public void processStates() {
-		keypress = Control.checkIfMovementKeyIsPressed();
-		Control.doIfKeyIsPressed(keypress, myPlayer);
+		Control.checkIfMovementKeyIsPressed(myPlayer);
 	}
 
 }
