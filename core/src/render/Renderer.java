@@ -3,9 +3,11 @@ package render;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -24,6 +26,8 @@ public class Renderer {
 
 	public Map_struct currentMap;
 	public AbstractGameObject thingToFollow;
+	private Animation animation;
+	private float elapsedTime = 0;
 
 	public Renderer(boolean createOwnRenders) {
 		if (createOwnRenders) {
@@ -45,10 +49,19 @@ public class Renderer {
 
 	public void renderPlayer(Batch batch, PlayerCharacter playerinfo) {
 		batch.begin();
-
 		batch.draw(playerinfo.faces.get("faces/" + playerinfo.direction), playerinfo.position.x, playerinfo.position.y,
 				64, 64);
+		batch.end();
+	}
 
+	public void animatePlayer(PlayerCharacter player) {
+		if (this.animation == null) {
+			this.animation = new Animation(1 / 15f, player.animations.getRegions());
+		}
+
+		batch.begin();
+		elapsedTime += Gdx.graphics.getDeltaTime();
+		batch.draw(animation.getKeyFrame(elapsedTime, true), player.position.x, player.position.y, 64, 64);
 		batch.end();
 	}
 
@@ -78,6 +91,10 @@ public class Renderer {
 
 		for (PlayerCharacter player : logicdata.players) {
 			renderPlayer(currentMap.mapRenderer.getBatch(), player);
+		}
+
+		if (Gdx.input.isKeyPressed(Keys.S)) {
+			animatePlayer(logicdata.myPlayer);
 		}
 
 		camera.position.set(thingToFollow.position.x + 50, thingToFollow.position.y + 50, 0); // I know that the character is 100 pixels high and wide.

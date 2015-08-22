@@ -17,6 +17,10 @@ public class Loader {
 		return new Texture(path);
 	}
 
+	public static TextureAtlas loadTextureAtlas(String path) {
+		return new TextureAtlas(path);
+	}
+
 	public static void loadMaps(List<Map_struct> mapStructs) {
 		// Load all the tiled maps that belong to the Screen class caller that it has supplied to the Renderer.
 		for (Map_struct struct : mapStructs) {

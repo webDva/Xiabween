@@ -14,4 +14,6 @@ public class PlayerCharacter extends AbstractGameObject {
 	public Map<String, TextureAtlas.AtlasRegion> faces;
 	public String direction; // Should make this an enumeration with radians.
 
+	public TextureAtlas animations;
+
 }

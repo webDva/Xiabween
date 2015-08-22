@@ -38,7 +38,7 @@ public class PlayScreen implements Screen {
 	public void show() { // This is where Xiabween determines what happens initially...
 
 		determinator = new Logician();
-		shana = PlayerHandler.createPlayer("shana", new Vector2(200, 200), 100);
+		shana = PlayerHandler.createPlayer("shana", new Vector2(0, 0), 100);
 		idlecat = PlayerHandler.createPlayer("cat", new Vector2(270, 270), 100);
 		pink = PlayerHandler.createPlayer("pink", new Vector2(320, 270), 100);
 		determinator.players.add(shana);
@@ -47,6 +47,7 @@ public class PlayScreen implements Screen {
 		determinator.setCurrentPlayerCharacter(shana);
 		//shana.texture = Loader.loadTexture("faces/shanaleft.png");
 		shana.faces = Loader.loadCharacterFacesAtlas("faces/faces.atlas");
+		shana.animations = Loader.loadTextureAtlas("animate/animate.atlas");
 		idlecat.texture = Loader.loadTexture("idlecat.png");
 		pink.texture = Loader.loadTexture("cat1purple.png");
 
