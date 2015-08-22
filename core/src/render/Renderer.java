@@ -54,7 +54,7 @@ public class Renderer {
 		batch.end();
 	}
 
-	public void animatePlayer(PlayerCharacter player) {
+	public void animatePlayer(Batch batch, PlayerCharacter player) {
 		if (this.animation == null) {
 			this.animation = new Animation(1 / 15f, player.animations.getRegions());
 		}
@@ -90,11 +90,11 @@ public class Renderer {
 		currentMap.mapRenderer.render();
 
 		for (PlayerCharacter player : logicdata.players) {
+			if (Gdx.input.isKeyPressed(Keys.S) && player == thingToFollow) {
+				animatePlayer(currentMap.mapRenderer.getBatch(), logicdata.myPlayer);
+				break;
+			}
 			renderPlayer(currentMap.mapRenderer.getBatch(), player);
-		}
-
-		if (Gdx.input.isKeyPressed(Keys.S)) {
-			animatePlayer(logicdata.myPlayer);
 		}
 
 		camera.position.set(thingToFollow.position.x + 50, thingToFollow.position.y + 50, 0); // I know that the character is 100 pixels high and wide.
