@@ -22,7 +22,7 @@ public class PlayScreen implements Screen {
 
 	public Renderer renderer;
 
-	public PlayerCharacter shana, idlecat, pink;
+	public PlayerCharacter shana, player2;
 	public Main game;
 
 	public Logician determinator;
@@ -42,12 +42,17 @@ public class PlayScreen implements Screen {
 
 		determinator = new Logician();
 		shana = PlayerHandler.createPlayer(new Vector2(0, 0));
+		player2 = PlayerHandler.createPlayer(new Vector2(128, 128));
 		determinator.players.add(shana);
+		determinator.players.add(player2);
 
 		determinator.setCurrentPlayerCharacter(shana);
 
 		shana.faces = Loader.loadCharacterFacesAtlas("faces/faces.atlas");
 		shana.animations = Loader.loadTextureAtlas("animate/animate.atlas", renderer);
+
+		player2.faces = Loader.loadCharacterFacesAtlas("faces/faces.atlas");
+		player2.animations = Loader.loadTextureAtlas("animate/animate.atlas", renderer);
 
 		tiledmaps = new ArrayList<Map_struct>();
 		onlymap = new Map_struct("grass.tmx");

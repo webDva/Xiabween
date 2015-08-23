@@ -13,10 +13,10 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import backend.Logician;
-import entities.RenderObject;
 import entities.Fireball;
 import entities.Map_struct;
 import entities.PlayerCharacter;
+import entities.RenderObject;
 
 public class Renderer {
 
@@ -97,8 +97,8 @@ public class Renderer {
 
 		for (PlayerCharacter player : logicdata.players) {
 			if (player.isAnimating) {
-				animatePlayer(currentMap.mapRenderer.getBatch(), logicdata.myPlayer);
-				break;
+				animatePlayer(currentMap.mapRenderer.getBatch(), player);
+				continue;
 			}
 			renderPlayer(currentMap.mapRenderer.getBatch(), player);
 		}
