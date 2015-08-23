@@ -29,9 +29,14 @@ public class Renderer {
 	private Animation animation;
 	private float elapsedTime = 0;
 
+	public GPUKeeper gpu_keeper;
+	public List<AbstractGameObject> thingsToRender;
+
 	public Renderer(boolean createOwnRenders) {
 		if (createOwnRenders) {
 			this.batch = new SpriteBatch();
+			this.gpu_keeper = new GPUKeeper();
+			this.gpu_keeper.batches.add(this.batch);
 			this.camera = new OrthographicCamera();
 		}
 

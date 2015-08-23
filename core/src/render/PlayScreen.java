@@ -37,27 +37,23 @@ public class PlayScreen implements Screen {
 	@Override
 	public void show() { // This is where Xiabween determines what happens initially...
 
+		renderer = new Renderer(true);
+		renderer.setCameraViewPorts(400, 400);
+
 		determinator = new Logician();
-		shana = PlayerHandler.createPlayer("shana", new Vector2(0, 0), 100);
-		idlecat = PlayerHandler.createPlayer("cat", new Vector2(270, 270), 100);
-		pink = PlayerHandler.createPlayer("pink", new Vector2(320, 270), 100);
+		shana = PlayerHandler.createPlayer(new Vector2(0, 0));
 		determinator.players.add(shana);
-		//determinator.players.add(idlecat);
-		//determinator.players.add(pink);
+
 		determinator.setCurrentPlayerCharacter(shana);
-		//shana.texture = Loader.loadTexture("faces/shanaleft.png");
+
 		shana.faces = Loader.loadCharacterFacesAtlas("faces/faces.atlas");
-		shana.animations = Loader.loadTextureAtlas("animate/animate.atlas");
-		idlecat.texture = Loader.loadTexture("idlecat.png");
-		pink.texture = Loader.loadTexture("cat1purple.png");
+		shana.animations = Loader.loadTextureAtlas("animate/animate.atlas", renderer);
 
 		tiledmaps = new ArrayList<Map_struct>();
 		onlymap = new Map_struct("grass.tmx");
 		tiledmaps.add(onlymap);
 		Loader.loadMaps(tiledmaps);
 
-		renderer = new Renderer(true);
-		renderer.setCameraViewPorts(400, 400);
 		renderer.setCurrentMap(onlymap);
 		renderer.setThingToFollow(shana);
 
@@ -99,7 +95,7 @@ public class PlayScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		renderer.batch.dispose();
+		renderer.gpu_keeper.delete();
 	}
 
 }

@@ -12,18 +12,11 @@ public class PlayerHandler {
 		player.position.y += coordinates.y;
 	}
 
-	public static void changeHealth(PlayerCharacter player, float health_displacement) {
-
-		player.health += health_displacement;
-	}
-
-	public static PlayerCharacter createPlayer(String name, Vector2 coordinates, float health) {
+	public static PlayerCharacter createPlayer(Vector2 coordinates) {
 
 		PlayerCharacter newplayer = new PlayerCharacter();
 
-		newplayer.name = name;
 		newplayer.position = new Vector2(coordinates);
-		newplayer.health = health;
 
 		// Don't load the texture here, but instead, load it in a Screen class.
 

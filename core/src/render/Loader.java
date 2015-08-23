@@ -13,11 +13,15 @@ import entities.Map_struct;
 
 public class Loader {
 
-	public static Texture loadTexture(String path) {
+	public static Texture loadTexture(String path, Renderer renderer) {
+		Texture texture = new Texture(path);
+		renderer.gpu_keeper.textures.add(texture);
 		return new Texture(path);
 	}
 
-	public static TextureAtlas loadTextureAtlas(String path) {
+	public static TextureAtlas loadTextureAtlas(String path, Renderer renderer) {
+		TextureAtlas atlas = new TextureAtlas(path);
+		renderer.gpu_keeper.atlases.add(atlas);
 		return new TextureAtlas(path);
 	}
 
