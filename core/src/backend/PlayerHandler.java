@@ -10,6 +10,8 @@ public class PlayerHandler {
 		player.direction = direction;
 		player.position.x += coordinates.x;
 		player.position.y += coordinates.y;
+
+		player.isAnimating = true;
 	}
 
 	public static PlayerCharacter createPlayer(Vector2 coordinates) {
@@ -21,6 +23,7 @@ public class PlayerHandler {
 		// Don't load the texture here, but instead, load it in a Screen class.
 
 		newplayer.direction = PlayerCharacter.DOWN; // Default direction that the player is facing upon creation.
+		newplayer.isAnimating = false;
 
 		return newplayer;
 	}

@@ -1,6 +1,6 @@
 package entities;
 
-public class Fireball extends AbstractGameObject {
+public class Fireball extends RenderObject {
 
 	public float damage;
 

@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 
-public class AbstractGameObject {
+public class RenderObject {
 
 	public Vector2 position;
 	public Vector2 dimension;
@@ -20,4 +20,6 @@ public class AbstractGameObject {
 	public String direction; // Should make this an enumeration with radians.
 
 	public TextureAtlas animations;
+
+	public boolean isAnimating;
 }

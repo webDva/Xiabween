@@ -3,7 +3,6 @@ package render;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -14,7 +13,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import backend.Logician;
-import entities.AbstractGameObject;
+import entities.RenderObject;
 import entities.Fireball;
 import entities.Map_struct;
 import entities.PlayerCharacter;
@@ -25,12 +24,12 @@ public class Renderer {
 	public OrthographicCamera camera;
 
 	public Map_struct currentMap;
-	public AbstractGameObject thingToFollow;
+	public RenderObject thingToFollow;
 	private Animation animation;
 	private float elapsedTime = 0;
 
 	public GPUKeeper gpu_keeper;
-	public List<AbstractGameObject> thingsToRender;
+	public List<RenderObject> thingsToRender;
 
 	public Renderer(boolean createOwnRenders) {
 		if (createOwnRenders) {
@@ -68,6 +67,8 @@ public class Renderer {
 		elapsedTime += Gdx.graphics.getDeltaTime();
 		batch.draw(animation.getKeyFrame(elapsedTime, true), player.position.x, player.position.y, 64, 64);
 		batch.end();
+
+		player.isAnimating = false;
 	}
 
 	public void renderFireblast(Fireball fireball, float x, float y) {
@@ -82,7 +83,7 @@ public class Renderer {
 		this.currentMap = map;
 	}
 
-	public void setThingToFollow(AbstractGameObject thing) {
+	public void setThingToFollow(RenderObject thing) {
 		this.thingToFollow = thing;
 	}
 
@@ -95,7 +96,7 @@ public class Renderer {
 		currentMap.mapRenderer.render();
 
 		for (PlayerCharacter player : logicdata.players) {
-			if (Gdx.input.isKeyPressed(Keys.S) && player == thingToFollow) {
+			if (player.isAnimating) {
 				animatePlayer(currentMap.mapRenderer.getBatch(), logicdata.myPlayer);
 				break;
 			}
