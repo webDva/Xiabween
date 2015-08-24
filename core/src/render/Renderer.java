@@ -5,12 +5,9 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import backend.Logician;
 import entities.Fireball;
@@ -31,24 +28,11 @@ public class Renderer {
 	public GPUKeeper gpu_keeper;
 	public List<RenderObject> thingsToRender;
 
-	public Renderer(boolean createOwnRenders) {
-		if (createOwnRenders) {
-			this.batch = new SpriteBatch();
-			this.gpu_keeper = new GPUKeeper();
-			this.gpu_keeper.batches.add(this.batch);
-			this.camera = new OrthographicCamera();
-		}
-
-		// TODO Should really put all rendering into here (such as loading textures/textureatlases/textureregions)
-		// instead of the Screen class.
-
-	}
-
-	// Can be used for each new screen created, so make the arguments a list of things to load, such as:
-	// TextureAtlases to load, TextureRegions to load, regular Textures to load, and even Sprites.
-	public void loadThings(List<TextureAtlas> texture_atlases, List<TextureRegion> texture_regions,
-			List<Texture> textures) {
-
+	public Renderer() {
+		this.batch = new SpriteBatch();
+		this.gpu_keeper = new GPUKeeper();
+		this.gpu_keeper.batches.add(this.batch);
+		this.camera = new OrthographicCamera();
 	}
 
 	public void renderPlayer(Batch batch, PlayerCharacter playerinfo) {

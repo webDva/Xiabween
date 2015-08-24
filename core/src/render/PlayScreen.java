@@ -37,7 +37,7 @@ public class PlayScreen implements Screen {
 	@Override
 	public void show() { // This is where Xiabween determines what happens initially...
 
-		renderer = new Renderer(true);
+		renderer = new Renderer();
 		renderer.setCameraViewPorts(400, 400);
 
 		determinator = new Logician();

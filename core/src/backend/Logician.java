@@ -32,9 +32,11 @@ public class Logician { // The supreme class to handle game logic.
 
 	public void processStates() {
 		if (players.get(1).position.x > 300) {
-			PlayerHandler.movePlayer(players.get(1), players.get(1).LEFT, new Vector2(-300, 0));
+			players.get(1);
+			PlayerHandler.movePlayer(players.get(1), PlayerCharacter.LEFT, new Vector2(-300, 0));
 		}
-		PlayerHandler.movePlayer(players.get(1), players.get(1).LEFT, new Vector2(test_leftright, 0));
+		players.get(1);
+		PlayerHandler.movePlayer(players.get(1), PlayerCharacter.LEFT, new Vector2(test_leftright, 0));
 		if (test_leftright < 0) {
 			test_leftright = 10;
 		} else {
