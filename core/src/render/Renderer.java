@@ -28,6 +28,8 @@ public class Renderer {
 	public GPUKeeper gpu_keeper;
 	public List<RenderObject> thingsToRender;
 
+	public static final float SPRITE_SCALING = 1.5f;
+
 	public Renderer() {
 		this.batch = new SpriteBatch();
 		this.gpu_keeper = new GPUKeeper();
@@ -37,7 +39,9 @@ public class Renderer {
 
 	public void renderPlayer(Batch batch, PlayerCharacter playerinfo) {
 		batch.begin();
-		batch.draw(playerinfo.faces.get(playerinfo.direction), playerinfo.position.x, playerinfo.position.y);
+		batch.draw(playerinfo.faces.get(playerinfo.direction), playerinfo.position.x, playerinfo.position.y,
+				playerinfo.faces.get(playerinfo.direction).getRegionWidth() * SPRITE_SCALING,
+				playerinfo.faces.get(playerinfo.direction).getRegionHeight() * SPRITE_SCALING);
 		batch.end();
 	}
 
@@ -86,7 +90,10 @@ public class Renderer {
 			renderPlayer(currentMap.mapRenderer.getBatch(), player);
 		}
 
-		camera.position.set(thingToFollow.position.x + 50, thingToFollow.position.y + 50, 0); // I know that the character is 100 pixels high and wide.
+		camera.position.set(
+				thingToFollow.position.x + (thingToFollow.faces.get(thingToFollow.direction).getRegionWidth() / 2),
+				thingToFollow.position.y + (thingToFollow.faces.get(thingToFollow.direction).getRegionHeight() / 2), 0); // Don't Really know what the coordinates refer to.
+
 		camera.update();
 
 		// TODO Use an abstract game object that can be generic for all types of game objects such as player entities,

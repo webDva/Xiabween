@@ -38,7 +38,7 @@ public class PlayScreen implements Screen {
 	public void show() { // This is where Xiabween determines what happens initially...
 
 		renderer = new Renderer();
-		renderer.setCameraViewPorts(400, 400);
+		renderer.setCameraViewPorts(450, 450);
 
 		determinator = new Logician();
 		shana = PlayerHandler.createPlayer(new Vector2(0, 0));
@@ -48,7 +48,7 @@ public class PlayScreen implements Screen {
 
 		determinator.setCurrentPlayerCharacter(shana);
 
-		shana.faces = Loader.loadCharacterFacesAtlas("atlas2/betterpixels.atlas");
+		shana.faces = Loader.loadCharacterFacesAtlas("final.atlas");
 		shana.animations = Loader.loadTextureAtlas("atlas/pixels.atlas", renderer);
 
 		//player2.faces = Loader.loadCharacterFacesAtlas("faces/faces.atlas");
