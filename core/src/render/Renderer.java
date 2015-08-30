@@ -47,9 +47,7 @@ public class Renderer {
 	}
 
 	public void animatePlayer(Batch batch, PlayerCharacter player) {
-		if (this.animation == null) {
-			this.animation = new Animation(1 / 15f, player.textures.Animations.get(player.direction + "walk"));
-		}
+		this.animation = new Animation(1 / 15f, player.textures.Animations.get(player.direction + "walk"));
 
 		batch.begin();
 		elapsedTime += Gdx.graphics.getDeltaTime();
