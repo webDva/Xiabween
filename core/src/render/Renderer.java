@@ -1,5 +1,6 @@
 package render;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
@@ -35,6 +36,7 @@ public class Renderer {
 		this.gpu_keeper = new GPUKeeper();
 		this.gpu_keeper.batches.add(this.batch);
 		this.camera = new OrthographicCamera();
+		this.thingsToRender = new ArrayList<RenderObject>();
 	}
 
 	public void renderPlayer(Batch batch, PlayerCharacter playerinfo) {
@@ -83,23 +85,23 @@ public class Renderer {
 		currentMap.mapRenderer.setView(camera);
 		currentMap.mapRenderer.render();
 
-		for (PlayerCharacter player : logicdata.players) {
-			if (player.isAnimating) {
-				animatePlayer(currentMap.mapRenderer.getBatch(), player);
-				continue;
+		for (RenderObject object : thingsToRender) {
+			if (object instanceof PlayerCharacter) {
+				if (((PlayerCharacter) object).isAnimating) {
+					animatePlayer(currentMap.mapRenderer.getBatch(), ((PlayerCharacter) object));
+					continue;
+				}
+				renderPlayer(currentMap.mapRenderer.getBatch(), ((PlayerCharacter) object));
 			}
-			renderPlayer(currentMap.mapRenderer.getBatch(), player);
+
+			if (object instanceof Fireball) {
+				renderFireblast(((Fireball) object), ((Fireball) object).position.x, ((Fireball) object).position.y);
+			}
 		}
 
 		camera.position.set(thingToFollow.position.x, thingToFollow.position.y, 0); // Don't Really know what the coordinates refer to.
 		camera.update();
 
-		// TODO Use an abstract game object that can be generic for all types of game objects such as player entities,
-		// skill effects, mob entities, and environmental entities.
-
-		for (Fireball fireball : logicdata.fireballs) {
-			renderFireblast(fireball, fireball.position.x, fireball.position.y);
-		}
 	}
 
 }

@@ -42,16 +42,11 @@ public class PlayScreen implements Screen {
 
 		determinator = new Logician();
 		shana = PlayerHandler.createPlayer(new Vector2(0, 0));
-		//player2 = PlayerHandler.createPlayer(new Vector2(128, 128));
 		determinator.players.add(shana);
-		//determinator.players.add(player2);
 
 		determinator.setCurrentPlayerCharacter(shana);
 
 		shana.textures = Loader.loadPlayerAtlas("shana_final.atlas", renderer);
-
-		//player2.faces = Loader.loadCharacterFacesAtlas("faces/faces.atlas");
-		//player2.animations = Loader.loadTextureAtlas("animate/animate.atlas", renderer);
 
 		tiledmaps = new ArrayList<Map_struct>();
 		onlymap = new Map_struct("grass.tmx");
@@ -60,6 +55,7 @@ public class PlayScreen implements Screen {
 
 		renderer.setCurrentMap(onlymap);
 		renderer.setThingToFollow(shana);
+		renderer.thingsToRender.add(shana);
 
 	}
 
