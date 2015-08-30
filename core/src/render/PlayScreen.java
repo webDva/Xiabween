@@ -17,8 +17,10 @@ public class PlayScreen implements Screen {
 	// Don't let there be any textures here and let the Renderer take care of those things.
 
 	public static final String windowTitle = "Xiabween";
-	public static int windowWidth = 800;
+	public static int windowWidth = 840;
 	public static int windowHeight = 800;
+
+	public static int viewPortWidth = 600, viewPortHeight = 600;
 
 	public Renderer renderer;
 
@@ -38,7 +40,7 @@ public class PlayScreen implements Screen {
 	public void show() { // This is where Xiabween determines what happens initially...
 
 		renderer = new Renderer();
-		renderer.setCameraViewPorts(450, 450);
+		renderer.setCameraViewPorts(viewPortWidth, viewPortHeight);
 
 		determinator = new Logician();
 		shana = PlayerHandler.createPlayer(new Vector2(0, 0));
@@ -54,7 +56,7 @@ public class PlayScreen implements Screen {
 		Loader.loadMaps(tiledmaps);
 
 		renderer.setCurrentMap(onlymap);
-		renderer.setThingToFollow(shana);
+		renderer.setThingToFollow(determinator.myPlayer);
 		renderer.thingsToRender.add(shana);
 
 	}
