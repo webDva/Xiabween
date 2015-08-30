@@ -1,8 +1,6 @@
 package render;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -42,18 +40,21 @@ public class Loader {
 
 		PlayerTextures textures_object = new PlayerTextures(newAtlas);
 
-		for (AtlasRegion newRegion : textures_object.SpriteSheet.getRegions()) {
-			if (newRegion.name != PlayerCharacter.DOWN || newRegion.name != PlayerCharacter.UP
-					|| newRegion.name != PlayerCharacter.RIGHT || newRegion.name != PlayerCharacter.LEFT)
+		for (AtlasRegion region : textures_object.SpriteSheet.getRegions()) {
+			if (region.name != PlayerCharacter.DOWN || region.name != PlayerCharacter.UP
+					|| region.name != PlayerCharacter.RIGHT || region.name != PlayerCharacter.LEFT)
 				continue;
-			textures_object.Directions.put(newRegion.name, textures_object.SpriteSheet.findRegion(newRegion.name));
+			textures_object.Directions.put(region.name, textures_object.SpriteSheet.findRegion(region.name));
 		}
 
-		Map<String, TextureAtlas.AtlasRegion> newMap = new HashMap<String, TextureAtlas.AtlasRegion>();
-
-		for (TextureAtlas.AtlasRegion newRegion : newAtlas.getRegions()) {
-			newMap.put(newRegion.name, newAtlas.findRegion(newRegion.name));
+		for (AtlasRegion region : textures_object.SpriteSheet.getRegions()) {
+			if (region.name != PlayerCharacter.DOWN || region.name != PlayerCharacter.UP
+					|| region.name != PlayerCharacter.RIGHT || region.name != PlayerCharacter.LEFT) {
+				textures_object.Animations.put(region.name,
+						(List<AtlasRegion>) textures_object.SpriteSheet.findRegions(region.name));
+			}
 		}
+		return textures_object;
 
 	}
 }

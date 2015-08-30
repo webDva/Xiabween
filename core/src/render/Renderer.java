@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Array;
 
 import backend.Logician;
 import entities.Fireball;
@@ -39,15 +41,17 @@ public class Renderer {
 
 	public void renderPlayer(Batch batch, PlayerCharacter playerinfo) {
 		batch.begin();
-		batch.draw(playerinfo.faces.get(playerinfo.direction), playerinfo.position.x, playerinfo.position.y,
-				playerinfo.faces.get(playerinfo.direction).getRegionWidth() * SPRITE_SCALING,
-				playerinfo.faces.get(playerinfo.direction).getRegionHeight() * SPRITE_SCALING);
+		batch.draw(playerinfo.textures.Directions.get(playerinfo.direction), playerinfo.position.x,
+				playerinfo.position.y,
+				playerinfo.textures.Directions.get(playerinfo.direction).getRegionWidth() * SPRITE_SCALING,
+				playerinfo.textures.Directions.get(playerinfo.direction).getRegionHeight() * SPRITE_SCALING);
 		batch.end();
 	}
 
 	public void animatePlayer(Batch batch, PlayerCharacter player) {
 		if (this.animation == null) {
-			this.animation = new Animation(1 / 15f, player.animations.getRegions());
+			this.animation = new Animation(1 / 15f,
+					(Array<? extends TextureRegion>) player.textures.Animations.get(player.direction));
 		}
 
 		batch.begin();
@@ -90,9 +94,7 @@ public class Renderer {
 			renderPlayer(currentMap.mapRenderer.getBatch(), player);
 		}
 
-		camera.position.set(
-				thingToFollow.position.x + (thingToFollow.faces.get(thingToFollow.direction).getRegionWidth() / 2),
-				thingToFollow.position.y + (thingToFollow.faces.get(thingToFollow.direction).getRegionHeight() / 2), 0); // Don't Really know what the coordinates refer to.
+		camera.position.set(thingToFollow.position.x, thingToFollow.position.y, 0); // Don't Really know what the coordinates refer to.
 		camera.update();
 
 		// TODO Use an abstract game object that can be generic for all types of game objects such as player entities,
