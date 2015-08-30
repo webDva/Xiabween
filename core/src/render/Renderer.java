@@ -93,7 +93,6 @@ public class Renderer {
 		camera.position.set(
 				thingToFollow.position.x + (thingToFollow.faces.get(thingToFollow.direction).getRegionWidth() / 2),
 				thingToFollow.position.y + (thingToFollow.faces.get(thingToFollow.direction).getRegionHeight() / 2), 0); // Don't Really know what the coordinates refer to.
-
 		camera.update();
 
 		// TODO Use an abstract game object that can be generic for all types of game objects such as player entities,

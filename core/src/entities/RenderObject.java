@@ -15,4 +15,6 @@ public class RenderObject {
 	public TextureAtlas animations;
 
 	public boolean isAnimating;
+
+	public PlayerTextures all_Textures_struct; // Contains idle and walking animation frames.
 }
