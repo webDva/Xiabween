@@ -53,7 +53,9 @@ public class Renderer {
 
 		batch.begin();
 		elapsedTime += Gdx.graphics.getDeltaTime();
-		batch.draw(animation.getKeyFrame(elapsedTime, true), player.position.x, player.position.y);
+		batch.draw(animation.getKeyFrame(elapsedTime, true), player.position.x, player.position.y,
+				animation.getKeyFrame(elapsedTime).getRegionWidth() * SPRITE_SCALING,
+				animation.getKeyFrame(elapsedTime).getRegionHeight() * SPRITE_SCALING);
 		batch.end();
 
 		player.isAnimating = false;
