@@ -8,8 +8,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.utils.Array;
 
 import backend.Logician;
 import entities.Fireball;
@@ -50,8 +48,7 @@ public class Renderer {
 
 	public void animatePlayer(Batch batch, PlayerCharacter player) {
 		if (this.animation == null) {
-			this.animation = new Animation(1 / 15f,
-					(Array<? extends TextureRegion>) player.textures.Animations.get(player.direction));
+			this.animation = new Animation(1 / 15f, player.textures.Animations.get(player.direction + "walk"));
 		}
 
 		batch.begin();
