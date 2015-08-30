@@ -6,10 +6,13 @@ import java.util.Map;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 import entities.Map_struct;
+import entities.PlayerCharacter;
+import entities.PlayerTextures;
 
 public class Loader {
 
@@ -33,14 +36,24 @@ public class Loader {
 		}
 	}
 
-	public static Map<String, TextureAtlas.AtlasRegion> loadCharacterFacesAtlas(String atlasPath) {
+	public static PlayerTextures loadPlayerAtlas(String atlasPath, Renderer renderer) {
 		TextureAtlas newAtlas = new TextureAtlas(atlasPath);
+		renderer.gpu_keeper.atlases.add(newAtlas);
+
+		PlayerTextures textures_object = new PlayerTextures(newAtlas);
+
+		for (AtlasRegion newRegion : textures_object.SpriteSheet.getRegions()) {
+			if (newRegion.name != PlayerCharacter.DOWN || newRegion.name != PlayerCharacter.UP
+					|| newRegion.name != PlayerCharacter.RIGHT || newRegion.name != PlayerCharacter.LEFT)
+				continue;
+			textures_object.Directions.put(newRegion.name, textures_object.SpriteSheet.findRegion(newRegion.name));
+		}
+
 		Map<String, TextureAtlas.AtlasRegion> newMap = new HashMap<String, TextureAtlas.AtlasRegion>();
 
 		for (TextureAtlas.AtlasRegion newRegion : newAtlas.getRegions()) {
 			newMap.put(newRegion.name, newAtlas.findRegion(newRegion.name));
 		}
 
-		return newMap;
 	}
 }

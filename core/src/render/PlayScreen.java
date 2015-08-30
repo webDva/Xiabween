@@ -48,7 +48,7 @@ public class PlayScreen implements Screen {
 
 		determinator.setCurrentPlayerCharacter(shana);
 
-		shana.faces = Loader.loadCharacterFacesAtlas("final.atlas");
+		shana.faces = Loader.loadAtlas("final.atlas");
 		shana.animations = Loader.loadTextureAtlas("atlas/pixels.atlas", renderer);
 
 		//player2.faces = Loader.loadCharacterFacesAtlas("faces/faces.atlas");
