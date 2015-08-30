@@ -35,14 +35,12 @@ public class Loader {
 	}
 
 	public static PlayerTextures loadPlayerAtlas(String atlasPath, Renderer renderer) {
-		TextureAtlas newAtlas = new TextureAtlas(atlasPath);
-		renderer.gpu_keeper.atlases.add(newAtlas);
-
-		PlayerTextures textures_object = new PlayerTextures(newAtlas);
+		PlayerTextures textures_object = new PlayerTextures(atlasPath);
+		renderer.gpu_keeper.atlases.add(textures_object.SpriteSheet);
 
 		for (AtlasRegion region : textures_object.SpriteSheet.getRegions()) {
-			if (region.name != PlayerCharacter.DOWN || region.name != PlayerCharacter.UP
-					|| region.name != PlayerCharacter.RIGHT || region.name != PlayerCharacter.LEFT)
+			if (!region.name.equals(PlayerCharacter.DOWN) || !region.name.equals(PlayerCharacter.UP)
+					|| !region.name.equals(PlayerCharacter.RIGHT) || !region.name.equals(PlayerCharacter.LEFT))
 				continue;
 			textures_object.Directions.put(region.name, textures_object.SpriteSheet.findRegion(region.name));
 		}
@@ -50,8 +48,7 @@ public class Loader {
 		for (AtlasRegion region : textures_object.SpriteSheet.getRegions()) {
 			if (region.name != PlayerCharacter.DOWN || region.name != PlayerCharacter.UP
 					|| region.name != PlayerCharacter.RIGHT || region.name != PlayerCharacter.LEFT) {
-				textures_object.Animations.put(region.name,
-						(List<AtlasRegion>) textures_object.SpriteSheet.findRegions(region.name));
+				textures_object.Animations.put(region.name, textures_object.SpriteSheet.findRegions(region.name));
 			}
 		}
 		return textures_object;
