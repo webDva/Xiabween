@@ -1,5 +1,6 @@
 package render;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import entities.RenderObject;
@@ -7,6 +8,10 @@ import entities.RenderObject;
 public class ZBuffer {
 
 	public List<RenderObject> rendering_objects;
+
+	public ZBuffer() {
+		this.rendering_objects = new ArrayList<RenderObject>();
+	}
 
 	public void orderObjects(List<RenderObject> toBeOrdered) {
 		this.rendering_objects.clear();
