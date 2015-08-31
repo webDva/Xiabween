@@ -31,12 +31,15 @@ public class Renderer {
 
 	public static final float SPRITE_SCALING = 1.5f;
 
+	protected ZBuffer depthBuffer;
+
 	public Renderer() {
 		this.batch = new SpriteBatch();
 		this.gpu_keeper = new GPUKeeper();
 		this.gpu_keeper.batches.add(this.batch);
 		this.camera = new OrthographicCamera();
 		this.thingsToRender = new ArrayList<RenderObject>();
+		this.depthBuffer = new ZBuffer();
 	}
 
 	public void renderPlayer(Batch batch, PlayerCharacter playerinfo) {
@@ -83,7 +86,10 @@ public class Renderer {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		currentMap.mapRenderer.setView(camera);
-		currentMap.mapRenderer.render();
+		currentMap.mapRenderer.render(); // TODO: Note that this renders all layers at once and will thus probably change so that
+											// layers can be rendered one at a time, maybe?
+
+		depthBuffer.orderObjects(thingsToRender);
 
 		for (RenderObject object : thingsToRender) {
 			if (object instanceof PlayerCharacter) {
