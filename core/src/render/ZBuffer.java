@@ -15,7 +15,7 @@ public class ZBuffer {
 
 	public void orderObjects(List<RenderObject> toBeOrdered) {
 		this.rendering_objects.clear();
-
+		// The ordering and Z buffer determination goes here.
 	}
 
 	public void add_RenderObject(RenderObject newObject, float depth) {
