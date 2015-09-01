@@ -20,6 +20,7 @@ public class ZBuffer {
 		for (RenderObject i : toBeOrdered) { // Don't know how to use Comparators, so I'll do it the traditional way.
 			if (previousY == null) {
 				this.rendering_objects.add(i);
+				previousY = i;
 				continue;
 			}
 			if (i.position.y < previousY.position.y)
