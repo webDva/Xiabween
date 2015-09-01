@@ -14,26 +14,14 @@ public class ZBuffer {
 	}
 
 	public void orderObjects(List<RenderObject> toBeOrdered) {
-		this.rendering_objects.clear();
-		// The ordering and Z buffer determination goes here:
-		RenderObject previousY = null;
-		for (RenderObject i : toBeOrdered) { // Don't know how to use Comparators, so I'll do it the traditional way.
-			for (RenderObject j : toBeOrdered) {
+		this.rendering_objects = new ArrayList<RenderObject>(toBeOrdered);
+		for (RenderObject i : this.rendering_objects) { // Don't know how to use Comparators, so I'll do it the traditional way.
+			for (RenderObject j : this.rendering_objects) {
 				if (i.position.y < j.position.y) {
-					this.rendering_objects.add(this.rendering_objects.indexOf(j), i);
+					this.rendering_objects.remove(j);
+					this.rendering_objects.add(this.rendering_objects.indexOf(i) + 1, j);
 				}
 			}
-			if (previousY == null) {
-				this.rendering_objects.add(i);
-				previousY = i;
-				continue;
-			}
-			if (i.position.y < previousY.position.y)
-				this.rendering_objects.add(this.rendering_objects.indexOf(previousY), i);
-			else
-				this.rendering_objects.add(i);
-			previousY = i;
 		}
 	}
-
 }
