@@ -18,6 +18,11 @@ public class ZBuffer {
 		// The ordering and Z buffer determination goes here:
 		RenderObject previousY = null;
 		for (RenderObject i : toBeOrdered) { // Don't know how to use Comparators, so I'll do it the traditional way.
+			for (RenderObject j : toBeOrdered) {
+				if (i.position.y < j.position.y) {
+					this.rendering_objects.add(this.rendering_objects.indexOf(j), i);
+				}
+			}
 			if (previousY == null) {
 				this.rendering_objects.add(i);
 				previousY = i;
