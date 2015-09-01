@@ -44,8 +44,7 @@ public class Renderer {
 
 	public void renderPlayer(Batch batch, PlayerCharacter playerinfo) {
 		batch.begin();
-		batch.draw(playerinfo.textures.Directions.get(playerinfo.direction), playerinfo.position.x,
-				playerinfo.position.y,
+		batch.draw(playerinfo.textures.Directions.get(playerinfo.direction), playerinfo.position.x, playerinfo.position.y,
 				playerinfo.textures.Directions.get(playerinfo.direction).getRegionWidth() * SPRITE_SCALING,
 				playerinfo.textures.Directions.get(playerinfo.direction).getRegionHeight() * SPRITE_SCALING);
 		batch.end();
@@ -91,7 +90,7 @@ public class Renderer {
 
 		depthBuffer.orderObjects(thingsToRender);
 
-		for (RenderObject object : thingsToRender) {
+		for (RenderObject object : depthBuffer.rendering_objects) {
 			if (object instanceof PlayerCharacter) {
 				if (((PlayerCharacter) object).isAnimating) {
 					animatePlayer(currentMap.mapRenderer.getBatch(), ((PlayerCharacter) object));
