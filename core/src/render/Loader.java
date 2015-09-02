@@ -39,14 +39,14 @@ public class Loader {
 		renderer.gpu_keeper.atlases.add(textures_object.SpriteSheet);
 
 		for (AtlasRegion region : textures_object.SpriteSheet.getRegions()) {
-			if (region.name.equals(PlayerCharacter.DOWN) || region.name.equals(PlayerCharacter.UP)
-					|| region.name.equals(PlayerCharacter.RIGHT) || region.name.equals(PlayerCharacter.LEFT))
+			if (region.name.equals(PlayerCharacter.DOWN) || region.name.equals(PlayerCharacter.UP) || region.name.equals(PlayerCharacter.RIGHT)
+					|| region.name.equals(PlayerCharacter.LEFT))
 				textures_object.Directions.put(region.name, textures_object.SpriteSheet.findRegion(region.name));
 		}
 
 		for (AtlasRegion region : textures_object.SpriteSheet.getRegions()) {
-			if (!region.name.equals(PlayerCharacter.DOWN) && !region.name.equals(PlayerCharacter.UP)
-					&& !region.name.equals(PlayerCharacter.RIGHT) && !region.name.equals(PlayerCharacter.LEFT))
+			if (!region.name.equals(PlayerCharacter.DOWN) && !region.name.equals(PlayerCharacter.UP) && !region.name.equals(PlayerCharacter.RIGHT)
+					&& !region.name.equals(PlayerCharacter.LEFT))
 				textures_object.Animations.put(region.name, textures_object.SpriteSheet.findRegions(region.name));
 
 		}
