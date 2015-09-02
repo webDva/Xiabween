@@ -7,6 +7,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
+/**
+ * This is supposed to be a struct to hold GPU memory related objects and to
+ * dispose of them.
+ * 
+ * @author sorcerer
+ */
 public class GPUKeeper {
 
 	public List<TextureAtlas> atlases;
