@@ -33,7 +33,7 @@ public class PlayScreen implements Screen {
 	public List<Map_struct> tiledmaps;
 
 	public PlayScreen(final Main g) {
-		game = g;
+		this.game = g;
 	}
 
 	@Override
@@ -45,7 +45,6 @@ public class PlayScreen implements Screen {
 		determinator = new Logician();
 		shana = PlayerHandler.createPlayer(new Vector2(0, 0));
 		determinator.players.add(shana);
-
 		determinator.setCurrentPlayerCharacter(shana);
 
 		shana.textures = Loader.loadPlayerAtlas("shana_final.atlas", renderer);
@@ -58,6 +57,13 @@ public class PlayScreen implements Screen {
 		renderer.setCurrentMap(onlymap);
 		renderer.setThingToFollow(determinator.myPlayer);
 		renderer.thingsToRender.add(shana);
+
+		// TEST
+		// create a new player
+		player2 = PlayerHandler.createPlayer(new Vector2(200, 200));
+		determinator.players.add(player2);
+		player2.textures = Loader.loadPlayerAtlas("shana_final.atlas", renderer);
+		renderer.thingsToRender.add(player2);
 
 	}
 
