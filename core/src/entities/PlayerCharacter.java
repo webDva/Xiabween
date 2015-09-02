@@ -7,5 +7,6 @@ public class PlayerCharacter extends RenderObject {
 	public String direction; // Should make this an enumeration with radians.
 	public boolean isAnimating;
 	public PlayerTextures textures; // Contains idle and walking animation frames.
+	public String name;
 
 }

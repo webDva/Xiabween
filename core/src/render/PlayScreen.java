@@ -8,7 +8,6 @@ import com.badlogic.gdx.math.Vector2;
 
 import backend.Logician;
 import backend.Main;
-import backend.PlayerHandler;
 import entities.Map_struct;
 import entities.PlayerCharacter;
 
@@ -43,11 +42,9 @@ public class PlayScreen implements Screen {
 		renderer.setCameraViewPorts(viewPortWidth, viewPortHeight);
 
 		determinator = new Logician();
-		shana = PlayerHandler.createPlayer(new Vector2(0, 0));
-		determinator.players.add(shana);
+		shana = determinator.registerNewPlayer("shana", "shana_final.atlas", renderer, new Vector2(0, 0));
 		determinator.setCurrentPlayerCharacter(shana);
-
-		shana.textures = Loader.loadPlayerAtlas("shana_final.atlas", renderer);
+		player2 = determinator.registerNewPlayer("player 2", "shana_final.atlas", renderer, new Vector2(100, 100));
 
 		tiledmaps = new ArrayList<Map_struct>();
 		onlymap = new Map_struct("grass.tmx");
@@ -56,14 +53,6 @@ public class PlayScreen implements Screen {
 
 		renderer.setCurrentMap(onlymap);
 		renderer.setThingToFollow(determinator.myPlayer);
-		renderer.thingsToRender.add(shana);
-
-		// TEST
-		// create a new player
-		player2 = PlayerHandler.createPlayer(new Vector2(200, 200));
-		determinator.players.add(player2);
-		player2.textures = Loader.loadPlayerAtlas("shana_final.atlas", renderer);
-		renderer.thingsToRender.add(player2);
 
 	}
 

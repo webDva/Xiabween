@@ -3,8 +3,12 @@ package backend;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.math.Vector2;
+
 import entities.Fireball;
 import entities.PlayerCharacter;
+import render.Loader;
+import render.Renderer;
 
 public class Logician { // The supreme class to handle game logic.
 
@@ -14,13 +18,10 @@ public class Logician { // The supreme class to handle game logic.
 	public int keypress;
 	public PlayerCharacter myPlayer; // The human player's character.
 
-	public float test_leftright;
-
 	public Logician() {
 
 		this.players = new ArrayList<PlayerCharacter>();
 		this.fireballs = new ArrayList<Fireball>();
-		this.test_leftright = 10;
 
 	}
 
@@ -29,18 +30,16 @@ public class Logician { // The supreme class to handle game logic.
 	}
 
 	public void processStates() {
-		//		if (players.get(1).position.x > 300) {
-		//			players.get(1);
-		//			PlayerHandler.movePlayer(players.get(1), PlayerCharacter.LEFT, new Vector2(-300, 0));
-		//		}
-		//		players.get(1);
-		//		PlayerHandler.movePlayer(players.get(1), PlayerCharacter.LEFT, new Vector2(test_leftright, 0));
-		//		if (test_leftright < 0) {
-		//			test_leftright = 10;
-		//		} else {
-		//			test_leftright--;
-		//		}
 		Control.checkIfMovementKeyIsPressed(myPlayer);
+	}
+
+	public PlayerCharacter registerNewPlayer(String name, String atlasPath, Renderer renderer, Vector2 coordinates) {
+		PlayerCharacter newPlayer = PlayerHandler.createPlayer(name, coordinates);
+		newPlayer.textures = Loader.loadPlayerAtlas(atlasPath, renderer);
+		this.players.add(newPlayer);
+		renderer.thingsToRender.add(newPlayer);
+
+		return newPlayer;
 	}
 
 }

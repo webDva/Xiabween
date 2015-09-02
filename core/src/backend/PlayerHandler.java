@@ -14,7 +14,7 @@ public class PlayerHandler {
 		player.isAnimating = true;
 	}
 
-	public static PlayerCharacter createPlayer(Vector2 coordinates) {
+	public static PlayerCharacter createPlayer(String name, Vector2 coordinates) {
 
 		PlayerCharacter newplayer = new PlayerCharacter();
 
@@ -24,6 +24,8 @@ public class PlayerHandler {
 
 		newplayer.direction = PlayerCharacter.DOWN; // Default direction that the player is facing upon creation.
 		newplayer.isAnimating = false;
+
+		newplayer.name = name;
 
 		return newplayer;
 	}
