@@ -26,8 +26,13 @@ public class Loader {
 		return new TextureAtlas(path);
 	}
 
+	/**
+	 * Load all the tiled maps that belong to the Screen class caller that it
+	 * has supplied to the Renderer.
+	 *
+	 * @param mapStructs
+	 */
 	public static void loadMaps(List<Map_struct> mapStructs) {
-		// Load all the tiled maps that belong to the Screen class caller that it has supplied to the Renderer.
 		for (Map_struct struct : mapStructs) {
 			struct.map = new TmxMapLoader().load(struct.filepath);
 			struct.mapRenderer = new OrthogonalTiledMapRenderer(struct.map);
