@@ -7,7 +7,10 @@ public class LogicServer {
 
 	public final float baseplayer_speed = 1;
 
-	public void getJSONData() { // For external databases.
+	/**
+	 * For external databases.
+	 */
+	public void getJSONData() {
 
 	}
 }

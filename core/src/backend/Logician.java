@@ -10,7 +10,13 @@ import entities.PlayerEntity;
 import render.Loader;
 import render.Renderer;
 
-public class Logician { // The supreme class to handle game logic.
+/**
+ * Handles game logic.
+ *
+ * @author sorcerer
+ *
+ */
+public class Logician {
 
 	public List<PlayerEntity> players;
 	public List<Fireball> fireballs;
