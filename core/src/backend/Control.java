@@ -12,25 +12,25 @@ public class Control { // Handles input from the player user. This goes into pro
 
 	public static void checkIfMovementKeyIsPressed(PlayerEntity player) {
 		if (Gdx.input.isKeyPressed(Keys.W) && Gdx.input.isKeyPressed(Keys.A)) {
-			PlayerHandler.movePlayer(player, PlayerEntity.LEFT, new Vector2(-1, 1));
+			PlayerEntityHandler.movePlayerEntity(player, PlayerEntity.LEFT, new Vector2(-1, 1));
 		} else if (Gdx.input.isKeyPressed(Keys.W) && Gdx.input.isKeyPressed(Keys.D)) {
-			PlayerHandler.movePlayer(player, PlayerEntity.RIGHT, new Vector2(1, 1));
+			PlayerEntityHandler.movePlayerEntity(player, PlayerEntity.RIGHT, new Vector2(1, 1));
 		}
 
 		else if (Gdx.input.isKeyPressed(Keys.S) && Gdx.input.isKeyPressed(Keys.A)) {
-			PlayerHandler.movePlayer(player, PlayerEntity.LEFT, new Vector2(-1, -1));
+			PlayerEntityHandler.movePlayerEntity(player, PlayerEntity.LEFT, new Vector2(-1, -1));
 		} else if (Gdx.input.isKeyPressed(Keys.S) && Gdx.input.isKeyPressed(Keys.D)) {
-			PlayerHandler.movePlayer(player, PlayerEntity.RIGHT, new Vector2(1, -1));
+			PlayerEntityHandler.movePlayerEntity(player, PlayerEntity.RIGHT, new Vector2(1, -1));
 		}
 
 		else if (Gdx.input.isKeyPressed(Keys.W)) {
-			PlayerHandler.movePlayer(player, PlayerEntity.UP, new Vector2(0, 1));
+			PlayerEntityHandler.movePlayerEntity(player, PlayerEntity.UP, new Vector2(0, 1));
 		} else if (Gdx.input.isKeyPressed(Keys.A)) {
-			PlayerHandler.movePlayer(player, PlayerEntity.LEFT, new Vector2(-1, 0));
+			PlayerEntityHandler.movePlayerEntity(player, PlayerEntity.LEFT, new Vector2(-1, 0));
 		} else if (Gdx.input.isKeyPressed(Keys.S)) {
-			PlayerHandler.movePlayer(player, PlayerEntity.DOWN, new Vector2(0, -1));
+			PlayerEntityHandler.movePlayerEntity(player, PlayerEntity.DOWN, new Vector2(0, -1));
 		} else if (Gdx.input.isKeyPressed(Keys.D)) {
-			PlayerHandler.movePlayer(player, PlayerEntity.RIGHT, new Vector2(1, 0));
+			PlayerEntityHandler.movePlayerEntity(player, PlayerEntity.RIGHT, new Vector2(1, 0));
 		}
 	}
 }

@@ -34,7 +34,7 @@ public class Logician { // The supreme class to handle game logic.
 	}
 
 	public PlayerEntity registerNewPlayer(String name, String atlasPath, Renderer renderer, Vector2 coordinates) {
-		PlayerEntity newPlayer = PlayerHandler.createPlayer(name, coordinates);
+		PlayerEntity newPlayer = PlayerEntityHandler.createPlayerEntity(name, coordinates);
 		newPlayer.textures = Loader.loadPlayerAtlas(atlasPath, renderer);
 		this.players.add(newPlayer);
 		renderer.thingsToRender.add(newPlayer);

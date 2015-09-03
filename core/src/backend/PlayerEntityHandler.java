@@ -4,9 +4,9 @@ import com.badlogic.gdx.math.Vector2;
 
 import entities.PlayerEntity;
 
-public class PlayerHandler {
+public class PlayerEntityHandler {
 
-	public static void movePlayer(PlayerEntity player, String direction, Vector2 coordinates) {
+	public static void movePlayerEntity(PlayerEntity player, String direction, Vector2 coordinates) {
 		player.direction = direction;
 		player.position.x += coordinates.x;
 		player.position.y += coordinates.y;
@@ -14,7 +14,7 @@ public class PlayerHandler {
 		player.isAnimating = true;
 	}
 
-	public static PlayerEntity createPlayer(String name, Vector2 coordinates) {
+	public static PlayerEntity createPlayerEntity(String name, Vector2 coordinates) {
 
 		PlayerEntity newplayer = new PlayerEntity();
 
