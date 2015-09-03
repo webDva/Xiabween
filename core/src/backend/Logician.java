@@ -40,7 +40,7 @@ public class Logician {
 	}
 
 	public PlayerEntity registerNewPlayer(String name, String atlasPath, Renderer renderer, Vector2 coordinates) {
-		PlayerEntity newPlayer = PlayerEntityHandler.createPlayerEntity(name, coordinates);
+		PlayerEntity newPlayer = PlayerEntityHandler.createPlayerEntity(name, false, coordinates);
 		newPlayer.textures = Loader.loadPlayerAtlas(atlasPath, renderer);
 		this.players.add(newPlayer);
 		renderer.thingsToRender.add(newPlayer);
