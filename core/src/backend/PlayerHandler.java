@@ -2,11 +2,11 @@ package backend;
 
 import com.badlogic.gdx.math.Vector2;
 
-import entities.PlayerCharacter;
+import entities.PlayerEntity;
 
 public class PlayerHandler {
 
-	public static void movePlayer(PlayerCharacter player, String direction, Vector2 coordinates) {
+	public static void movePlayer(PlayerEntity player, String direction, Vector2 coordinates) {
 		player.direction = direction;
 		player.position.x += coordinates.x;
 		player.position.y += coordinates.y;
@@ -14,15 +14,15 @@ public class PlayerHandler {
 		player.isAnimating = true;
 	}
 
-	public static PlayerCharacter createPlayer(String name, Vector2 coordinates) {
+	public static PlayerEntity createPlayer(String name, Vector2 coordinates) {
 
-		PlayerCharacter newplayer = new PlayerCharacter();
+		PlayerEntity newplayer = new PlayerEntity();
 
 		newplayer.position = new Vector2(coordinates);
 
 		// Don't load the texture here, but instead, load it in a Screen class.
 
-		newplayer.direction = PlayerCharacter.DOWN; // Default direction that the player is facing upon creation.
+		newplayer.direction = PlayerEntity.DOWN; // Default direction that the player is facing upon creation.
 		newplayer.isAnimating = false;
 
 		newplayer.name = name;

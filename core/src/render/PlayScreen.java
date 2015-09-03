@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import backend.Logician;
 import backend.Main;
 import entities.Map_struct;
-import entities.PlayerCharacter;
+import entities.PlayerEntity;
 
 public class PlayScreen implements Screen {
 
@@ -23,7 +23,7 @@ public class PlayScreen implements Screen {
 
 	public Renderer renderer;
 
-	public PlayerCharacter shana, player2;
+	public PlayerEntity shana, player2;
 	public Main game;
 
 	public Logician determinator;

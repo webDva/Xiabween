@@ -13,7 +13,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import backend.Logician;
 import entities.Fireball;
 import entities.Map_struct;
-import entities.PlayerCharacter;
+import entities.PlayerEntity;
 import entities.XiaEntity;
 
 public class Renderer {
@@ -42,7 +42,7 @@ public class Renderer {
 		this.depthBuffer = new ZBuffer();
 	}
 
-	public void renderPlayer(Batch batch, PlayerCharacter playerinfo) {
+	public void renderPlayer(Batch batch, PlayerEntity playerinfo) {
 		batch.begin();
 		batch.draw(playerinfo.textures.Directions.get(playerinfo.direction), playerinfo.position.x, playerinfo.position.y,
 				playerinfo.textures.Directions.get(playerinfo.direction).getRegionWidth() * SPRITE_SCALING,
@@ -50,7 +50,7 @@ public class Renderer {
 		batch.end();
 	}
 
-	public void animatePlayer(Batch batch, PlayerCharacter player) {
+	public void animatePlayer(Batch batch, PlayerEntity player) {
 		this.animation = new Animation(1 / 15f, player.textures.Animations.get(player.direction + "walk"));
 
 		batch.begin();
@@ -91,12 +91,12 @@ public class Renderer {
 		depthBuffer.orderObjects(thingsToRender);
 
 		for (XiaEntity object : depthBuffer.rendering_objects) {
-			if (object instanceof PlayerCharacter) {
-				if (((PlayerCharacter) object).isAnimating) {
-					animatePlayer(currentMap.mapRenderer.getBatch(), ((PlayerCharacter) object));
+			if (object instanceof PlayerEntity) {
+				if (((PlayerEntity) object).isAnimating) {
+					animatePlayer(currentMap.mapRenderer.getBatch(), ((PlayerEntity) object));
 					continue;
 				}
-				renderPlayer(currentMap.mapRenderer.getBatch(), ((PlayerCharacter) object));
+				renderPlayer(currentMap.mapRenderer.getBatch(), ((PlayerEntity) object));
 			}
 
 			if (object instanceof Fireball) {
