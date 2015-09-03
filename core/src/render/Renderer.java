@@ -14,7 +14,7 @@ import backend.Logician;
 import entities.Fireball;
 import entities.Map_struct;
 import entities.PlayerCharacter;
-import entities.RenderObject;
+import entities.XiaEntity;
 
 public class Renderer {
 
@@ -22,12 +22,12 @@ public class Renderer {
 	public OrthographicCamera camera;
 
 	public Map_struct currentMap;
-	public RenderObject thingToFollow;
+	public XiaEntity thingToFollow;
 	private Animation animation;
 	private float elapsedTime = 0;
 
 	public GPUKeeper gpu_keeper;
-	public List<RenderObject> thingsToRender;
+	public List<XiaEntity> thingsToRender;
 
 	public static final float SPRITE_SCALING = 1.5f;
 
@@ -38,7 +38,7 @@ public class Renderer {
 		this.gpu_keeper = new GPUKeeper();
 		this.gpu_keeper.batches.add(this.batch);
 		this.camera = new OrthographicCamera();
-		this.thingsToRender = new ArrayList<RenderObject>();
+		this.thingsToRender = new ArrayList<XiaEntity>();
 		this.depthBuffer = new ZBuffer();
 	}
 
@@ -75,7 +75,7 @@ public class Renderer {
 		this.currentMap = map;
 	}
 
-	public void setThingToFollow(RenderObject thing) {
+	public void setThingToFollow(XiaEntity thing) {
 		this.thingToFollow = thing;
 	}
 
@@ -90,7 +90,7 @@ public class Renderer {
 
 		depthBuffer.orderObjects(thingsToRender);
 
-		for (RenderObject object : depthBuffer.rendering_objects) {
+		for (XiaEntity object : depthBuffer.rendering_objects) {
 			if (object instanceof PlayerCharacter) {
 				if (((PlayerCharacter) object).isAnimating) {
 					animatePlayer(currentMap.mapRenderer.getBatch(), ((PlayerCharacter) object));

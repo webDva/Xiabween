@@ -1,6 +1,6 @@
 package entities;
 
-public class Fireball extends RenderObject {
+public class Fireball extends XiaEntity {
 
 	public float damage;
 

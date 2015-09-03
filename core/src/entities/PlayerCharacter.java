@@ -1,6 +1,6 @@
 package entities;
 
-public class PlayerCharacter extends RenderObject {
+public class PlayerCharacter extends XiaEntity {
 
 	public static final String UP = "north", RIGHT = "east", DOWN = "south", LEFT = "west";
 
