@@ -23,11 +23,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.math.Rectangle;
 
 import backend.Logician;
 import entities.Fireball;
@@ -66,6 +70,17 @@ public class Renderer {
 	}
 
 	public void renderPlayer(RenderingType typeToRender, Batch batch, PlayerEntity playerinfo) {
+		Rectangle playerRectangle = new Rectangle(playerinfo.position.x, playerinfo.position.y,
+				playerinfo.textures.Directions.get(playerinfo.direction).getRegionWidth(),
+				playerinfo.textures.Directions.get(playerinfo.direction).getRegionHeight());
+		ShapeRenderer shaperen = new ShapeRenderer();
+		shaperen.setProjectionMatrix(camera.combined);
+		shaperen.begin(ShapeType.Filled);
+		shaperen.set(ShapeType.Filled);
+		shaperen.setColor(Color.RED);
+		shaperen.rect(playerRectangle.x, playerRectangle.y, playerRectangle.width * SPRITE_SCALING, playerRectangle.height * SPRITE_SCALING);
+		shaperen.end();
+
 		switch (typeToRender) {
 		case DRAW_IDLE_PLAYER:
 			drawIdlePlayer(batch, playerinfo);
