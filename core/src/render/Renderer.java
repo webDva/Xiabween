@@ -62,7 +62,7 @@ public class Renderer {
 		this.depthBuffer = new ZBuffer();
 	}
 
-	public void renderPlayer(Batch batch, PlayerEntity playerinfo) {
+	public void drawIdlePlayer(Batch batch, PlayerEntity playerinfo) {
 		batch.begin();
 		batch.draw(playerinfo.textures.Directions.get(playerinfo.direction), playerinfo.position.x, playerinfo.position.y,
 				playerinfo.textures.Directions.get(playerinfo.direction).getRegionWidth() * SPRITE_SCALING,
@@ -70,7 +70,7 @@ public class Renderer {
 		batch.end();
 	}
 
-	public void animatePlayer(Batch batch, PlayerEntity player) {
+	public void drawAnimatingPlayer(Batch batch, PlayerEntity player) {
 		this.animation = new Animation(1 / 15f, player.textures.Animations.get(player.direction + "walk"));
 
 		batch.begin();
@@ -112,10 +112,10 @@ public class Renderer {
 		for (XiaEntity object : depthBuffer.rendering_objects) {
 			if (object instanceof PlayerEntity) {
 				if (((PlayerEntity) object).isAnimating) {
-					animatePlayer(currentMap.mapRenderer.getBatch(), ((PlayerEntity) object));
+					drawAnimatingPlayer(currentMap.mapRenderer.getBatch(), ((PlayerEntity) object));
 					continue;
 				}
-				renderPlayer(currentMap.mapRenderer.getBatch(), ((PlayerEntity) object));
+				drawIdlePlayer(currentMap.mapRenderer.getBatch(), ((PlayerEntity) object));
 			}
 
 			if (object instanceof Fireball) {
