@@ -22,8 +22,6 @@ package render;
 import java.util.ArrayList;
 import java.util.List;
 
-import backend.Logician;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -31,6 +29,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import backend.Logician;
 import entities.Fireball;
 import entities.Map_struct;
 import entities.PlayerEntity;
@@ -53,6 +52,10 @@ public class Renderer {
 
 	protected ZBuffer depthBuffer;
 
+	protected enum RenderingType {
+		DRAW_IDLE_PLAYER, DRAW_ANIMATING_PLAYER
+	}
+
 	public Renderer() {
 		this.batch = new SpriteBatch();
 		this.gpu_keeper = new GPUKeeper();
@@ -60,6 +63,17 @@ public class Renderer {
 		this.camera = new OrthographicCamera();
 		this.thingsToRender = new ArrayList<XiaEntity>();
 		this.depthBuffer = new ZBuffer();
+	}
+
+	public void renderPlayer(RenderingType typeToRender, Batch batch, PlayerEntity playerinfo) {
+		switch (typeToRender) {
+		case DRAW_IDLE_PLAYER:
+			drawIdlePlayer(batch, playerinfo);
+			break;
+		case DRAW_ANIMATING_PLAYER:
+			drawAnimatingPlayer(batch, playerinfo);
+			break;
+		}
 	}
 
 	public void drawIdlePlayer(Batch batch, PlayerEntity playerinfo) {
@@ -75,8 +89,9 @@ public class Renderer {
 
 		batch.begin();
 		elapsedTime += Gdx.graphics.getDeltaTime();
-		batch.draw(animation.getKeyFrame(elapsedTime, true), player.position.x, player.position.y, animation.getKeyFrame(elapsedTime)
-				.getRegionWidth() * SPRITE_SCALING, animation.getKeyFrame(elapsedTime).getRegionHeight() * SPRITE_SCALING);
+		batch.draw(animation.getKeyFrame(elapsedTime, true), player.position.x, player.position.y,
+				animation.getKeyFrame(elapsedTime).getRegionWidth() * SPRITE_SCALING,
+				animation.getKeyFrame(elapsedTime).getRegionHeight() * SPRITE_SCALING);
 		batch.end();
 
 		player.isAnimating = false;
@@ -112,10 +127,10 @@ public class Renderer {
 		for (XiaEntity object : depthBuffer.rendering_objects) {
 			if (object instanceof PlayerEntity) {
 				if (((PlayerEntity) object).isAnimating) {
-					drawAnimatingPlayer(currentMap.mapRenderer.getBatch(), ((PlayerEntity) object));
+					renderPlayer(RenderingType.DRAW_ANIMATING_PLAYER, currentMap.mapRenderer.getBatch(), ((PlayerEntity) object));
 					continue;
 				}
-				drawIdlePlayer(currentMap.mapRenderer.getBatch(), ((PlayerEntity) object));
+				renderPlayer(RenderingType.DRAW_IDLE_PLAYER, currentMap.mapRenderer.getBatch(), ((PlayerEntity) object));
 			}
 
 			if (object instanceof Fireball) {
