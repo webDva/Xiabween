@@ -78,6 +78,13 @@ public class Renderer {
 			shaperen.setColor(Color.RED);
 			shaperen.rect(playerinfo.playerRectangle.x, playerinfo.playerRectangle.y, playerinfo.playerRectangle.width,
 					playerinfo.playerRectangle.height);
+
+			// test: create feet area
+			//Rectangle feet = new Rectangle(playerinfo.playerRectangle.x, playerinfo.playerRectangle.y, playerinfo.playerRectangle.width, 7);
+			shaperen.setColor(Color.CYAN);
+			shaperen.rect(playerinfo.playerRectangle.x, playerinfo.playerRectangle.y, playerinfo.playerRectangle.width,
+					CollisionDetector.FEET_HEIGHT);
+
 			shaperen.end();
 		}
 
