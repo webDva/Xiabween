@@ -43,14 +43,16 @@ public class CollisionDetector {
 	 * @return the converted game coordinates of the center of the tile.
 	 * @param tileWidth
 	 *            The width of an individual tile.
+	 * @param tileHeight
+	 *            The height of an individual tile.
 	 * @param mapHeight
 	 *            The height of the spot's map in tiles.
 	 */
-	public static Vector2 convertTileToGameCoordinates(Vector2 tileCoordinates, int tileWidth, int mapHeight) {
+	public static Vector2 convertTileToGameCoordinates(Vector2 tileCoordinates, int tileWidth, int tileHeight, int mapHeight) {
 		Vector2 newCoordinates = new Vector2();
 
 		newCoordinates.x = (tileCoordinates.x * tileWidth) + (tileWidth / 2);
-		newCoordinates.y = ((mapHeight - tileCoordinates.y - 1) * tileWidth) + (tileWidth / 2);
+		newCoordinates.y = ((mapHeight - tileCoordinates.y - 1) * tileHeight) + (tileHeight / 2);
 
 		return newCoordinates;
 	}
@@ -61,9 +63,18 @@ public class CollisionDetector {
 	 * @param gameCoordinates
 	 *            Game coordinates.
 	 * @return the converted tile coordinates in {@link Integer}s.
+	 * @param tileWidth
+	 *            The width of an individual tile.
+	 * @param tileHeight
+	 *            The height of an individual tile.
+	 * @param mapHeight
+	 *            The height of the tile's map in tiles.
 	 */
-	public static Vector2 convertGameToTileCoordinates(Vector2 gameCoordinates) {
+	public static Vector2 convertGameToTileCoordinates(Vector2 gameCoordinates, int tileWidth, int tileHeight, int mapHeight) {
 		Vector2 newCoordinates = new Vector2();
+
+		newCoordinates.x = ((int) gameCoordinates.x / tileWidth);
+		newCoordinates.y = mapHeight - ((int) (gameCoordinates.y / tileHeight)) - 1;
 
 		return newCoordinates;
 	}
