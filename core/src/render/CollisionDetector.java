@@ -29,6 +29,7 @@ public class CollisionDetector {
 	 * @return true if the two objects will collide with each other.
 	 */
 	public static boolean willPlayerCollide(Rectangle player, Vector2 areaCoordinates) {
+		Rectangle feet = new Rectangle(player.x, player.y, player.width, FEET_HEIGHT);
 
 		return false;
 	}
