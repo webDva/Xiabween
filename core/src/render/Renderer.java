@@ -71,14 +71,14 @@ public class Renderer {
 
 	public void renderPlayer(RenderingType typeToRender, Batch batch, PlayerEntity playerinfo) {
 		Rectangle playerRectangle = new Rectangle(playerinfo.position.x, playerinfo.position.y,
-				playerinfo.textures.Directions.get(playerinfo.direction).getRegionWidth(),
-				playerinfo.textures.Directions.get(playerinfo.direction).getRegionHeight());
+				playerinfo.textures.Directions.get(playerinfo.direction).getRegionWidth() * SPRITE_SCALING,
+				playerinfo.textures.Directions.get(playerinfo.direction).getRegionHeight() * SPRITE_SCALING);
 		ShapeRenderer shaperen = new ShapeRenderer();
 		shaperen.setProjectionMatrix(camera.combined);
 		shaperen.begin(ShapeType.Filled);
 		shaperen.set(ShapeType.Filled);
 		shaperen.setColor(Color.RED);
-		shaperen.rect(playerRectangle.x, playerRectangle.y, playerRectangle.width * SPRITE_SCALING, playerRectangle.height * SPRITE_SCALING);
+		shaperen.rect(playerRectangle.x, playerRectangle.y, playerRectangle.width, playerRectangle.height);
 		shaperen.end();
 
 		switch (typeToRender) {

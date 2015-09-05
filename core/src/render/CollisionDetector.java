@@ -1,21 +1,24 @@
 package render;
 
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+
+import entities.PlayerEntity;
 
 /**
  * Handles collision detection.
- * 
+ *
  * @author sorcerer
- * 
+ *
  */
 public class CollisionDetector {
 
 	/**
 	 * Determines if two objects will collide. The first is usually a moving
 	 * object while the second is stationary, like a tile.
-	 * 
+	 *
 	 * TODO: Use only a collision layer to not iterate over a lot of stuff.
-	 * 
+	 *
 	 * @param firstObjectCoordinates
 	 *            The moving object.
 	 * @param secondObjectCoordinates
@@ -24,6 +27,11 @@ public class CollisionDetector {
 	 */
 	public static boolean willCollide(Vector2 firstObjectCoordinates, Vector2 secondObjectCoordinates) {
 		return false;
+	}
+
+	public static Rectangle createPlayerRectangle(PlayerEntity player) {
+		return new Rectangle();
+
 	}
 
 }
