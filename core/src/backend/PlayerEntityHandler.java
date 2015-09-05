@@ -11,6 +11,9 @@ public class PlayerEntityHandler {
 		player.position.x += coordinates.x;
 		player.position.y += coordinates.y;
 
+		player.playerRectangle.x = player.position.x;
+		player.playerRectangle.y = player.position.y;
+
 		player.isAnimating = true;
 	}
 

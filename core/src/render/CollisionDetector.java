@@ -1,9 +1,6 @@
 package render;
 
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-
-import entities.PlayerEntity;
 
 /**
  * Handles collision detection.
@@ -28,10 +25,4 @@ public class CollisionDetector {
 	public static boolean willCollide(Vector2 firstObjectCoordinates, Vector2 secondObjectCoordinates) {
 		return false;
 	}
-
-	public static Rectangle createPlayerRectangle(PlayerEntity player) {
-		return new Rectangle();
-
-	}
-
 }

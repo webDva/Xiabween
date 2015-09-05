@@ -31,7 +31,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.Rectangle;
 
 import backend.Logician;
 import entities.Fireball;
@@ -69,17 +68,18 @@ public class Renderer {
 		this.depthBuffer = new ZBuffer();
 	}
 
-	public void renderPlayer(RenderingType typeToRender, Batch batch, PlayerEntity playerinfo) {
-		Rectangle playerRectangle = new Rectangle(playerinfo.position.x, playerinfo.position.y,
-				playerinfo.textures.Directions.get(playerinfo.direction).getRegionWidth() * SPRITE_SCALING,
-				playerinfo.textures.Directions.get(playerinfo.direction).getRegionHeight() * SPRITE_SCALING);
-		ShapeRenderer shaperen = new ShapeRenderer();
-		shaperen.setProjectionMatrix(camera.combined);
-		shaperen.begin(ShapeType.Filled);
-		shaperen.set(ShapeType.Filled);
-		shaperen.setColor(Color.RED);
-		shaperen.rect(playerRectangle.x, playerRectangle.y, playerRectangle.width, playerRectangle.height);
-		shaperen.end();
+	public void renderPlayer(RenderingType typeToRender, Batch batch, PlayerEntity playerinfo, boolean drawRectangles) {
+
+		if (drawRectangles) {
+			ShapeRenderer shaperen = new ShapeRenderer();
+			shaperen.setProjectionMatrix(camera.combined);
+			shaperen.begin(ShapeType.Filled);
+			shaperen.set(ShapeType.Filled);
+			shaperen.setColor(Color.RED);
+			shaperen.rect(playerinfo.playerRectangle.x, playerinfo.playerRectangle.y, playerinfo.playerRectangle.width,
+					playerinfo.playerRectangle.height);
+			shaperen.end();
+		}
 
 		switch (typeToRender) {
 		case DRAW_IDLE_PLAYER:
@@ -142,10 +142,10 @@ public class Renderer {
 		for (XiaEntity object : depthBuffer.rendering_objects) {
 			if (object instanceof PlayerEntity) {
 				if (((PlayerEntity) object).isAnimating) {
-					renderPlayer(RenderingType.DRAW_ANIMATING_PLAYER, currentMap.mapRenderer.getBatch(), ((PlayerEntity) object));
+					renderPlayer(RenderingType.DRAW_ANIMATING_PLAYER, currentMap.mapRenderer.getBatch(), ((PlayerEntity) object), true);
 					continue;
 				}
-				renderPlayer(RenderingType.DRAW_IDLE_PLAYER, currentMap.mapRenderer.getBatch(), ((PlayerEntity) object));
+				renderPlayer(RenderingType.DRAW_IDLE_PLAYER, currentMap.mapRenderer.getBatch(), ((PlayerEntity) object), true);
 			}
 
 			if (object instanceof Fireball) {
@@ -155,7 +155,5 @@ public class Renderer {
 
 		camera.position.set(thingToFollow.position.x, thingToFollow.position.y, 0); // Don't Really know what the coordinates refer to.
 		camera.update();
-
 	}
-
 }

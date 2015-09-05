@@ -1,8 +1,10 @@
 package entities;
 
+import com.badlogic.gdx.math.Rectangle;
+
 /**
  * A Xia struct for rendering a PlayerLogic object.
- * 
+ *
  * @author sorcerer
  *
  */
@@ -15,5 +17,6 @@ public class PlayerEntity extends XiaEntity {
 	public boolean isAnimating;
 	public PlayerTextures textures; // Contains idle and walking animation frames.
 	public String name;
+	public Rectangle playerRectangle;
 
 }

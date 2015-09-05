@@ -3,6 +3,7 @@ package backend;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 import entities.Fireball;
@@ -42,6 +43,9 @@ public class Logician {
 	public PlayerEntity registerNewPlayer(String name, String atlasPath, Renderer renderer, Vector2 coordinates) {
 		PlayerEntity newPlayer = PlayerEntityHandler.createPlayerEntity(name, false, coordinates);
 		newPlayer.textures = Loader.loadPlayerAtlas(atlasPath, renderer);
+		newPlayer.playerRectangle = new Rectangle(newPlayer.position.x, newPlayer.position.y,
+				newPlayer.textures.Directions.get(newPlayer.direction).getRegionWidth() * Renderer.SPRITE_SCALING,
+				newPlayer.textures.Directions.get(newPlayer.direction).getRegionHeight() * Renderer.SPRITE_SCALING);
 		this.players.add(newPlayer);
 		renderer.thingsToRender.add(newPlayer);
 
