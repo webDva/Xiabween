@@ -61,7 +61,7 @@ public class Logician {
 	}
 
 	public PlayerEntity registerNewPlayer(String name, String atlasPath, Renderer renderer, Vector2 coordinates) {
-		PlayerEntity newPlayer = PlayerEntityHandler.createPlayerEntity(name, false, coordinates);
+		PlayerEntity newPlayer = PlayerEntityHandler.createPlayerEntity(name, coordinates);
 		newPlayer.textures = Loader.loadPlayerAtlas(atlasPath, renderer);
 		newPlayer.playerRectangle = new Rectangle(newPlayer.position.x, newPlayer.position.y, newPlayer.textures.Directions.get(newPlayer.direction)
 				.getRegionWidth() * Renderer.SPRITE_SCALING, newPlayer.textures.Directions.get(newPlayer.direction).getRegionHeight()

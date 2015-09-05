@@ -36,7 +36,7 @@ public class PlayerEntityHandler {
 		player.isAnimating = true;
 	}
 
-	public static PlayerEntity createPlayerEntity(String name, boolean useStartPoint, Vector2 coordinates) { // TODO: Create a startpoint using a tiled object.
+	public static PlayerEntity createPlayerEntity(String name, Vector2 coordinates) { // TODO: Create a startpoint using a tiled object.
 
 		PlayerEntity newplayer = new PlayerEntity();
 
