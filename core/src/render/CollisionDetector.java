@@ -32,4 +32,36 @@ public class CollisionDetector {
 
 		return false;
 	}
+
+	/**
+	 * Converts from the tiled coordinates of a .tmx map to libgdx's
+	 * coordinates.
+	 *
+	 * @param tileCoordinates
+	 *            The coordinates of the tile. Should be whole numbers (
+	 *            {@link Integer}s).
+	 * @return the converted game coordinates of the center of the tile.
+	 * @param tileWidth
+	 *            The width of an individual tile.
+	 */
+	public static Vector2 convertTileToGameCoordinates(Vector2 tileCoordinates, int tileWidth) {
+		Vector2 newCoordinates = new Vector2();
+
+		newCoordinates.x = (tileCoordinates.x * tileWidth) + (tileWidth / 2);
+
+		return newCoordinates;
+	}
+
+	/**
+	 * Converts from game coordinates to whole number tiled coordinates.
+	 *
+	 * @param gameCoordinates
+	 *            Game coordinates.
+	 * @return the converted tile coordinates in {@link Integer}s.
+	 */
+	public static Vector2 convertGameToTileCoordinates(Vector2 gameCoordinates) {
+		Vector2 newCoordinates = new Vector2();
+
+		return newCoordinates;
+	}
 }
