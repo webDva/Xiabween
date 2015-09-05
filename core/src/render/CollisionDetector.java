@@ -1,3 +1,22 @@
+/*
+    Xiabween
+    Copyright (C) 2015  Easterling
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+
 package render;
 
 import com.badlogic.gdx.math.Rectangle;
@@ -7,9 +26,9 @@ import entities.PlayerEntity;
 
 /**
  * Handles collision detection.
- *
+ * 
  * @author sorcerer
- *
+ * 
  */
 public class CollisionDetector {
 
@@ -18,9 +37,9 @@ public class CollisionDetector {
 	/**
 	 * Determines if two objects will collide. The first is usually a moving
 	 * object while the second is stationary, like a tile.
-	 *
+	 * 
 	 * TODO: Use only a collision layer to not iterate over a lot of stuff.
-	 *
+	 * 
 	 * @param player
 	 *            Uses the bottom portion (feet area) of the
 	 *            {@link PlayerEntity}'s rectangle.
@@ -37,7 +56,7 @@ public class CollisionDetector {
 	/**
 	 * Converts from the tiled coordinates of a .tmx map to libgdx's
 	 * coordinates.
-	 *
+	 * 
 	 * @param tileCoordinates
 	 *            The coordinates of the tile. Should be whole numbers (
 	 *            {@link Integer}s).
@@ -60,7 +79,7 @@ public class CollisionDetector {
 
 	/**
 	 * Converts from game coordinates to whole number tiled coordinates.
-	 *
+	 * 
 	 * @param gameCoordinates
 	 *            Game coordinates.
 	 * @return the converted tile coordinates in {@link Integer}s.
