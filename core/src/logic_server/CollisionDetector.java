@@ -53,15 +53,15 @@ public class CollisionDetector {
 	 *
 	 * TODO: Use only a collision layer to not iterate over a lot of stuff.
 	 *
-	 * @param player
+	 * @param playerRectangle
 	 *            Uses the bottom portion (feet area) of the
 	 *            {@link PlayerEntity}'s rectangle.
-	 * @param areaCoordinates
-	 *            The spot the {@link PlayerEntity} wants to move to.
+	 * @param displacement
+	 *            The displacement the {@link PlayerEntity} wants to move by.
 	 * @return true if the two objects will collide with each other.
 	 */
-	public static boolean willPlayerCollide(Rectangle player, Vector2 areaCoordinates, TiledMap map) {
-		Rectangle feet = new Rectangle(areaCoordinates.x, areaCoordinates.y, player.width, FEET_HEIGHT);
+	public static boolean willPlayerCollide(Rectangle playerRectangle, Vector2 displacement, TiledMap map) {
+		Rectangle feet = new Rectangle(playerRectangle.x + displacement.x, playerRectangle.y + displacement.y, playerRectangle.width, FEET_HEIGHT);
 
 		MapLayer objects_layer = map.getLayers().get("objects_layer");
 		Array<RectangleMapObject> all_objects = objects_layer.getObjects().getByType(RectangleMapObject.class);
