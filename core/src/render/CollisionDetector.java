@@ -25,8 +25,10 @@ import java.util.List;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 
 import entities.PlayerEntity;
 
@@ -57,14 +59,20 @@ public class CollisionDetector {
 		Rectangle feet = new Rectangle(areaCoordinates.x, areaCoordinates.y, player.width, FEET_HEIGHT);
 
 		MapLayer objects_layer = map.getLayers().get("objects_layer");
-
+		Array<RectangleMapObject> all_objects = objects_layer.getObjects().getByType(RectangleMapObject.class);
 		List<RectangleMapObject> collidables = new ArrayList<RectangleMapObject>();
-		for (RectangleMapObject object : objects_layer.getObjects().getByType(RectangleMapObject.class)) {
+
+		for (RectangleMapObject object : all_objects) {
 			if (object.getProperties().containsKey("collidable")) {
 				collidables.add(object);
 			}
 		}
-		collidables.get(0).getRectangle();
+
+		for (RectangleMapObject rectangle_object : collidables) {
+			if (Intersector.overlaps(feet, rectangle_object.getRectangle())) {
+				return true;
+			}
+		}
 
 		return false;
 	}
