@@ -41,6 +41,11 @@ import entities.PlayerEntity;
 public class CollisionDetector {
 
 	public static final int FEET_HEIGHT = 7;
+	/**
+	 * The size of the area for getting the subset of collidables in a map. This
+	 * might have to be mutable.
+	 */
+	protected static final float SIZE_AREA = 10;
 
 	/**
 	 * Determines if two objects will collide. The first is usually a moving
@@ -90,7 +95,6 @@ public class CollisionDetector {
 	 *         <code>null</code> if none.
 	 */
 	public static Array<RectangleMapObject> getSubSetCollidables(Vector2 coordinates, TiledMap map) {
-		final float SIZE_AREA = 1; // Might can let a caller pass this in, if it can be trusted, such as this class.
 		return null;
 	}
 
