@@ -22,12 +22,11 @@ package render;
 import java.util.ArrayList;
 import java.util.List;
 
-import backend.Logician;
-import backend.Main;
-
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.math.Vector2;
 
+import backend.Logician;
+import backend.Main;
 import entities.Map_struct;
 import entities.PlayerEntity;
 
@@ -61,17 +60,17 @@ public class PlayScreen implements Screen {
 		renderer = new Renderer();
 		renderer.setCameraViewPorts(viewPortWidth, viewPortHeight);
 
-		determinator = new Logician();
-		shana = determinator.registerNewPlayer("shana", "shana_final.atlas", renderer, new Vector2(0, 0));
-		determinator.setCurrentPlayerCharacter(shana);
-		player2 = determinator.registerNewPlayer("player 2", "shana_final.atlas", renderer, new Vector2(100, 100));
-
 		tiledmaps = new ArrayList<Map_struct>();
 		onlymap = new Map_struct("grass.tmx");
 		tiledmaps.add(onlymap);
 		Loader.loadMaps(tiledmaps);
-
 		renderer.setCurrentMap(onlymap);
+
+		determinator = new Logician(renderer.currentMap.map);
+		shana = determinator.registerNewPlayer("shana", "shana_final.atlas", renderer, new Vector2(0, 0));
+		determinator.setCurrentPlayerCharacter(shana);
+		player2 = determinator.registerNewPlayer("player 2", "shana_final.atlas", renderer, new Vector2(100, 100));
+
 		renderer.setThingToFollow(determinator.myPlayer);
 
 	}

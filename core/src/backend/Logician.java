@@ -22,6 +22,7 @@ package backend;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -43,11 +44,13 @@ public class Logician {
 
 	public int keypress;
 	public PlayerEntity myPlayer; // The human player's character.
+	private TiledMap tiled_map;
 
-	public Logician() {
+	public Logician(TiledMap tiled_map) {
 
 		this.players = new ArrayList<PlayerEntity>();
 		this.fireballs = new ArrayList<Fireball>();
+		this.tiled_map = tiled_map;
 
 	}
 
@@ -56,7 +59,7 @@ public class Logician {
 	}
 
 	public void processStates() {
-		Control.checkIfMovementKeyIsPressed(myPlayer);
+		Control.checkIfMovementKeyIsPressed(myPlayer, tiled_map);
 	}
 
 	public PlayerEntity registerNewPlayer(String name, String atlasPath, Renderer renderer, Vector2 coordinates) {

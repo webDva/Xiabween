@@ -19,14 +19,21 @@
 
 package backend;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Vector2;
 
 import entities.PlayerEntity;
+import logic_server.CollisionDetector;
 
 public class PlayerEntityHandler {
 
-	public static void movePlayerEntity(PlayerEntity player, String direction, Vector2 coordinates) {
+	public static void movePlayerEntity(PlayerEntity player, String direction, Vector2 coordinates, TiledMap tiled_map) {
 		player.direction = direction;
+
+		// test for collision
+		if (CollisionDetector.willPlayerCollide(player.playerRectangle, coordinates, tiled_map))
+			return;
+
 		player.position.x += coordinates.x;
 		player.position.y += coordinates.y;
 
