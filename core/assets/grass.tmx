@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="200" height="200" tilewidth="32" tileheight="32" nextobjectid="13">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="200" height="200" tilewidth="32" tileheight="32" nextobjectid="15">
  <tileset firstgid="1" name="xgrass" tilewidth="32" tileheight="32" tilecount="1">
   <image source="xgrass.png" width="32" height="32"/>
   <tile id="0">
@@ -424,13 +424,18 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="Object Layer 1">
-  <object id="10" name="inviswall" x="35" y="6128" width="157" height="111">
+ <objectgroup name="objects_layer">
+  <object id="10" name="inviswall" type="object" x="35" y="6128" width="157" height="111">
    <properties>
     <property name="collidable" value="true"/>
    </properties>
   </object>
   <object id="11" name="startpoint1" type="startpoint" x="303" y="6137" width="95" height="72"/>
   <object id="12" name="startpoint2" type="startpoint" x="469" y="6135" width="139" height="84"/>
+  <object id="13" name="rockobjects" type="object" x="385" y="6270" width="166" height="71">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

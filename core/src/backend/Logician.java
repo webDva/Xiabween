@@ -22,20 +22,19 @@ package backend;
 import java.util.ArrayList;
 import java.util.List;
 
-import render.Loader;
-import render.Renderer;
-
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 import entities.Fireball;
 import entities.PlayerEntity;
+import render.Loader;
+import render.Renderer;
 
 /**
  * Handles game logic.
- * 
+ *
  * @author sorcerer
- * 
+ *
  */
 public class Logician {
 
@@ -63,9 +62,9 @@ public class Logician {
 	public PlayerEntity registerNewPlayer(String name, String atlasPath, Renderer renderer, Vector2 coordinates) {
 		PlayerEntity newPlayer = PlayerEntityHandler.createPlayerEntity(name, coordinates);
 		newPlayer.textures = Loader.loadPlayerAtlas(atlasPath, renderer);
-		newPlayer.playerRectangle = new Rectangle(newPlayer.position.x, newPlayer.position.y, newPlayer.textures.Directions.get(newPlayer.direction)
-				.getRegionWidth() * Renderer.SPRITE_SCALING, newPlayer.textures.Directions.get(newPlayer.direction).getRegionHeight()
-				* Renderer.SPRITE_SCALING);
+		newPlayer.playerRectangle = new Rectangle(newPlayer.position.x, newPlayer.position.y,
+				newPlayer.textures.Directions.get(newPlayer.direction).getRegionWidth() * Renderer.SPRITE_SCALING,
+				newPlayer.textures.Directions.get(newPlayer.direction).getRegionHeight() * Renderer.SPRITE_SCALING);
 		this.players.add(newPlayer);
 		renderer.thingsToRender.add(newPlayer);
 

@@ -19,6 +19,12 @@
 
 package render;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -26,9 +32,9 @@ import entities.PlayerEntity;
 
 /**
  * Handles collision detection.
- * 
+ *
  * @author sorcerer
- * 
+ *
  */
 public class CollisionDetector {
 
@@ -37,9 +43,9 @@ public class CollisionDetector {
 	/**
 	 * Determines if two objects will collide. The first is usually a moving
 	 * object while the second is stationary, like a tile.
-	 * 
+	 *
 	 * TODO: Use only a collision layer to not iterate over a lot of stuff.
-	 * 
+	 *
 	 * @param player
 	 *            Uses the bottom portion (feet area) of the
 	 *            {@link PlayerEntity}'s rectangle.
@@ -47,8 +53,18 @@ public class CollisionDetector {
 	 *            The spot the {@link PlayerEntity} wants to move to.
 	 * @return true if the two objects will collide with each other.
 	 */
-	public static boolean willPlayerCollide(Rectangle player, Vector2 areaCoordinates) {
+	public static boolean willPlayerCollide(Rectangle player, Vector2 areaCoordinates, TiledMap map) {
 		Rectangle feet = new Rectangle(player.x, player.y, player.width, FEET_HEIGHT);
+
+		MapLayer objects_layer = map.getLayers().get("objects_layer");
+
+		List<RectangleMapObject> collidables = new ArrayList<RectangleMapObject>();
+		for (RectangleMapObject object : objects_layer.getObjects().getByType(RectangleMapObject.class)) {
+			if (object.getProperties().containsKey("collidable")) {
+				collidables.add(object);
+			}
+		}
+		collidables.get(0).getRectangle();
 
 		return false;
 	}
@@ -56,7 +72,7 @@ public class CollisionDetector {
 	/**
 	 * Converts from the tiled coordinates of a .tmx map to libgdx's
 	 * coordinates.
-	 * 
+	 *
 	 * @param tileCoordinates
 	 *            The coordinates of the tile. Should be whole numbers (
 	 *            {@link Integer}s).
@@ -79,7 +95,7 @@ public class CollisionDetector {
 
 	/**
 	 * Converts from game coordinates to whole number tiled coordinates.
-	 * 
+	 *
 	 * @param gameCoordinates
 	 *            Game coordinates.
 	 * @return the converted tile coordinates in {@link Integer}s.
