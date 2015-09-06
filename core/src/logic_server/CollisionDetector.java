@@ -68,7 +68,7 @@ public class CollisionDetector {
 		List<RectangleMapObject> collidables = new ArrayList<RectangleMapObject>();
 
 		for (RectangleMapObject object : all_objects) {
-			if (object.getProperties().containsKey("collidable")) {
+			if ("true" == object.getProperties().get("collidable")) {
 				collidables.add(object);
 			}
 		}
