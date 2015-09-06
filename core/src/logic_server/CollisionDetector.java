@@ -17,7 +17,7 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package render;
+package logic_server;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,6 +75,23 @@ public class CollisionDetector {
 		}
 
 		return false;
+	}
+
+	/**
+	 * To prevent cheating, this method gets only a subset of collidable
+	 * objects, instead than all of them, in a map. It will get the objects that
+	 * are close to the player or object whose collision needs to be checked.
+	 *
+	 * @param coordinates
+	 *            The center of the area to check for collidable objects.
+	 * @param map
+	 *            The map that the object lives on.
+	 * @return A collection of a subset of collidable objects in the map, or
+	 *         <code>null</code> if none.
+	 */
+	public static Array<RectangleMapObject> getSubSetCollidables(Vector2 coordinates, TiledMap map) {
+		final float SIZE_AREA = 1; // Might can let a caller pass this in, if it can be trusted, such as this class.
+		return null;
 	}
 
 	/**
