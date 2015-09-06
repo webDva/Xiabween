@@ -54,7 +54,7 @@ public class CollisionDetector {
 	 * @return true if the two objects will collide with each other.
 	 */
 	public static boolean willPlayerCollide(Rectangle player, Vector2 areaCoordinates, TiledMap map) {
-		Rectangle feet = new Rectangle(player.x, player.y, player.width, FEET_HEIGHT);
+		Rectangle feet = new Rectangle(areaCoordinates.x, areaCoordinates.y, player.width, FEET_HEIGHT);
 
 		MapLayer objects_layer = map.getLayers().get("objects_layer");
 
