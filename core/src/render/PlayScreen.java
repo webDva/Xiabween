@@ -48,7 +48,8 @@ public class PlayScreen implements Screen {
 	public Logician determinator;
 
 	public Map_struct onlymap;
-	public List<Map_struct> tiledmaps;
+	public List<Map_struct> tiledmaps; // Tiled maps should be here instead of the Renderer.
+										// May even need to be in the Logician.
 
 	public PlayScreen(final Main g) {
 		this.game = g;
