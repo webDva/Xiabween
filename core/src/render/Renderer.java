@@ -80,8 +80,6 @@ public class Renderer {
 			shaperen.rect(playerinfo.playerRectangle.x, playerinfo.playerRectangle.y, playerinfo.playerRectangle.width,
 					playerinfo.playerRectangle.height);
 
-			// test: create feet area
-			//Rectangle feet = new Rectangle(playerinfo.playerRectangle.x, playerinfo.playerRectangle.y, playerinfo.playerRectangle.width, 7);
 			shaperen.setColor(Color.CYAN);
 			shaperen.rect(playerinfo.playerRectangle.x, playerinfo.playerRectangle.y, playerinfo.playerRectangle.width,
 					CollisionDetector.FEET_HEIGHT);
@@ -150,10 +148,10 @@ public class Renderer {
 		for (XiaEntity object : depthBuffer.rendering_objects) {
 			if (object instanceof PlayerEntity) {
 				if (((PlayerEntity) object).isAnimating) {
-					renderPlayer(RenderingType.DRAW_ANIMATING_PLAYER, currentMap.mapRenderer.getBatch(), ((PlayerEntity) object), true);
+					renderPlayer(RenderingType.DRAW_ANIMATING_PLAYER, currentMap.mapRenderer.getBatch(), ((PlayerEntity) object), false);
 					continue;
 				}
-				renderPlayer(RenderingType.DRAW_IDLE_PLAYER, currentMap.mapRenderer.getBatch(), ((PlayerEntity) object), true);
+				renderPlayer(RenderingType.DRAW_IDLE_PLAYER, currentMap.mapRenderer.getBatch(), ((PlayerEntity) object), false);
 			}
 
 			if (object instanceof Fireball) {
