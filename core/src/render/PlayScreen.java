@@ -19,9 +19,6 @@
 
 package render;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.math.Vector2;
 
@@ -48,8 +45,6 @@ public class PlayScreen implements Screen {
 	public Logician determinator;
 
 	public Map_struct onlymap;
-	public List<Map_struct> tiledmaps; // Tiled maps should be here instead of the Renderer.
-										// May even need to be in the Logician.
 
 	public PlayScreen(final Main g) {
 		this.game = g;
@@ -61,17 +56,17 @@ public class PlayScreen implements Screen {
 		renderer = new Renderer();
 		renderer.setCameraViewPorts(viewPortWidth, viewPortHeight);
 
-		tiledmaps = new ArrayList<Map_struct>();
-		onlymap = new Map_struct("grass.tmx");
-		tiledmaps.add(onlymap);
-		Loader.loadMaps(tiledmaps);
-		renderer.setCurrentMap(onlymap);
+		determinator = new Logician();
 
-		determinator = new Logician(renderer.currentMap.map);
+		onlymap = new Map_struct("grass.tmx"); // TODO: Make a registerNewMap function like the register function below.
+		determinator.maps.add(onlymap);
+		Loader.loadMaps(determinator.maps);
+
 		shana = determinator.registerNewPlayer("shana", "shana_final.atlas", renderer, new Vector2(0, 0));
 		determinator.setCurrentPlayerCharacter(shana);
 		player2 = determinator.registerNewPlayer("player 2", "shana_final.atlas", renderer, new Vector2(100, 100));
 
+		renderer.setCurrentMap(determinator.maps.get(0));
 		renderer.setThingToFollow(determinator.myPlayer);
 
 	}

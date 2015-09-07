@@ -27,11 +27,17 @@ import logic_server.CollisionDetector;
 
 public class PlayerEntityHandler {
 
-	public static void movePlayerEntity(PlayerEntity player, String direction, Vector2 coordinates, TiledMap tiled_map) {
+	private static TiledMap handler_map;
+
+	public static void setEntityHandlerMap(TiledMap map) {
+		PlayerEntityHandler.handler_map = map;
+	}
+
+	public static void movePlayerEntity(PlayerEntity player, String direction, Vector2 coordinates) {
 		player.direction = direction;
 
 		// test for collision
-		if (CollisionDetector.willPlayerCollide(player.playerRectangle, coordinates, tiled_map))
+		if (CollisionDetector.willPlayerCollide(player.playerRectangle, coordinates, handler_map))
 			return;
 
 		player.position.x += coordinates.x;
