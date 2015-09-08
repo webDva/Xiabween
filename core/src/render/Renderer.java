@@ -46,6 +46,7 @@ public class Renderer {
 
 	public Map_struct currentMap;
 	public XiaEntity thingToFollow;
+	private float elapsedTime = 0;
 	public GPUKeeper gpu_keeper;
 	public List<XiaEntity> thingsToRender;
 
@@ -106,7 +107,7 @@ public class Renderer {
 		Animation animation = new Animation(1 / 15f, player.textures.Animations.get(player.direction + "walk"));
 
 		batch.begin();
-		float elapsedTime = Gdx.graphics.getDeltaTime() + ((System.currentTimeMillis() / 1000f) - Gdx.graphics.getDeltaTime());
+		elapsedTime += Gdx.graphics.getDeltaTime();
 		batch.draw(animation.getKeyFrame(elapsedTime, true), player.position.x, player.position.y,
 				animation.getKeyFrame(elapsedTime).getRegionWidth() * SPRITE_SCALING,
 				animation.getKeyFrame(elapsedTime).getRegionHeight() * SPRITE_SCALING);
