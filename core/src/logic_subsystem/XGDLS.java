@@ -19,17 +19,29 @@
 
 package logic_subsystem;
 
+import java.util.List;
+
 /**
- * For holding data such as a game class's speed, base damage stats, etc.
+ * Stands for Xiabween Game Data and Logic Server (or XGDLS, pronounced
+ * zeeg-geed-lis). Functions as a server for clients (e.g., a human player's
+ * client) that performs actions based on
+ * {@link logic_subsystem.XiaMessageRequest}s.
  */
-public class LogicServer {
+public class XGDLS {
 
 	public final float baseplayer_speed = 1;
+
+	public List<XiaMessageRequest> queue_XiaMessageRequests;
+
+	public void recieveXiaMessageRequest() {
+	}
+
+	public void processXiaMessageRequest() {
+	}
 
 	/**
 	 * For external databases.
 	 */
 	public void getJSONData() {
-
 	}
 }
