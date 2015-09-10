@@ -28,8 +28,8 @@ import com.badlogic.gdx.math.Vector2;
 import entities.Fireball;
 import entities.Map_struct;
 import entities.PlayerEntity;
-import render.Loader;
-import render.Renderer;
+import render_subsystem.Loader;
+import render_subsystem.Renderer;
 
 /**
  * Handles game logic.

@@ -19,9 +19,9 @@
 
 package backend;
 
-import render.PlayScreen;
-
 import com.badlogic.gdx.Game;
+
+import render_subsystem.PlayScreen;
 
 public class Main extends Game {
 

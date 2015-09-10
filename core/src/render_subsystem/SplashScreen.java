@@ -1,4 +1,4 @@
-package render;
+package render_subsystem;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;

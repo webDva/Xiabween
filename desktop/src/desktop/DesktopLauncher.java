@@ -19,8 +19,8 @@
 
 package desktop;
 
-import render.PlayScreen;
 import backend.Main;
+import render_subsystem.PlayScreen;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
