@@ -1,4 +1,4 @@
-package logic_server;
+package logic_subsystem;
 
 /**
  * Stands for Xiabween Internal Database, Existence Creator, and State Container

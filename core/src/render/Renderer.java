@@ -37,7 +37,7 @@ import entities.Fireball;
 import entities.Map_struct;
 import entities.PlayerEntity;
 import entities.XiaEntity;
-import logic_server.CollisionDetector;
+import logic_subsystem.CollisionDetector;
 
 public class Renderer {
 

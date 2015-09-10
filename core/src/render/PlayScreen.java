@@ -27,6 +27,9 @@ import backend.Main;
 import entities.Map_struct;
 import entities.PlayerEntity;
 
+/* TODO: Once the architecture is finished being created, PlayScreen will just ask the logic servers to create players for it instead of
+ * it having to create them itself. Then all it needs to do is probably read a file containing game data to give to the logic servers.
+ */
 public class PlayScreen implements Screen {
 
 	// Don't let there be any textures here and let the Renderer take care of those things.

@@ -23,7 +23,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Vector2;
 
 import entities.PlayerEntity;
-import logic_server.CollisionDetector;
+import logic_subsystem.CollisionDetector;
 
 public class PlayerEntityHandler {
 

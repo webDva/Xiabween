@@ -17,7 +17,7 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package logic_server;
+package logic_subsystem;
 
 /**
  * For holding data such as a game class's speed, base damage stats, etc.

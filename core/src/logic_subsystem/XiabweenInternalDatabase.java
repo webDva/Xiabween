@@ -1,4 +1,4 @@
-package logic_server;
+package logic_subsystem;
 
 public class XiabweenInternalDatabase extends XIDECSCComponent {
 
