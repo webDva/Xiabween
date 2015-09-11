@@ -22,6 +22,7 @@ public abstract class ActualPlayerClass {
 	 *
 	 */
 	private float movementSpeed;
+	private String playerName;
 
 	public float getX() {
 		return x;
@@ -62,6 +63,14 @@ public abstract class ActualPlayerClass {
 
 	public void setMovementSpeed(float movementSpeed) {
 		this.movementSpeed = movementSpeed;
+	}
+
+	public String getPlayerName() {
+		return playerName;
+	}
+
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
 	}
 
 }
