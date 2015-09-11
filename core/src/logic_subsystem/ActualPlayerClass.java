@@ -31,6 +31,7 @@ public abstract class ActualPlayerClass {
 	 *
 	 */
 	private String associatedTexture;
+	private MobType mobType;
 
 	public float getX() {
 		return x;
@@ -87,6 +88,14 @@ public abstract class ActualPlayerClass {
 
 	public void setAssociatedTexture(String associatedTexture) {
 		this.associatedTexture = associatedTexture;
+	}
+
+	public MobType getMobType() {
+		return mobType;
+	}
+
+	public void setMobType(MobType mobType) {
+		this.mobType = mobType;
 	}
 
 }
