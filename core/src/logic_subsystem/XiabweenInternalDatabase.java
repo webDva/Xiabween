@@ -22,4 +22,8 @@ public class XiabweenInternalDatabase extends XIDECSCComponent {
 									// there might be more than one type of XID, e.g., for single player or multiplayer.
 	}
 
+	public ActualPlayerClass addPlayerToDatabase() {
+		return null;
+	}
+
 }
