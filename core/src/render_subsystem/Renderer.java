@@ -50,7 +50,7 @@ public class Renderer {
 	public GPUKeeper gpu_keeper;
 	public List<XiaEntity> thingsToRender;
 
-	public static final float SPRITE_SCALING = 1.5f;
+	public static final float SPRITE_SCALING_FACTOR = 1.5f;
 
 	protected ZBuffer depthBuffer;
 
@@ -98,8 +98,8 @@ public class Renderer {
 	public void drawIdlePlayer(Batch batch, PlayerEntity playerinfo) {
 		batch.begin();
 		batch.draw(playerinfo.textures.Directions.get(playerinfo.direction), playerinfo.position.x, playerinfo.position.y,
-				playerinfo.textures.Directions.get(playerinfo.direction).getRegionWidth() * SPRITE_SCALING,
-				playerinfo.textures.Directions.get(playerinfo.direction).getRegionHeight() * SPRITE_SCALING);
+				playerinfo.textures.Directions.get(playerinfo.direction).getRegionWidth() * SPRITE_SCALING_FACTOR,
+				playerinfo.textures.Directions.get(playerinfo.direction).getRegionHeight() * SPRITE_SCALING_FACTOR);
 		batch.end();
 	}
 
@@ -109,8 +109,8 @@ public class Renderer {
 		batch.begin();
 		seconds_lastFrameElapsed += Gdx.graphics.getDeltaTime();
 		batch.draw(animation.getKeyFrame(seconds_lastFrameElapsed, true), player.position.x, player.position.y,
-				animation.getKeyFrame(seconds_lastFrameElapsed).getRegionWidth() * SPRITE_SCALING,
-				animation.getKeyFrame(seconds_lastFrameElapsed).getRegionHeight() * SPRITE_SCALING);
+				animation.getKeyFrame(seconds_lastFrameElapsed).getRegionWidth() * SPRITE_SCALING_FACTOR,
+				animation.getKeyFrame(seconds_lastFrameElapsed).getRegionHeight() * SPRITE_SCALING_FACTOR);
 		batch.end();
 
 		player.isAnimating = false;
