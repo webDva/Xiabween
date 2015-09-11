@@ -27,7 +27,7 @@ public abstract class ActualPlayerClass {
 	 * Contains a reference to the sprite sheet that this character uses. This
 	 * may blur the line between rendering and game logic, but at least no
 	 * actual texture binding occurs. The value does not include the file
-	 * extension, but only a name that references the sprite sheet character.
+	 * extension, but only a name that references the character sprite sheet.
 	 *
 	 */
 	private String associatedTexture;
