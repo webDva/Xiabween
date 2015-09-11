@@ -16,6 +16,12 @@ import com.badlogic.gdx.math.Vector2;
 public class MapData {
 
 	/**
+	 * A reference to the tiled map's .tmx file, not including the file path or
+	 * extension.
+	 */
+	private String mapName;
+
+	/**
 	 * The width and height of an individual tile. Height and width should
 	 * usually be the same.
 	 */
@@ -27,6 +33,14 @@ public class MapData {
 	private int mapWidth, mapHeight;
 	private Map<String, Vector2> locations; // Might need to make this non-private to add to and remove from it unless
 											// those methods return a map.
+
+	public String getMapName() {
+		return mapName;
+	}
+
+	public void setMapName(String mapName) {
+		this.mapName = mapName;
+	}
 
 	public int getTileDimensions() {
 		return tileDimensions;
