@@ -98,4 +98,7 @@ public abstract class ActualPlayerClass {
 		this.mobType = mobType;
 	}
 
+	public abstract String talk(); // HYPOTHESIS: If this is a mob instance, would return "SNAAARL!" and an NPC would return "Hi!"
+									// An example of abstract class uses.
+
 }
