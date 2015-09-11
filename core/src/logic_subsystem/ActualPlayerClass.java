@@ -15,6 +15,13 @@ public abstract class ActualPlayerClass {
 	 * in terms of PI.
 	 */
 	private float radians_Direction;
+	/**
+	 * Measured in meters per second. One meter should be the length of a tile
+	 * or 32 pixels, but the logic side of Xiabween shouldn't concern itself
+	 * with rendering and pixels for decouplization.
+	 *
+	 */
+	private float movementSpeed;
 
 	public float getX() {
 		return x;
@@ -43,10 +50,18 @@ public abstract class ActualPlayerClass {
 	/**
 	 * Changes the direction the {@link ActualPlayerClass} is facing. Add or
 	 * subtract in terms of PI (<code>0PI, PI / 2, PI, 3PI / 2, 2PI</code>).
-	 * 
+	 *
 	 * @param displacement
 	 *            The displacement in terms of PI.
 	 */
 	public abstract void changeDirection(float displacement);
+
+	public float getMovementSpeed() {
+		return movementSpeed;
+	}
+
+	public void setMovementSpeed(float movementSpeed) {
+		this.movementSpeed = movementSpeed;
+	}
 
 }
