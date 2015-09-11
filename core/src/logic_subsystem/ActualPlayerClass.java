@@ -23,6 +23,14 @@ public abstract class ActualPlayerClass {
 	 */
 	private float movementSpeed;
 	private String playerName;
+	/**
+	 * Contains a reference to the sprite sheet that this character uses. This
+	 * may blur the line between rendering and game logic, but at least no
+	 * actual texture binding occurs. The value does not include the file
+	 * extension, but only a name that references the sprite sheet character.
+	 *
+	 */
+	private String associatedTexture;
 
 	public float getX() {
 		return x;
@@ -71,6 +79,14 @@ public abstract class ActualPlayerClass {
 
 	public void setPlayerName(String playerName) {
 		this.playerName = playerName;
+	}
+
+	public String getAssociatedTexture() {
+		return associatedTexture;
+	}
+
+	public void setAssociatedTexture(String associatedTexture) {
+		this.associatedTexture = associatedTexture;
 	}
 
 }
