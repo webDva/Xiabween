@@ -67,8 +67,8 @@ public class Logician {
 		PlayerEntity newPlayer = PlayerEntityHandler.createPlayerEntity(name, coordinates);
 		newPlayer.textures = Loader.loadPlayerAtlas(atlasPath, renderer);
 		newPlayer.playerRectangle = new Rectangle(newPlayer.position.x, newPlayer.position.y,
-				newPlayer.textures.Directions.get(newPlayer.direction).getRegionWidth() * Renderer.SPRITE_SCALING,
-				newPlayer.textures.Directions.get(newPlayer.direction).getRegionHeight() * Renderer.SPRITE_SCALING);
+				newPlayer.textures.Directions.get(newPlayer.direction).getRegionWidth() * Renderer.SPRITE_SCALING_FACTOR,
+				newPlayer.textures.Directions.get(newPlayer.direction).getRegionHeight() * Renderer.SPRITE_SCALING_FACTOR);
 		this.players.add(newPlayer);
 		renderer.thingsToRender.add(newPlayer);
 
