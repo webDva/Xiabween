@@ -36,7 +36,8 @@ public class XGDLS {
 	public void recieveXiaMessageRequest() {
 	}
 
-	public void processXiaMessageRequest() {
+	public boolean processXiaMessageRequest(XiaMessageRequest request) {
+		return true;
 	}
 
 	/**
