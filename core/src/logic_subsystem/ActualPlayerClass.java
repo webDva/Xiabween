@@ -6,7 +6,7 @@ package logic_subsystem;
  * @author sorcerer
  *
  */
-public abstract class ActualPlayerClass {
+public class ActualPlayerClass {
 
 	public float x, y;
 	/**
@@ -19,12 +19,6 @@ public abstract class ActualPlayerClass {
 	 * <code>0PI, PI / 2, PI, 3PI / 2, 2PI</code>).
 	 */
 	public float radians_Direction;
-	/**
-	 * Measured in meters per second. One meter should be the length of a tile
-	 * or 32 pixels, but the logic side of Xiabween shouldn't concern itself
-	 * with rendering and pixels for decouplization.
-	 */
-	public float movementSpeed;
 	public String playerName;
 	/**
 	 * Contains a reference to the sprite sheet that this character uses. This
@@ -34,5 +28,6 @@ public abstract class ActualPlayerClass {
 	 */
 	public String associatedTexture;
 	public MobType mobType;
+	public StatsClass stats;
 
 }
