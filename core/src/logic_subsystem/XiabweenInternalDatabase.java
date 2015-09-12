@@ -17,14 +17,49 @@ public class XiabweenInternalDatabase extends XIDECSCComponent {
 	 * A dictionary of map names and their corresponding .tmx files.
 	 */
 	protected Map<String, String> data_Maps;
-	protected boolean isOnline;
+
+	public boolean isOnline;
+	public final XIDType XIDType;
+	/**
+	 * The human's player. <code>null</code> if the XID instance is a networked
+	 * server one.
+	 */
+	protected ActualPlayerClass humansPlayer;
+
+	public XiabweenInternalDatabase(XIDType type) {
+		this.XIDType = type;
+	}
 
 	public void queryForData() { // TODO: Might want to make XID abstract too with abstract methods for encapsulating, because
 									// there might be more than one type of XID, e.g., for single player or multiplayer.
 	}
 
-	public ActualPlayerClass addPlayerToDatabase() {
-		return null;
+	public void addPlayerToDatabase(ActualPlayerClass player) {
+		this.ourPlayers.add(player);
+	}
+
+	/**
+	 * Removes an {@link ActualPlayerClass} from a XID instance.
+	 * 
+	 * @param player
+	 *            The {@link ActualPlayerClass} object to remove from the XID.
+	 * @return <code>true</code> if successful.
+	 */
+	public boolean removePlayerFromDatabase(ActualPlayerClass player) {
+		return this.ourPlayers.remove(player);
+	}
+
+	public ActualPlayerClass getHumansPlayer() {
+		return this.humansPlayer;
+	}
+
+	public boolean setMyPlayer(ActualPlayerClass player) {
+		if (this.XIDType == logic_subsystem.XIDType.ONLINE) {
+			return false;
+		}
+
+		this.humansPlayer = player;
+		return true;
 	}
 
 }

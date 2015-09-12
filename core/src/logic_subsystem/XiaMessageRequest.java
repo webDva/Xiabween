@@ -6,6 +6,5 @@ package logic_subsystem;
  * @author sorcerer
  *
  */
-public interface XiaMessageRequest {
-
+public class XiaMessageRequest {
 }
