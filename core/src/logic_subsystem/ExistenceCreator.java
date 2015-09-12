@@ -2,7 +2,11 @@ package logic_subsystem;
 
 public class ExistenceCreator extends XIDECSCComponent {
 
-	protected XiabweenInternalDatabase myXIDComponent;
+	protected final XiabweenInternalDatabase myXIDComponent;
+
+	public ExistenceCreator(XiabweenInternalDatabase XIDComponent) {
+		this.myXIDComponent = XIDComponent;
+	}
 
 	public ActualPlayerClass createNewPlayer(float x, float y, float initialDirection, String name, String texture, MobType type, StatsClass stats) {
 		ActualPlayerClass newPlayer = new ActualPlayerClass();
