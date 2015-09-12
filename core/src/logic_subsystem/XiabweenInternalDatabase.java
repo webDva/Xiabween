@@ -34,4 +34,13 @@ public class XiabweenInternalDatabase extends XIDECSCComponent {
 		return null;
 	}
 
+	public XIDType getXIDType() {
+		return this.XIDType;
+	}
+
+	public XIDType setXIDType(XIDType type) {
+		this.XIDType = type;
+		return this.XIDType;
+	}
+
 }
