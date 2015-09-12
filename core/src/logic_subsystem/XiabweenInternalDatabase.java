@@ -19,12 +19,16 @@ public class XiabweenInternalDatabase extends XIDECSCComponent {
 	protected Map<String, String> data_Maps;
 
 	public boolean isOnline;
-	protected XIDType XIDType;
+	public final XIDType XIDType;
 	/**
 	 * The human's player. <code>null</code> if the XID instance is a networked
 	 * server one.
 	 */
 	protected ActualPlayerClass humansPlayer;
+
+	public XiabweenInternalDatabase(XIDType type) {
+		this.XIDType = type;
+	}
 
 	public void queryForData() { // TODO: Might want to make XID abstract too with abstract methods for encapsulating, because
 									// there might be more than one type of XID, e.g., for single player or multiplayer.
@@ -32,15 +36,6 @@ public class XiabweenInternalDatabase extends XIDECSCComponent {
 
 	public ActualPlayerClass addPlayerToDatabase() {
 		return null;
-	}
-
-	public XIDType getXIDType() {
-		return this.XIDType;
-	}
-
-	public XIDType setXIDType(XIDType type) {
-		this.XIDType = type;
-		return this.XIDType;
 	}
 
 }
