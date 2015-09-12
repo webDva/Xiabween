@@ -17,6 +17,7 @@ public class XiabweenInternalDatabase extends XIDECSCComponent {
 	 * A dictionary of map names and their corresponding .tmx files.
 	 */
 	protected Map<String, String> data_Maps;
+	protected boolean isOnline;
 
 	public void queryForData() { // TODO: Might want to make XID abstract too with abstract methods for encapsulating, because
 									// there might be more than one type of XID, e.g., for single player or multiplayer.
