@@ -9,7 +9,7 @@ public class ExistenceCreator extends XIDECSCComponent {
 	}
 
 	public ActualPlayerClass createNewPlayer(float x, float y, float initialDirection, String name, String texture, MobType type, StatsClass stats) {
-		ActualPlayerClass newPlayer = new ActualPlayerClass();
+		ActualPlayerClass newPlayer = new ActualPlayerClass(type);
 
 		newPlayer.x = x;
 		newPlayer.y = y;
@@ -17,7 +17,6 @@ public class ExistenceCreator extends XIDECSCComponent {
 		newPlayer.radians_Direction = initialDirection;
 		newPlayer.playerName = name;
 		newPlayer.associatedTexture = texture;
-		newPlayer.mobType = type;
 		newPlayer.stats = stats;
 
 		myXIDComponent.addPlayerToDatabase(newPlayer);

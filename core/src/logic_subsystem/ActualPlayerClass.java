@@ -27,7 +27,11 @@ public class ActualPlayerClass {
 	 * extension, but only a name that references the character sprite sheet.
 	 */
 	public String associatedTexture;
-	public MobType mobType;
+	public final MobType mobType;
 	public StatsClass stats;
+
+	public ActualPlayerClass(MobType type) {
+		this.mobType = type;
+	}
 
 }
