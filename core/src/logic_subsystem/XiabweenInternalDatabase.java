@@ -34,8 +34,19 @@ public class XiabweenInternalDatabase extends XIDECSCComponent {
 									// there might be more than one type of XID, e.g., for single player or multiplayer.
 	}
 
-	public ActualPlayerClass addPlayerToDatabase() {
-		return null;
+	public void addPlayerToDatabase(ActualPlayerClass player) {
+		this.ourPlayers.add(player);
+	}
+
+	/**
+	 * Removes an {@link ActualPlayerClass} from a XID instance.
+	 * 
+	 * @param player
+	 *            The {@link ActualPlayerClass} object to remove from the XID.
+	 * @return <code>true</code> if successful.
+	 */
+	public boolean removePlayerFromDatabase(ActualPlayerClass player) {
+		return this.ourPlayers.remove(player);
 	}
 
 	public ActualPlayerClass getHumansPlayer() {
