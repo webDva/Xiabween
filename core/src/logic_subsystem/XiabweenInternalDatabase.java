@@ -38,4 +38,17 @@ public class XiabweenInternalDatabase extends XIDECSCComponent {
 		return null;
 	}
 
+	public ActualPlayerClass getHumansPlayer() {
+		return this.humansPlayer;
+	}
+
+	public boolean setMyPlayer(ActualPlayerClass player) {
+		if (this.XIDType == logic_subsystem.XIDType.ONLINE) {
+			return false;
+		}
+
+		this.humansPlayer = player;
+		return true;
+	}
+
 }
