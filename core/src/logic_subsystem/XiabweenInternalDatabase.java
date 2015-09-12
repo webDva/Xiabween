@@ -18,6 +18,11 @@ public class XiabweenInternalDatabase extends XIDECSCComponent {
 	 */
 	protected Map<String, String> data_Maps;
 	protected boolean isOnline;
+	/**
+	 * The human's player. <code>null</code> if the XID instance is a networked
+	 * server one.
+	 */
+	protected ActualPlayerClass humansPlayer;
 
 	public void queryForData() { // TODO: Might want to make XID abstract too with abstract methods for encapsulating, because
 									// there might be more than one type of XID, e.g., for single player or multiplayer.
