@@ -40,7 +40,7 @@ public class XiabweenInternalDatabase extends XIDECSCComponent {
 
 	/**
 	 * Removes an {@link ActualPlayerClass} from a XID instance.
-	 * 
+	 *
 	 * @param player
 	 *            The {@link ActualPlayerClass} object to remove from the XID.
 	 * @return <code>true</code> if successful.
@@ -53,7 +53,7 @@ public class XiabweenInternalDatabase extends XIDECSCComponent {
 		return this.humansPlayer;
 	}
 
-	public boolean setMyPlayer(ActualPlayerClass player) {
+	public boolean setHumansPlayer(ActualPlayerClass player) {
 		if (this.XIDType == logic_subsystem.XIDType.ONLINE) {
 			return false;
 		}
