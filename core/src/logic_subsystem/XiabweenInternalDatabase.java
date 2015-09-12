@@ -17,7 +17,9 @@ public class XiabweenInternalDatabase extends XIDECSCComponent {
 	 * A dictionary of map names and their corresponding .tmx files.
 	 */
 	protected Map<String, String> data_Maps;
-	protected boolean isOnline;
+
+	public boolean isOnline;
+	protected XIDType XIDType;
 	/**
 	 * The human's player. <code>null</code> if the XID instance is a networked
 	 * server one.
