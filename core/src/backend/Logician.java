@@ -43,7 +43,6 @@ public class Logician {
 	public List<Fireball> fireballs;
 	public List<Map_struct> maps;
 
-	public int keypress;
 	public PlayerEntity myPlayer; // The human player's character.
 
 	public Logician() {
