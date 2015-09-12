@@ -1,5 +1,6 @@
 package logic_subsystem;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +37,14 @@ public class XiabweenInternalDatabase extends XIDECSCComponent {
 
 	public void addPlayerToDatabase(ActualPlayerClass player) {
 		this.ourPlayers.add(player);
+	}
+
+	public ArrayList<ActualPlayerClass> getPlayers() {
+		ArrayList<ActualPlayerClass> players = new ArrayList<ActualPlayerClass>();
+		for (ActualPlayerClass entry : this.ourPlayers) {
+			players.add(entry);
+		}
+		return players;
 	}
 
 	/**
