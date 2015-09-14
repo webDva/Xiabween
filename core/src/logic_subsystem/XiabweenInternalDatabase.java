@@ -6,6 +6,8 @@ import java.util.Map;
 
 public class XiabweenInternalDatabase extends XIDECSCComponent {
 
+	public static final XIDECSCComponentType type = XIDECSCComponentType.XIABWEEN_INTERNAL_DATABASE;
+
 	protected List<ActualPlayerClass> ourPlayers;
 	/**
 	 * A dictionary of names and their corresponding textures that they point

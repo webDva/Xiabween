@@ -10,4 +10,7 @@ package logic_subsystem;
  *
  */
 public abstract class XIDECSCComponent {
+
+	public XIDECSCComponentType type;
+
 }
