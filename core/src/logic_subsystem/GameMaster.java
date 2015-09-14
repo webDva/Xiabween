@@ -21,8 +21,23 @@ public class GameMaster {
 	}
 
 	// Finally, some very high level abstraction.
+	/**
+	 * Adds a new player to the game. Also internally adds a player to the
+	 * internal database.
+	 *
+	 * @param spawnLocation
+	 *            Player's spawning location that it will be born in.
+	 * @param initialDirection
+	 *            Player's initial direction it will face.
+	 * @param name
+	 * @param texture
+	 * @param stats
+	 * @return
+	 */
 	public HumanPlayer addPlayerToGame(Vector2 spawnLocation, float initialDirection, String name, String texture, StatsClass stats) {
-		return creator.createNewHumanPlayer(spawnLocation.x, spawnLocation.y, initialDirection, name, texture, stats);
+		HumanPlayer newPlayer = creator.createNewHumanPlayer(spawnLocation.x, spawnLocation.y, initialDirection, name, texture, stats);
+		database.addPlayerToDatabase(newPlayer);
+		return newPlayer;
 	}
 
 }

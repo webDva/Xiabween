@@ -35,6 +35,10 @@ public class XiabweenInternalDatabase {
 	 */
 	protected HumanPlayer humansPlayer;
 
+	public XiabweenInternalDatabase() {
+		this.humansPlayer = null;
+	}
+
 	public ArrayList<ActualPlayerClass> getPlayers() {
 		ArrayList<ActualPlayerClass> players = new ArrayList<ActualPlayerClass>();
 		for (ActualPlayerClass entry : this.ourPlayers) {
