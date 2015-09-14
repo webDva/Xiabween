@@ -1,29 +1,28 @@
 package logic_subsystem;
 
-import java.util.ArrayList;
-import java.util.Map;
+import com.badlogic.gdx.math.Vector2;
 
-import xidecsc.XIDECSCComponent;
-import xidecsc.XIDECSCComponentType;
+import player.HumanPlayer;
+import player.StatsClass;
+import xidecsc.ExistenceCreator;
+import xidecsc.StateContainer;
 import xidecsc.XiabweenInternalDatabase;
 
-/**
- * Even though {@link XiabweenInternalDatabase} holds data, this
- * {@link GameMaster} class too will hold data, so it can't be abstract. After
- * all, {@link GameMaster} will contain a {@link XiabweenInternalDatabase} and
- * the other {@link XIDECSCComponent}s.
- *
- * @author sorcerer
- *
- */
 public class GameMaster {
 
-	protected Map<XIDECSCComponentType, XIDECSCComponent> components;
+	protected XiabweenInternalDatabase database;
+	protected ExistenceCreator creator;
+	protected StateContainer container;
 
-	public GameMaster(ArrayList<XIDECSCComponent> componentArray) {
-		for (XIDECSCComponent component : componentArray) {
-			this.components.put(component.type, component);
-		}
+	public GameMaster() {
+		this.database = new XiabweenInternalDatabase();
+		this.creator = new ExistenceCreator();
+		this.container = new StateContainer();
+	}
+
+	// Finally, some very high level abstraction.
+	public HumanPlayer addPlayerToGame(Vector2 spawnLocation, float initialDirection, String name, String texture, StatsClass stats) {
+		return creator.createNewHumanPlayer(spawnLocation.x, spawnLocation.y, initialDirection, name, texture, stats);
 	}
 
 }

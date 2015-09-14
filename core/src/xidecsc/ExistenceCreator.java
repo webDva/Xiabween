@@ -6,16 +6,13 @@ import player.StatsClass;
 /**
  * Responsible for creating players, map data, and anything game logic related.
  * A {@link XIDECSCComponent}.
- * 
+ *
  * @author sorcerer
  *
  */
-public class ExistenceCreator extends XIDECSCComponent {
+public class ExistenceCreator {
 
-	public static final XIDECSCComponentType type = XIDECSCComponentType.EXISTENCE_CREATOR;
-
-	public HumanPlayer createNewHumanPlayer(float x, float y, float initialDirection, String name, String texture, StatsClass stats,
-			XiabweenInternalDatabase XID) {
+	public HumanPlayer createNewHumanPlayer(float x, float y, float initialDirection, String name, String texture, StatsClass stats) {
 		HumanPlayer newHumanPlayer = new HumanPlayer();
 
 		newHumanPlayer.x = x;
@@ -25,8 +22,6 @@ public class ExistenceCreator extends XIDECSCComponent {
 		newHumanPlayer.playerName = name;
 		newHumanPlayer.associatedTexture = texture;
 		newHumanPlayer.stats = stats;
-
-		XID.addPlayerToDatabase(newHumanPlayer);
 
 		return newHumanPlayer;
 

@@ -7,8 +7,6 @@ package xidecsc;
  * @author sorcerer
  *
  */
-public class StateContainer extends XIDECSCComponent {
-
-	public static final XIDECSCComponentType type = XIDECSCComponentType.STATE_CONTAINER;
+public class StateContainer {
 
 }

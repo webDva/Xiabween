@@ -10,13 +10,11 @@ import player.HumanPlayer;
 /**
  * Functions as an internal database, holding a list of players, maps, etc. A
  * {@link XIDECSCComponent}.
- * 
+ *
  * @author sorcerer
  *
  */
-public class XiabweenInternalDatabase extends XIDECSCComponent {
-
-	public static final XIDECSCComponentType type = XIDECSCComponentType.XIABWEEN_INTERNAL_DATABASE;
+public class XiabweenInternalDatabase {
 
 	protected List<ActualPlayerClass> ourPlayers;
 	/**
