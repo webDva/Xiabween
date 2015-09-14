@@ -2,9 +2,13 @@ package logic_subsystem;
 
 import com.badlogic.gdx.math.Vector2;
 
+import backend.PlayerEntityHandler;
+import entities.PlayerEntity;
 import player.ActualPlayerClass;
 import player.HumanPlayer;
 import player.StatsClass;
+import render_subsystem.GPUKeeper;
+import render_subsystem.Loader;
 import xidecsc.ExistenceCreator;
 import xidecsc.StateContainer;
 import xidecsc.XiabweenInternalDatabase;
@@ -14,6 +18,8 @@ public class GameMaster {
 	protected XiabweenInternalDatabase database;
 	protected ExistenceCreator creator;
 	protected StateContainer container;
+
+	public GPUKeeper gpuObjects;
 
 	public GameMaster() {
 		this.database = new XiabweenInternalDatabase();
@@ -51,8 +57,9 @@ public class GameMaster {
 
 	}
 
-	public void loadPlayerTexture(ActualPlayerClass player, String texture) {
-
+	public void associatePlayerTexture(ActualPlayerClass player, String texture) {
+		PlayerEntity newEntity = PlayerEntityHandler.createPlayerEntity(player.playerName, new Vector2(player.x, player.y));
+		Loader.loadPlayerAtlas(texture, gpuObjects);
 	}
 
 }
