@@ -42,4 +42,12 @@ public class GameMaster {
 		database.addPlayerToDatabase(newPlayer);
 	}
 
+	public void removePlayerFromGame(HumanPlayer player) throws IllegalAccessException {
+		boolean result = database.removePlayerFromDatabase(player);
+		if (!result) {
+			throw new IllegalAccessException();
+		}
+
+	}
+
 }
