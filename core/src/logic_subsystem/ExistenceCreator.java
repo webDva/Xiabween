@@ -1,27 +1,27 @@
 package logic_subsystem;
 
+import player.HumanPlayer;
+import player.StatsClass;
+
 public class ExistenceCreator extends XIDECSCComponent {
 
-	protected final XiabweenInternalDatabase myXIDComponent;
+	public static final XIDECSCComponentType type = XIDECSCComponentType.EXISTENCE_CREATOR;
 
-	public ExistenceCreator(XiabweenInternalDatabase XIDComponent) {
-		this.myXIDComponent = XIDComponent;
-	}
+	public HumanPlayer createNewHumanPlayer(float x, float y, float initialDirection, String name, String texture, StatsClass stats,
+			XiabweenInternalDatabase XID) {
+		HumanPlayer newHumanPlayer = new HumanPlayer();
 
-	public ActualPlayerClass createNewPlayer(float x, float y, float initialDirection, String name, String texture, MobType type, StatsClass stats) {
-		ActualPlayerClass newPlayer = new ActualPlayerClass(type);
+		newHumanPlayer.x = x;
+		newHumanPlayer.y = y;
 
-		newPlayer.x = x;
-		newPlayer.y = y;
+		newHumanPlayer.radians_Direction = initialDirection;
+		newHumanPlayer.playerName = name;
+		newHumanPlayer.associatedTexture = texture;
+		newHumanPlayer.stats = stats;
 
-		newPlayer.radians_Direction = initialDirection;
-		newPlayer.playerName = name;
-		newPlayer.associatedTexture = texture;
-		newPlayer.stats = stats;
+		XID.addPlayerToDatabase(newHumanPlayer);
 
-		myXIDComponent.addPlayerToDatabase(newPlayer);
-
-		return newPlayer;
+		return newHumanPlayer;
 
 	}
 

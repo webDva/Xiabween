@@ -1,4 +1,4 @@
-package logic_subsystem;
+package server_system;
 
 /**
  * A data structure that is used in the Xiabween Messaging System.

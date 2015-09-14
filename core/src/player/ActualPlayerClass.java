@@ -1,4 +1,4 @@
-package logic_subsystem;
+package player;
 
 /**
  * This is more than just for players, but for mobs and other NPCs as well.
@@ -6,7 +6,7 @@ package logic_subsystem;
  * @author sorcerer
  *
  */
-public class ActualPlayerClass {
+public abstract class ActualPlayerClass {
 
 	public float x, y;
 	/**
@@ -27,11 +27,7 @@ public class ActualPlayerClass {
 	 * extension, but only a name that references the character sprite sheet.
 	 */
 	public String associatedTexture;
-	public final MobType mobType;
+	public MobType mobType;
 	public StatsClass stats;
-
-	public ActualPlayerClass(MobType type) {
-		this.mobType = type;
-	}
 
 }

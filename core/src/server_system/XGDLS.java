@@ -1,4 +1,4 @@
-package logic_subsystem;
+package server_system;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import java.util.List;
  * Stands for Xiabween Game Data and Logic Server (or XGDLS, pronounced
  * zeeg-geed-lis). Functions as a server for clients (e.g., a human player's
  * client) that performs actions based on
- * {@link logic_subsystem.XiaMessageRequest}s.
+ * {@link server_system.XiaMessageRequest}s.
  */
 public class XGDLS {
 

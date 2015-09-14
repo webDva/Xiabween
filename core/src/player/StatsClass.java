@@ -1,4 +1,4 @@
-package logic_subsystem;
+package player;
 
 public abstract class StatsClass {
 
