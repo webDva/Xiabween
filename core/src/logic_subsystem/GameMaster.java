@@ -16,14 +16,13 @@ import xidecsc.XiabweenInternalDatabase;
  * @author sorcerer
  *
  */
-public abstract class GameMaster {
+public class GameMaster {
 
 	protected Map<XIDECSCComponentType, XIDECSCComponent> components;
 
 	public GameMaster(ArrayList<XIDECSCComponent> componentArray) {
 		for (XIDECSCComponent component : componentArray) {
-			this.components.put(component.type, component); // This line was beckoning, beckoning for a unit test, thus partaking on quests for green lights.
-			// Alas, such a path is fraught with naught but lost time.
+			this.components.put(component.type, component);
 		}
 	}
 
