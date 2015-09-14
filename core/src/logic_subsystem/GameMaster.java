@@ -2,6 +2,7 @@ package logic_subsystem;
 
 import com.badlogic.gdx.math.Vector2;
 
+import player.ActualPlayerClass;
 import player.HumanPlayer;
 import player.StatsClass;
 import xidecsc.ExistenceCreator;
@@ -47,6 +48,10 @@ public class GameMaster {
 		if (!result) {
 			throw new IllegalAccessException();
 		}
+
+	}
+
+	public void loadPlayerTexture(ActualPlayerClass player, String texture) {
 
 	}
 
