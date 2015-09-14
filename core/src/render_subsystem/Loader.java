@@ -39,9 +39,9 @@ public class Loader {
 		}
 	}
 
-	public static PlayerTextures loadPlayerAtlas(String atlasPath, Renderer renderer) {
+	public static PlayerTextures loadPlayerAtlas(String atlasPath, GPUKeeper keeper) {
 		PlayerTextures textures_object = new PlayerTextures(atlasPath);
-		renderer.gpu_keeper.atlases.add(textures_object.SpriteSheet);
+		keeper.atlases.add(textures_object.SpriteSheet);
 
 		for (AtlasRegion region : textures_object.SpriteSheet.getRegions()) {
 			if (region.name.equals(PlayerEntity.DOWN) || region.name.equals(PlayerEntity.UP) || region.name.equals(PlayerEntity.RIGHT)
