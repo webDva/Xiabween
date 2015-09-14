@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import actual_player_types.ActualPlayerClass;
+
 public class XiabweenInternalDatabase extends XIDECSCComponent {
 
 	public static final XIDECSCComponentType type = XIDECSCComponentType.XIABWEEN_INTERNAL_DATABASE;
