@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import actual_player_types.ActualPlayerClass;
+import actual_player_types.HumanPlayer;
 
 public class XiabweenInternalDatabase extends XIDECSCComponent {
 
@@ -34,7 +35,7 @@ public class XiabweenInternalDatabase extends XIDECSCComponent {
 	 * The human's player. <code>null</code> if the XID instance is a networked
 	 * server one.
 	 */
-	protected ActualPlayerClass humansPlayer;
+	protected HumanPlayer humansPlayer;
 
 	public XiabweenInternalDatabase(XIDType type) {
 		this.XIDType = type;
@@ -67,11 +68,11 @@ public class XiabweenInternalDatabase extends XIDECSCComponent {
 		return this.ourPlayers.remove(player);
 	}
 
-	public ActualPlayerClass getHumansPlayer() {
+	public HumanPlayer getHumansPlayer() {
 		return this.humansPlayer;
 	}
 
-	public boolean setHumansPlayer(ActualPlayerClass player) {
+	public boolean setHumansPlayer(HumanPlayer player) {
 		if (this.XIDType == logic_subsystem.XIDType.ONLINE) {
 			return false;
 		}
