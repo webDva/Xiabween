@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import actual_player_types.ActualPlayerClass;
-import actual_player_types.HumanPlayer;
+import player.ActualPlayerClass;
+import player.HumanPlayer;
 
 public class XiabweenInternalDatabase extends XIDECSCComponent {
 

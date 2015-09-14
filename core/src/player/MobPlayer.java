@@ -1,4 +1,4 @@
-package actual_player_types;
+package player;
 
 public class MobPlayer extends ActualPlayerClass {
 

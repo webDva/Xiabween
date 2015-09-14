@@ -1,6 +1,4 @@
-package actual_player_types;
-
-import logic_subsystem.StatsClass;
+package player;
 
 /**
  * This is more than just for players, but for mobs and other NPCs as well.

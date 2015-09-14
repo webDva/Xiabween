@@ -1,4 +1,4 @@
-package actual_player_types;
+package player;
 
 public enum MobType {
 	HUMAN_PLAYER, MOB_PLAYER, NPC_PLAYER

@@ -1,4 +1,4 @@
-package logic_subsystem;
+package server_system;
 
 public enum RequestType {
 	// Game logic requests

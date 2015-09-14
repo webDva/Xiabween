@@ -1,6 +1,7 @@
 package logic_subsystem;
 
-import actual_player_types.HumanPlayer;
+import player.HumanPlayer;
+import player.StatsClass;
 
 public class ExistenceCreator extends XIDECSCComponent {
 
