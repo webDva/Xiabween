@@ -24,26 +24,11 @@ public class XiabweenInternalDatabase extends XIDECSCComponent {
 	 */
 	protected Map<String, String> data_Maps;
 
-	public boolean isOnline;
-	/**
-	 * If the XID instance is of <code>XIDType.OFFLINE</code>, then the game is
-	 * in single player mode, else if it's <code>XIDType.ONLINE</code>, then the
-	 * game is in online mode.
-	 */
-	public final XIDType XIDType;
 	/**
 	 * The human's player. <code>null</code> if the XID instance is a networked
 	 * server one.
 	 */
 	protected HumanPlayer humansPlayer;
-
-	public XiabweenInternalDatabase(XIDType type) {
-		this.XIDType = type;
-	}
-
-	public void queryForData() { // TODO: Might want to make XID abstract too with abstract methods for encapsulating, because
-									// there might be more than one type of XID, e.g., for single player or multiplayer.
-	}
 
 	public ArrayList<ActualPlayerClass> getPlayers() {
 		ArrayList<ActualPlayerClass> players = new ArrayList<ActualPlayerClass>();
@@ -72,13 +57,7 @@ public class XiabweenInternalDatabase extends XIDECSCComponent {
 		return this.humansPlayer;
 	}
 
-	public boolean setHumansPlayer(HumanPlayer player) {
-		if (this.XIDType == logic_subsystem.XIDType.ONLINE) {
-			return false;
-		}
-
+	public void setHumansPlayer(HumanPlayer player) {
 		this.humansPlayer = player;
-		return true;
 	}
-
 }
