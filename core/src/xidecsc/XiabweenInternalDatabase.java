@@ -1,4 +1,4 @@
-package logic_subsystem;
+package xidecsc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,13 @@ import java.util.Map;
 import player.ActualPlayerClass;
 import player.HumanPlayer;
 
+/**
+ * Functions as an internal database, holding a list of players, maps, etc. A
+ * {@link XIDECSCComponent}.
+ * 
+ * @author sorcerer
+ *
+ */
 public class XiabweenInternalDatabase extends XIDECSCComponent {
 
 	public static final XIDECSCComponentType type = XIDECSCComponentType.XIABWEEN_INTERNAL_DATABASE;

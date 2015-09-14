@@ -1,8 +1,15 @@
-package logic_subsystem;
+package xidecsc;
 
 import player.HumanPlayer;
 import player.StatsClass;
 
+/**
+ * Responsible for creating players, map data, and anything game logic related.
+ * A {@link XIDECSCComponent}.
+ * 
+ * @author sorcerer
+ *
+ */
 public class ExistenceCreator extends XIDECSCComponent {
 
 	public static final XIDECSCComponentType type = XIDECSCComponentType.EXISTENCE_CREATOR;

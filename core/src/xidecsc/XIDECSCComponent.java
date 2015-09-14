@@ -1,4 +1,4 @@
-package logic_subsystem;
+package xidecsc;
 
 /**
  * Stands for Xiabween Internal Database, Existence Creator, and State Container
