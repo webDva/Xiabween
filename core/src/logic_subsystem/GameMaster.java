@@ -22,7 +22,8 @@ public abstract class GameMaster {
 
 	public GameMaster(ArrayList<XIDECSCComponent> componentArray) {
 		for (XIDECSCComponent component : componentArray) {
-			this.components.put(component.type, component);
+			this.components.put(component.type, component); // This line was beckoning, beckoning for a unit test, thus partaking on quests for green lights.
+			// Alas, such a path is fraught with naught but lost time.
 		}
 	}
 
