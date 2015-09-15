@@ -30,6 +30,15 @@ public class PlayerEntityHandler {
 		player.isAnimating = true;
 	}
 
+	/**
+	 * Note that this doesn't load the PlayerEntity's textures.
+	 * 
+	 * @param name
+	 *            For identifying the PlayerEntity.
+	 * @param coordinates
+	 *            It's initial start point coordinates.
+	 * @return
+	 */
 	public static PlayerEntity createPlayerEntity(String name, Vector2 coordinates) { // TODO: Create a startpoint using a tiled object.
 
 		PlayerEntity newplayer = new PlayerEntity();
