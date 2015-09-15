@@ -31,7 +31,7 @@ public class Renderer {
 	public XiaEntity thingToFollow;
 	private float seconds_lastFrameElapsed = 0;
 	public GPUKeeper gpu_keeper;
-	public List<XiaEntity> thingsToRender;
+	protected List<XiaEntity> thingsToRender;
 
 	public static final float SPRITE_SCALING_FACTOR = 1.5f;
 
@@ -155,4 +155,13 @@ public class Renderer {
 			this.gpu_keeper.addBatch(batch);
 		}
 	}
+
+	public void addXiaEntity(XiaEntity entity) {
+		this.thingsToRender.add(entity);
+	}
+
+	public void removeXiaEneity(XiaEntity entity) {
+		this.thingsToRender.remove(entity);
+	}
+
 }
