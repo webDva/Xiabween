@@ -14,15 +14,15 @@ import entities.PlayerTextures;
 
 public class Loader {
 
-	public static Texture loadTexture(String path, Renderer renderer) {
+	public static Texture loadTexture(String path, GPUKeeper keeper) {
 		Texture texture = new Texture(path);
-		renderer.gpu_keeper.textures.add(texture);
+		keeper.textures.add(texture);
 		return new Texture(path);
 	}
 
-	public static TextureAtlas loadTextureAtlas(String path, Renderer renderer) {
+	public static TextureAtlas loadTextureAtlas(String path, GPUKeeper keeper) {
 		TextureAtlas atlas = new TextureAtlas(path);
-		renderer.gpu_keeper.atlases.add(atlas);
+		keeper.atlases.add(atlas);
 		return new TextureAtlas(path);
 	}
 
