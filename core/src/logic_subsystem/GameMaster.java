@@ -41,14 +41,14 @@ public class GameMaster {
 	 *            Player's initial direction it will face.
 	 * @param name
 	 *            The character's name that will appear in game.
-	 * @param texture
+	 * @param texturePath
 	 *            The sprite sheet file to be used by the player.
 	 * @param stats
 	 *            A structure of the player's stats.
 	 * @return
 	 */
-	public void addPlayerToGame(Vector2 spawnLocation, float initialDirection, String name, String texture, StatsClass stats) {
-		HumanPlayer newPlayer = creator.createNewHumanPlayer(spawnLocation.x, spawnLocation.y, initialDirection, name, texture, stats);
+	public void addPlayerToGame(Vector2 spawnLocation, float initialDirection, String name, String texturePath, StatsClass stats) {
+		HumanPlayer newPlayer = creator.createNewHumanPlayer(spawnLocation.x, spawnLocation.y, initialDirection, name, texturePath, stats);
 		database.addPlayerToDatabase(newPlayer);
 	}
 
