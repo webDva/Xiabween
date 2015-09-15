@@ -50,7 +50,7 @@ public class Logician {
 				newPlayer.textures.Directions.get(newPlayer.direction).getRegionWidth() * Renderer.SPRITE_SCALING_FACTOR,
 				newPlayer.textures.Directions.get(newPlayer.direction).getRegionHeight() * Renderer.SPRITE_SCALING_FACTOR);
 		this.players.add(newPlayer);
-		renderer.thingsToRender.add(newPlayer);
+		renderer.addXiaEntity(newPlayer);
 
 		return newPlayer;
 	}
