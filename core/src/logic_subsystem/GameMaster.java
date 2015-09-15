@@ -8,6 +8,7 @@ import player.ActualPlayerClass;
 import player.HumanPlayer;
 import player.StatsClass;
 import render_subsystem.Loader;
+import render_subsystem.Renderer;
 import xidecsc.ExistenceCreator;
 import xidecsc.StateContainer;
 import xidecsc.XiabweenInternalDatabase;
@@ -17,11 +18,13 @@ public class GameMaster {
 	protected XiabweenInternalDatabase database;
 	protected ExistenceCreator creator;
 	protected StateContainer container;
+	protected Renderer renderer;
 
 	public GameMaster() {
 		this.database = new XiabweenInternalDatabase();
 		this.creator = new ExistenceCreator();
 		this.container = new StateContainer();
+		this.renderer = new Renderer();
 	}
 
 	// Finally, some very high level abstraction.
