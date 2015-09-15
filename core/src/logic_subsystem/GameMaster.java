@@ -64,8 +64,11 @@ public class GameMaster {
 				newPlayerEntity.textures.Directions.get(newPlayerEntity.direction).getRegionWidth() * Renderer.SPRITE_SCALING_FACTOR,
 				newPlayerEntity.textures.Directions.get(newPlayerEntity.direction).getRegionHeight() * Renderer.SPRITE_SCALING_FACTOR);
 		return newPlayerEntity;
-		// Stop at this point. Don't automatically add the XiaEntity to the rendering list. Do that somewhere else,
-		// because game logic may not call for a newly created entity to be rendered immediately.
+		/*
+		 * Stop at this point. Don't automatically add the XiaEntity to the
+		 * rendering list. Do that somewhere else, because game logic may not
+		 * call for a newly created entity to be rendered immediately.
+		 */
 	}
 
 }

@@ -30,9 +30,8 @@ public class XiabweenInternalDatabase {
 
 	/**
 	 * The human's player. <code>null</code> if the XID instance is a networked
-	 * server one. Use
-	 * {@link XiabweenInternalDatabase#setHumansPlayer(HumanPlayer)} to change
-	 * the value.
+	 * server one. Use {@link #setHumansPlayer(HumanPlayer)} to change the
+	 * value.
 	 */
 	public HumanPlayer humansPlayer;
 
