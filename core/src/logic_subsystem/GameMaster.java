@@ -7,7 +7,6 @@ import entities.PlayerEntity;
 import player.ActualPlayerClass;
 import player.HumanPlayer;
 import player.StatsClass;
-import render_subsystem.GPUKeeper;
 import render_subsystem.Loader;
 import xidecsc.ExistenceCreator;
 import xidecsc.StateContainer;
@@ -18,8 +17,6 @@ public class GameMaster {
 	protected XiabweenInternalDatabase database;
 	protected ExistenceCreator creator;
 	protected StateContainer container;
-
-	public GPUKeeper gpuObjects;
 
 	public GameMaster() {
 		this.database = new XiabweenInternalDatabase();
