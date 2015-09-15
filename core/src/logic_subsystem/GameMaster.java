@@ -53,8 +53,7 @@ public class GameMaster {
 	}
 
 	public void removePlayerFromGame(HumanPlayer player) throws IllegalAccessException {
-		boolean result = database.removePlayerFromDatabase(player);
-		if (!result) {
+		if (!database.removePlayerFromDatabase(player)) {
 			throw new IllegalAccessException();
 		}
 
