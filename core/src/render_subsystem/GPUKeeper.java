@@ -15,9 +15,9 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
  */
 public class GPUKeeper {
 
-	public List<TextureAtlas> atlases;
-	public List<Texture> textures;
-	public List<Batch> batches;
+	protected List<TextureAtlas> atlases;
+	protected List<Texture> textures;
+	protected List<Batch> batches;
 
 	public GPUKeeper() {
 		this.atlases = new ArrayList<TextureAtlas>();
@@ -39,4 +39,15 @@ public class GPUKeeper {
 		}
 	}
 
+	public void addAtlas(TextureAtlas atlas) {
+		this.atlases.add(atlas);
+	}
+
+	public void addTexture(Texture texture) {
+		this.textures.add(texture);
+	}
+
+	public void addBatch(Batch batch) {
+		this.batches.add(batch);
+	}
 }
