@@ -71,4 +71,8 @@ public class GameMaster {
 		 */
 	}
 
+	public void setCameraZoom(int cameraWidth, int cameraHeight) {
+		this.renderer.setCameraViewPorts(cameraWidth, cameraHeight);
+	}
+
 }
