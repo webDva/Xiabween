@@ -31,7 +31,7 @@ public class Renderer {
 	public XiaEntity thingToFollow;
 	private float seconds_lastFrameElapsed = 0;
 	public GPUKeeper gpu_keeper;
-	protected List<XiaEntity> listRenderingList;
+	protected List<XiaEntity> renderingList;
 
 	public static final float SPRITE_SCALING_FACTOR = 1.5f;
 
@@ -46,7 +46,7 @@ public class Renderer {
 		this.gpu_keeper = new GPUKeeper();
 		this.gpu_keeper.batches.add(this.batch);
 		this.camera = new OrthographicCamera();
-		this.listRenderingList = new ArrayList<XiaEntity>();
+		this.renderingList = new ArrayList<XiaEntity>();
 		this.depthBuffer = new ZBuffer();
 	}
 
@@ -124,7 +124,7 @@ public class Renderer {
 		currentMap.mapRenderer.render(); // TODO: Note that this renders all layers at once and will thus probably change so that
 											// layers can be rendered one at a time, maybe?
 
-		depthBuffer.orderObjects(listRenderingList);
+		depthBuffer.orderObjects(renderingList);
 
 		for (XiaEntity object : depthBuffer.rendering_objects) {
 			if (object instanceof PlayerEntity) {
@@ -157,11 +157,11 @@ public class Renderer {
 	}
 
 	public void addXiaEntity(XiaEntity entity) {
-		this.listRenderingList.add(entity);
+		this.renderingList.add(entity);
 	}
 
 	public void removeXiaEneity(XiaEntity entity) {
-		this.listRenderingList.remove(entity);
+		this.renderingList.remove(entity);
 	}
 
 }
