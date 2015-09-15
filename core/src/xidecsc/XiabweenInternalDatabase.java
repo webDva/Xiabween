@@ -30,9 +30,11 @@ public class XiabweenInternalDatabase {
 
 	/**
 	 * The human's player. <code>null</code> if the XID instance is a networked
-	 * server one.
+	 * server one. Use
+	 * {@link XiabweenInternalDatabase#setHumansPlayer(HumanPlayer)} to change
+	 * the value.
 	 */
-	protected HumanPlayer humansPlayer;
+	public HumanPlayer humansPlayer;
 
 	public XiabweenInternalDatabase() {
 		this.humansPlayer = null;
@@ -61,10 +63,11 @@ public class XiabweenInternalDatabase {
 		return this.ourPlayers.remove(player);
 	}
 
-	public HumanPlayer getHumansPlayer() {
-		return this.humansPlayer;
-	}
-
+	/**
+	 * @param player
+	 *            The human player's character for the camera to follow and
+	 *            such.
+	 */
 	public void setHumansPlayer(HumanPlayer player) {
 		this.humansPlayer = player;
 	}

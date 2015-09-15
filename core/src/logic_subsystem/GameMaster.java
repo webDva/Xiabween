@@ -55,7 +55,6 @@ public class GameMaster {
 		if (!database.removePlayerFromDatabase(player)) {
 			throw new IllegalAccessException();
 		}
-
 	}
 
 	public PlayerEntity loadPlayerTexture(ActualPlayerClass player, String texturePath) {
