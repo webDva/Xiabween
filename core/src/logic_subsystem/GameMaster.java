@@ -59,7 +59,7 @@ public class GameMaster {
 
 	public void associatePlayerTexture(ActualPlayerClass player, String texture) {
 		PlayerEntity newEntity = PlayerEntityHandler.createPlayerEntity(player.playerName, new Vector2(player.x, player.y));
-		Loader.loadPlayerAtlas(texture, gpuObjects);
+		Loader.loadPlayerAtlas(texture, renderer.gpu_keeper);
 	}
 
 }
