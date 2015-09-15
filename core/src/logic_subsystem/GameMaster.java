@@ -19,12 +19,14 @@ public class GameMaster {
 	protected XiabweenInternalDatabase database;
 	protected ExistenceCreator creator;
 	protected StateContainer container;
+
 	protected Renderer renderer;
 
 	public GameMaster() {
 		this.database = new XiabweenInternalDatabase();
 		this.creator = new ExistenceCreator();
 		this.container = new StateContainer();
+
 		this.renderer = new Renderer();
 	}
 
