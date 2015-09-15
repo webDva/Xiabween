@@ -23,10 +23,10 @@ public abstract class ActualPlayerClass {
 	/**
 	 * Contains a reference to the sprite sheet that this character uses. This
 	 * may blur the line between rendering and game logic, but at least no
-	 * actual texture binding occurs. The value does not include the file
-	 * extension, but only a name that references the character sprite sheet.
+	 * actual texture binding occurs. Now contains the file path, at least the
+	 * extension.
 	 */
-	public String associatedTexture;
+	public String texturePath;
 	public MobType mobType;
 	public StatsClass stats;
 

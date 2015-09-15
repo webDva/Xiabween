@@ -19,9 +19,8 @@ public class XiabweenInternalDatabase {
 	protected List<ActualPlayerClass> ourPlayers;
 	/**
 	 * A dictionary of names and their corresponding textures that they point
-	 * to. The key is the reference while the value is the sprite sheet
-	 * filename, not including the extension or the file path, e.g., "shana" =>
-	 * "shana spritesheet"
+	 * to. The key is the reference while the value is the sprite sheet file
+	 * path, e.g., "shana" => "shana_spritesheet.png"
 	 */
 	protected Map<String, String> bindingTextures;
 	/**
