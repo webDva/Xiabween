@@ -16,13 +16,13 @@ public class Loader {
 
 	public static Texture loadTexture(String path, GPUKeeper keeper) {
 		Texture texture = new Texture(path);
-		keeper.textures.add(texture);
+		keeper.addTexture(texture);
 		return new Texture(path);
 	}
 
 	public static TextureAtlas loadTextureAtlas(String path, GPUKeeper keeper) {
 		TextureAtlas atlas = new TextureAtlas(path);
-		keeper.atlases.add(atlas);
+		keeper.addAtlas(atlas);
 		return new TextureAtlas(path);
 	}
 
@@ -41,7 +41,7 @@ public class Loader {
 
 	public static PlayerTextures loadPlayerAtlas(String atlasPath, GPUKeeper keeper) {
 		PlayerTextures textures_object = new PlayerTextures(atlasPath);
-		keeper.atlases.add(textures_object.SpriteSheet);
+		keeper.addAtlas(textures_object.SpriteSheet);
 
 		for (AtlasRegion region : textures_object.SpriteSheet.getRegions()) {
 			if (region.name.equals(PlayerEntity.DOWN) || region.name.equals(PlayerEntity.UP) || region.name.equals(PlayerEntity.RIGHT)
