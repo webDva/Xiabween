@@ -75,4 +75,13 @@ public class GameMaster {
 		this.renderer.setCameraViewPorts(cameraWidth, cameraHeight);
 	}
 
+	public void processStates() {
+	}
+
+	public void renderStates() {
+	}
+
+	public void loop() {
+
+	}
 }
