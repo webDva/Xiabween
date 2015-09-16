@@ -1,6 +1,7 @@
 package xidecsc;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +29,7 @@ public class XiabweenInternalDatabase {
 	 * The map structure to load and use. There'll only be one map to use at a
 	 * time. Load new maps here as you switch maps.
 	 */
-	private Map_struct map;
+	public Map_struct map;
 
 	/**
 	 * The human's player. <code>null</code> if the XID instance is a networked
@@ -38,15 +39,22 @@ public class XiabweenInternalDatabase {
 	public HumanPlayer humansPlayer;
 
 	public XiabweenInternalDatabase() {
+		this.allPlayers = new ArrayList<ActualPlayerClass>();
+		this.bindingTextures = new HashMap<ActualPlayerClass, XiaEntity>();
+		this.map = new Map_struct();
 		this.humansPlayer = null;
 	}
 
-	public ArrayList<ActualPlayerClass> getPlayers() {
+	public ArrayList<ActualPlayerClass> getAllPlayers() {
 		ArrayList<ActualPlayerClass> players = new ArrayList<ActualPlayerClass>();
 		for (ActualPlayerClass entry : this.allPlayers) {
 			players.add(entry);
 		}
 		return players;
+	}
+
+	public ActualPlayerClass getPlayer(ActualPlayerClass player) {
+		return this.allPlayers.
 	}
 
 	public void addPlayerToDatabase(ActualPlayerClass player) {
