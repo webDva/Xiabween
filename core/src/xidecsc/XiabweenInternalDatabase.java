@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import entities.Map_struct;
 import player.ActualPlayerClass;
 import player.HumanPlayer;
 
@@ -24,9 +25,10 @@ public class XiabweenInternalDatabase {
 	 */
 	protected Map<String, String> bindingTextures;
 	/**
-	 * A dictionary of map names and their corresponding .tmx files.
+	 * The map structure to load and use. There'll only be one map to use at a
+	 * time. Load new maps here as you switch maps.
 	 */
-	protected Map<String, String> data_Maps;
+	protected Map_struct map;
 
 	/**
 	 * The human's player. <code>null</code> if the XID instance is a networked
