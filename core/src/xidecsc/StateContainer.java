@@ -14,13 +14,23 @@ import player.ActualPlayerClass;
  */
 public class StateContainer {
 
-	public void movePlayer(ActualPlayerClass player, PlayerEntity entity, float angle, Vector2 displacement) {
+	public void movePlayer(ActualPlayerClass player, PlayerEntity entity, float angle, String direction, Vector2 displacement) {
 		player.radians_Direction = angle;
+		entity.direction = direction;
 
 		/*
 		 * Check for collision elsewhere, by the way, not here in this method.
 		 */
 
+		player.x += displacement.x;
+		player.y += displacement.y;
+		entity.position.x += displacement.x;
+		entity.position.y += displacement.y;
+
+		entity.playerRectangle.x = entity.position.x;
+		entity.playerRectangle.y = entity.position.y;
+
+		entity.isAnimating = true;
 	}
 
 }
