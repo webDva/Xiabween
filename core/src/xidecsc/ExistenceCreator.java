@@ -24,7 +24,6 @@ public class ExistenceCreator {
 		newHumanPlayer.stats = stats;
 
 		return newHumanPlayer;
-
 	}
 
 }

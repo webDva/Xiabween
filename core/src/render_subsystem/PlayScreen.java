@@ -42,7 +42,7 @@ public class PlayScreen implements Screen {
 
 		determinator = new Logician();
 
-		onlymap = new Map_struct("grass.tmx"); // TODO: Make a registerNewMap function like the register function below.
+		onlymap = new Map_struct("grass.tmx");
 		determinator.maps.add(onlymap);
 		Loader.loadMaps(determinator.maps);
 

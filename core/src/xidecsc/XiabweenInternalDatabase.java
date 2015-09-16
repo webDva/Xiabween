@@ -7,6 +7,7 @@ import java.util.Map;
 import entities.Map_struct;
 import player.ActualPlayerClass;
 import player.HumanPlayer;
+import render_subsystem.Loader;
 
 /**
  * Functions as an internal database, holding a list of players, maps, etc. A
@@ -72,4 +73,9 @@ public class XiabweenInternalDatabase {
 	public void setHumansPlayer(HumanPlayer player) {
 		this.humansPlayer = player;
 	}
+
+	public void useMap(String mapPath) {
+		Loader.loadMap(mapPath, this.map);
+	}
+
 }
