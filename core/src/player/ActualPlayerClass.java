@@ -18,7 +18,7 @@ public abstract class ActualPlayerClass {
 	 * turning, add or subtract the displacement in terms of PI (
 	 * <code>0PI, PI / 2, PI, 3PI / 2, 2PI</code>).
 	 */
-	public float radians_Direction;
+	public double radians_Direction;
 	public String playerName;
 	/**
 	 * Contains a reference to the sprite sheet that this character uses. This

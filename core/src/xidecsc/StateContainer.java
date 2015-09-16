@@ -14,7 +14,7 @@ import player.ActualPlayerClass;
  */
 public class StateContainer {
 
-	public void movePlayer(ActualPlayerClass player, PlayerEntity entity, float angle, String direction, Vector2 displacement) {
+	public void movePlayer(ActualPlayerClass player, PlayerEntity entity, double angle, String direction, Vector2 displacement) {
 		player.radians_Direction = angle;
 		entity.direction = direction;
 
