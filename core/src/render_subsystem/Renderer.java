@@ -29,7 +29,7 @@ public class Renderer {
 	protected OrthographicCamera camera;
 
 	public Map_struct currentMap;
-	public XiaEntity thingToFollow;
+	public XiaEntity entityToFollow;
 	private float seconds_lastFrameElapsed = 0;
 	public GPUKeeper gpu_keeper;
 	protected List<XiaEntity> renderingList;
@@ -113,8 +113,9 @@ public class Renderer {
 		this.currentMap = map;
 	}
 
-	public void followEntity(XiaEntity thing) {
-		this.thingToFollow = thing;
+	public void followEntity(XiaEntity entity) {
+		this.entityToFollow = entity;
+		this.isFollowingEntity = true;
 	}
 
 	// TODO: Have a way to tell a Renderer object from a caller to control a camera based on the requests of a caller.
@@ -142,8 +143,9 @@ public class Renderer {
 			}
 		}
 
-		camera.position.set(thingToFollow.position.x, thingToFollow.position.y, 0); // Don't Really know what the coordinates refer to.
-		camera.update();
+		if (isFollowingEntity) {
+			setCameraPosition(entityToFollow.position, false);
+		}
 	}
 
 	public void addToGPUKeeper(TextureAtlas atlas, Texture texture, Batch batch) {
@@ -166,10 +168,17 @@ public class Renderer {
 		this.renderingList.remove(entity);
 	}
 
-	public void setCameraPosition(Vector2 coordinates) {
-		this.camera.position.set(coordinates.x, coordinates.y, 0);
+	/**
+	 * @param isFollowing
+	 *            Whether or not to follow a XiaEntity. If <code>false</code>,
+	 *            the camera will be following a XiaEntity.
+	 */
+	public void setCameraPosition(Vector2 coordinates, boolean isFollowing) {
+		this.camera.position.set(coordinates.x, coordinates.y, 0); // Don't know if the coordinates refer to the center or the lower left.
 		this.camera.update();
-		this.isFollowingEntity = false;
+		if (!isFollowing) {
+			this.isFollowingEntity = false;
+		}
 	}
 
 }
