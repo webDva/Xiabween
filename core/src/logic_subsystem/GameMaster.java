@@ -3,7 +3,6 @@ package logic_subsystem;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
-import backend.PlayerEntityHandler;
 import entities.PlayerEntity;
 import player.ActualPlayerClass;
 import player.HumanPlayer;
@@ -58,7 +57,7 @@ public class GameMaster {
 	}
 
 	public PlayerEntity loadPlayerTexture(ActualPlayerClass player, String texturePath) {
-		PlayerEntity newPlayerEntity = PlayerEntityHandler.createPlayerEntity(player.playerName, new Vector2(player.x, player.y));
+		PlayerEntity newPlayerEntity = new PlayerEntity(player.playerName, new Vector2(player.x, player.y));
 		newPlayerEntity.textures = Loader.loadPlayerAtlas(texturePath, renderer.gpu_keeper);
 		newPlayerEntity.playerRectangle = new Rectangle(newPlayerEntity.position.x, newPlayerEntity.position.y,
 				newPlayerEntity.textures.Directions.get(newPlayerEntity.direction).getRegionWidth() * Renderer.SPRITE_SCALING_FACTOR,
