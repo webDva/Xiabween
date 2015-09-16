@@ -19,16 +19,16 @@ import render_subsystem.Loader;
  */
 public class XiabweenInternalDatabase {
 
-	protected List<ActualPlayerClass> allPlayers;
+	private List<ActualPlayerClass> allPlayers;
 	/**
 	 * A mapping of {@link ActualPlayerClass}s and {@link XiaEntity}s.
 	 */
-	protected Map<ActualPlayerClass, XiaEntity> bindingTextures;
+	private Map<ActualPlayerClass, XiaEntity> bindingTextures;
 	/**
 	 * The map structure to load and use. There'll only be one map to use at a
 	 * time. Load new maps here as you switch maps.
 	 */
-	protected Map_struct map;
+	private Map_struct map;
 
 	/**
 	 * The human's player. <code>null</code> if the XID instance is a networked
