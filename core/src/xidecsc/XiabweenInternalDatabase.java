@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import entities.Map_struct;
+import entities.PlayerEntity;
 import player.ActualPlayerClass;
 import player.HumanPlayer;
 import render_subsystem.Loader;
@@ -20,11 +21,9 @@ public class XiabweenInternalDatabase {
 
 	protected List<ActualPlayerClass> ourPlayers;
 	/**
-	 * A dictionary of names and their corresponding textures that they point
-	 * to. The key is the reference while the value is the sprite sheet file
-	 * path, e.g., "shana" => "shana_spritesheet.png"
+	 * A mapping of {@link ActualPlayerClass}s and {@link PlayerEntity}s.
 	 */
-	protected Map<String, String> bindingTextures;
+	protected Map<ActualPlayerClass, PlayerEntity> bindingTextures;
 	/**
 	 * The map structure to load and use. There'll only be one map to use at a
 	 * time. Load new maps here as you switch maps.
