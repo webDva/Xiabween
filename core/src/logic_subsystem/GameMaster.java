@@ -77,6 +77,7 @@ public class GameMaster {
 	}
 
 	public void processStates() {
+		checkIfMovementKeyIsPressed();
 	}
 
 	public void renderStates() {
