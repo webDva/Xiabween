@@ -53,10 +53,6 @@ public class XiabweenInternalDatabase {
 		return players;
 	}
 
-	public ActualPlayerClass getPlayer(ActualPlayerClass player) {
-		return this.allPlayers.
-	}
-
 	public void addPlayerToDatabase(ActualPlayerClass player) {
 		this.allPlayers.add(player);
 	}
