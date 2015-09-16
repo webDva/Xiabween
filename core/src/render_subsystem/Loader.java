@@ -47,9 +47,8 @@ public class Loader {
 			if (!region.name.equals(PlayerEntity.DOWN) && !region.name.equals(PlayerEntity.UP) && !region.name.equals(PlayerEntity.RIGHT)
 					&& !region.name.equals(PlayerEntity.LEFT))
 				textures_object.Animations.put(region.name, textures_object.SpriteSheet.findRegions(region.name));
-
 		}
-		return textures_object;
 
+		return textures_object;
 	}
 }

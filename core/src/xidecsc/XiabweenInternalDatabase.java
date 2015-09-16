@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import entities.Map_struct;
-import entities.PlayerEntity;
+import entities.XiaEntity;
 import player.ActualPlayerClass;
 import player.HumanPlayer;
 import render_subsystem.Loader;
@@ -19,11 +19,11 @@ import render_subsystem.Loader;
  */
 public class XiabweenInternalDatabase {
 
-	protected List<ActualPlayerClass> ourPlayers;
+	protected List<ActualPlayerClass> allPlayers;
 	/**
-	 * A mapping of {@link ActualPlayerClass}s and {@link PlayerEntity}s.
+	 * A mapping of {@link ActualPlayerClass}s and {@link XiaEntity}s.
 	 */
-	protected Map<ActualPlayerClass, PlayerEntity> bindingTextures;
+	protected Map<ActualPlayerClass, XiaEntity> bindingTextures;
 	/**
 	 * The map structure to load and use. There'll only be one map to use at a
 	 * time. Load new maps here as you switch maps.
@@ -43,14 +43,14 @@ public class XiabweenInternalDatabase {
 
 	public ArrayList<ActualPlayerClass> getPlayers() {
 		ArrayList<ActualPlayerClass> players = new ArrayList<ActualPlayerClass>();
-		for (ActualPlayerClass entry : this.ourPlayers) {
+		for (ActualPlayerClass entry : this.allPlayers) {
 			players.add(entry);
 		}
 		return players;
 	}
 
 	public void addPlayerToDatabase(ActualPlayerClass player) {
-		this.ourPlayers.add(player);
+		this.allPlayers.add(player);
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class XiabweenInternalDatabase {
 	 * @return <code>true</code> if successful.
 	 */
 	public boolean removePlayerFromDatabase(ActualPlayerClass player) {
-		return this.ourPlayers.remove(player);
+		return this.allPlayers.remove(player);
 	}
 
 	/**

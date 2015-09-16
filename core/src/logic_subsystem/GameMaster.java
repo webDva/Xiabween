@@ -1,8 +1,11 @@
 package logic_subsystem;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
+import backend.PlayerEntityHandler;
 import entities.PlayerEntity;
 import player.ActualPlayerClass;
 import player.HumanPlayer;
@@ -87,6 +90,30 @@ public class GameMaster {
 
 	public void disposeOpenGLObjects() {
 		this.renderer.gpu_keeper.delete();
+	}
+
+	public void checkIfMovementKeyIsPressed() {
+		if (Gdx.input.isKeyPressed(Keys.W) && Gdx.input.isKeyPressed(Keys.A)) {
+			movePlayer(database.humansPlayer,database., PlayerEntity.LEFT, new Vector2(-1, 1));
+		} else if (Gdx.input.isKeyPressed(Keys.W) && Gdx.input.isKeyPressed(Keys.D)) {
+			movePlayer(player, PlayerEntity.RIGHT, new Vector2(1, 1));
+		}
+
+		else if (Gdx.input.isKeyPressed(Keys.S) && Gdx.input.isKeyPressed(Keys.A)) {
+			movePlayer(player, PlayerEntity.LEFT, new Vector2(-1, -1));
+		} else if (Gdx.input.isKeyPressed(Keys.S) && Gdx.input.isKeyPressed(Keys.D)) {
+			movePlayer(player, PlayerEntity.RIGHT, new Vector2(1, -1));
+		}
+
+		else if (Gdx.input.isKeyPressed(Keys.W)) {
+			movePlayer(player, PlayerEntity.UP, new Vector2(0, 1));
+		} else if (Gdx.input.isKeyPressed(Keys.A)) {
+			movePlayer(player, PlayerEntity.LEFT, new Vector2(-1, 0));
+		} else if (Gdx.input.isKeyPressed(Keys.S)) {
+			movePlayer(player, PlayerEntity.DOWN, new Vector2(0, -1));
+		} else if (Gdx.input.isKeyPressed(Keys.D)) {
+			movePlayer(player, PlayerEntity.RIGHT, new Vector2(1, 0));
+		}
 	}
 
 }

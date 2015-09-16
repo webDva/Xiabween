@@ -14,7 +14,7 @@ public class PlayerEntityHandler {
 		PlayerEntityHandler.handler_map = map;
 	}
 
-	public static void movePlayerEntity(PlayerEntity player, String direction, Vector2 coordinates) {
+	public static void movePlayer(PlayerEntity player, String direction, Vector2 coordinates) {
 		player.direction = direction;
 
 		// test for collision
