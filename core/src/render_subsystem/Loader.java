@@ -1,7 +1,5 @@
 package render_subsystem;
 
-import java.util.List;
-
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
@@ -27,16 +25,12 @@ public class Loader {
 	}
 
 	/**
-	 * Load all the tiled maps that belong to the Screen class caller that it
-	 * has supplied to the Renderer.
-	 *
-	 * @param mapStructs
+	 * Loads a map for use as the current map changes.
 	 */
-	public static void loadMaps(List<Map_struct> mapStructs) {
-		for (Map_struct struct : mapStructs) {
-			struct.map = new TmxMapLoader().load(struct.filepath);
-			struct.mapRenderer = new OrthogonalTiledMapRenderer(struct.map);
-		}
+	public static void loadMap(String mapPath, Map_struct mapStruct) {
+		mapStruct.mapPath = mapPath;
+		mapStruct.map = new TmxMapLoader().load(mapStruct.mapPath);
+		mapStruct.mapRenderer = new OrthogonalTiledMapRenderer(mapStruct.map);
 	}
 
 	public static PlayerTextures loadPlayerAtlas(String atlasPath, GPUKeeper keeper) {
