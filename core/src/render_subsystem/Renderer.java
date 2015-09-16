@@ -26,20 +26,20 @@ import logic_subsystem.CollisionDetector;
 public class Renderer {
 
 	public SpriteBatch batch;
-	protected OrthographicCamera camera;
+	private OrthographicCamera camera;
 
 	public Map_struct currentMap;
 	public XiaEntity entityToFollow;
 	private float seconds_lastFrameElapsed = 0;
 	public GPUKeeper gpu_keeper;
-	protected List<XiaEntity> renderingList;
+	private List<XiaEntity> renderingList;
 
 	public static final float SPRITE_SCALING_FACTOR = 1.5f;
 
-	protected ZBuffer depthBuffer;
+	private ZBuffer depthBuffer;
 	private boolean isFollowingEntity;
 
-	protected enum RenderingType {
+	private enum RenderingType {
 		DRAW_IDLE_PLAYER, DRAW_ANIMATING_PLAYER
 	}
 
