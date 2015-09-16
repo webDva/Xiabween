@@ -24,7 +24,7 @@ public class XiabweenInternalDatabase {
 	/**
 	 * A mapping of {@link ActualPlayerClass}s and {@link XiaEntity}s.
 	 */
-	private Map<ActualPlayerClass, XiaEntity> bindingTextures;
+	public Map<ActualPlayerClass, XiaEntity> bindingTextures;
 	/**
 	 * The map structure to load and use. There'll only be one map to use at a
 	 * time. Load new maps here as you switch maps.
