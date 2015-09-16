@@ -82,7 +82,8 @@ public class GameMaster {
 	}
 
 	public void loop() {
-
+		processStates();
+		renderStates();
 	}
 
 	public void disposeOpenGLObjects() {
