@@ -10,12 +10,12 @@ public abstract class ActualPlayerClass {
 
 	public float x, y;
 	/**
-	 * Direction in radians the APC is facing. Radians are used because they
-	 * have a standard of starting at the right of a unit circle and work best
-	 * in terms of PI.
+	 * Direction in radians the {@link ActualPlayerClass} is facing. Radians are
+	 * used because they have a standard of starting at the right of a unit
+	 * circle and work best in terms of PI.
 	 *
-	 * To change the direction the {@link ActualPlayerClass} is facing, add or
-	 * subtract the displacement in terms of PI (
+	 * To change the direction if the {@link ActualPlayerClass} is actually
+	 * turning, add or subtract the displacement in terms of PI (
 	 * <code>0PI, PI / 2, PI, 3PI / 2, 2PI</code>).
 	 */
 	public float radians_Direction;
