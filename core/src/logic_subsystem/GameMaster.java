@@ -84,4 +84,9 @@ public class GameMaster {
 	public void loop() {
 
 	}
+
+	public void disposeOpenGLObjects() {
+		this.renderer.gpu_keeper.delete();
+	}
+
 }
