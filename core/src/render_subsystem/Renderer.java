@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.math.Vector2;
 
 import backend.Logician;
 import entities.Fireball;
@@ -25,7 +26,7 @@ import logic_subsystem.CollisionDetector;
 public class Renderer {
 
 	public SpriteBatch batch;
-	public OrthographicCamera camera;
+	protected OrthographicCamera camera;
 
 	public Map_struct currentMap;
 	public XiaEntity thingToFollow;
@@ -162,6 +163,11 @@ public class Renderer {
 
 	public void removeXiaEneity(XiaEntity entity) {
 		this.renderingList.remove(entity);
+	}
+
+	public void setCameraPosition(Vector2 coordinates) {
+		this.camera.position.set(coordinates.x, coordinates.y, 0);
+		this.camera.update();
 	}
 
 }
