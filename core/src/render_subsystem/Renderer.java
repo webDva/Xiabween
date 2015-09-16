@@ -37,6 +37,7 @@ public class Renderer {
 	public static final float SPRITE_SCALING_FACTOR = 1.5f;
 
 	protected ZBuffer depthBuffer;
+	private boolean isFollowingEntity;
 
 	protected enum RenderingType {
 		DRAW_IDLE_PLAYER, DRAW_ANIMATING_PLAYER
@@ -112,7 +113,7 @@ public class Renderer {
 		this.currentMap = map;
 	}
 
-	public void setThingToFollow(XiaEntity thing) {
+	public void followEntity(XiaEntity thing) {
 		this.thingToFollow = thing;
 	}
 
@@ -168,6 +169,7 @@ public class Renderer {
 	public void setCameraPosition(Vector2 coordinates) {
 		this.camera.position.set(coordinates.x, coordinates.y, 0);
 		this.camera.update();
+		this.isFollowingEntity = false;
 	}
 
 }

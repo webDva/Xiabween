@@ -51,7 +51,7 @@ public class PlayScreen implements Screen {
 		player2 = determinator.registerNewPlayer("pink haired witch", "pinkwitch.atlas", renderer, new Vector2(100, 100));
 
 		renderer.setCurrentMap(determinator.maps.get(0));
-		renderer.setThingToFollow(determinator.myPlayer);
+		renderer.followEntity(determinator.myPlayer);
 
 	}
 
