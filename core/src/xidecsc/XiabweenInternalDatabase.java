@@ -32,9 +32,8 @@ public class XiabweenInternalDatabase {
 	public Map_struct map;
 
 	/**
-	 * The human's player. <code>null</code> if the XID instance is a networked
-	 * server one. Use {@link #setHumansPlayer(HumanPlayer)} to change the
-	 * value.
+	 * The human's player. Use {@link #setHumansPlayer(HumanPlayer)} to change
+	 * the value.
 	 */
 	public HumanPlayer humansPlayer;
 
