@@ -93,8 +93,9 @@ public class GameMaster {
 	}
 
 	public void checkIfMovementKeyIsPressed() {
-		Rectangle playersRectangle = ((PlayerEntity) database.bindingTextures.get(database.humansPlayer)).playerRectangle;
 		PlayerEntity playersEntity = (PlayerEntity) database.bindingTextures.get(database.humansPlayer);
+		Rectangle playersRectangle = playersEntity.playerRectangle;
+
 		if (Gdx.input.isKeyPressed(Configurations.MOVE_UP_KEY) && Gdx.input.isKeyPressed(Keys.A)) {
 			if (!CollisionDetector.willPlayerCollide(playersRectangle, Configurations.MOVE_UP, database.map.map)) {
 				container.movePlayer((database.humansPlayer), playersEntity, Math.PI, PlayerEntity.LEFT, Configurations.MOVE_UP);
