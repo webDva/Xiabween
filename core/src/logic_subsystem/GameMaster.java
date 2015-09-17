@@ -93,9 +93,12 @@ public class GameMaster {
 	}
 
 	public void checkIfMovementKeyIsPressed() {
-		if (Gdx.input.isKeyPressed(Keys.W) && Gdx.input.isKeyPressed(Keys.A)) {
-			container.movePlayer((ActualPlayerClass) (database.humansPlayer), (PlayerEntity) database.bindingTextures.get(database.humansPlayer),
-					Math.PI, PlayerEntity.LEFT, new Vector2(-1, 1));
+		Rectangle playersRectangle = ((PlayerEntity) database.bindingTextures.get(database.humansPlayer)).playerRectangle;
+		if (Gdx.input.isKeyPressed(Configurations.MOVE_UP_KEY) && Gdx.input.isKeyPressed(Keys.A)) {
+			if (!CollisionDetector.willPlayerCollide(playersRectangle, Configurations.MOVE_UP, database.map.map)) {
+				container.movePlayer((ActualPlayerClass) (database.humansPlayer), (PlayerEntity) database.bindingTextures.get(database.humansPlayer),
+						Math.PI, PlayerEntity.LEFT, Configurations.MOVE_UP);
+			}
 		} else if (Gdx.input.isKeyPressed(Keys.W) && Gdx.input.isKeyPressed(Keys.D)) {
 			container.movePlayer((ActualPlayerClass) (database.humansPlayer), (PlayerEntity) database.bindingTextures.get(database.humansPlayer),
 					0 * Math.PI, PlayerEntity.RIGHT, new Vector2(1, 1));
