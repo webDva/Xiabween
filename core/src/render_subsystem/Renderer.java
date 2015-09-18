@@ -25,11 +25,11 @@ import logic_subsystem.CollisionDetector;
 
 public class Renderer {
 
-	public SpriteBatch batch;
+	private SpriteBatch batch;
 	private OrthographicCamera camera;
 
-	public Map_struct currentMap;
-	public XiaEntity entityToFollow;
+	private Map_struct currentMap;
+	private XiaEntity entityToFollow;
 	private float seconds_lastFrameElapsed = 0;
 	public GPUKeeper gpu_keeper;
 	private List<XiaEntity> renderingList;
