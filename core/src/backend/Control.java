@@ -6,9 +6,9 @@ import com.badlogic.gdx.math.Vector2;
 
 import entities.PlayerEntity;
 
-public class Control { // Handles input from the player user. This goes into processStates since it deals with game
+public class Control {
 
-	// logic.
+	public static final Vector2 MOVE_UP = new Vector2(-1, 1);
 
 	public static void checkIfMovementKeyIsPressed(PlayerEntity player) {
 		if (Gdx.input.isKeyPressed(Keys.W) && Gdx.input.isKeyPressed(Keys.A)) {
