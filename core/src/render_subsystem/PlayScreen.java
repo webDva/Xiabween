@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 import backend.Logician;
 import backend.Main;
 import entities.Map_struct;
-import entities.PlayerEntity;
+import logic_subsystem.GameMaster;
 
 /* TODO: Once the architecture is finished being created, PlayScreen will just ask the logic servers to create players for it instead of
  * it having to create them itself. Then all it needs to do is probably read a file containing game data to give to the logic servers.
@@ -21,21 +21,19 @@ public class PlayScreen implements Screen {
 
 	public static int viewPortWidth = 600, viewPortHeight = 600;
 
-	public Renderer renderer;
-
-	public PlayerEntity shana, player2;
 	public Main game;
 
-	public Logician determinator;
-
-	public Map_struct onlymap;
+	private GameMaster gm;
 
 	public PlayScreen(final Main g) {
 		this.game = g;
 	}
 
 	@Override
-	public void show() { // This is where Xiabween determines what happens initially...
+	public void show() {
+
+		gm = new GameMaster();
+		gm.addPlayerToGame(new Vector2(0, 0), 3 * Math.PI / 2, "shana", "shana_final.atlas", null);
 
 		renderer = new Renderer();
 		renderer.setCameraViewPorts(viewPortWidth, viewPortHeight);
@@ -56,7 +54,7 @@ public class PlayScreen implements Screen {
 	}
 
 	@Override
-	public void render(float delta) { // ..and then from now on.
+	public void render(float delta) {
 		// Game logic first...
 		determinator.processStates();
 
