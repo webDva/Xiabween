@@ -51,14 +51,16 @@ public class GameMaster {
 	 */
 	public ActualPlayerClass addPlayerToGame(Vector2 spawnLocation, double initialDirection, String name, String texturePath, StatsClass stats) {
 		ActualPlayerClass newPlayer = new HumanPlayer(spawnLocation.x, spawnLocation.y, initialDirection, name, texturePath, stats);
-		database.addPlayerToDatabase(newPlayer);
+		this.database.addPlayerToDatabase(newPlayer);
+		this.database.bindingTextures.put(newPlayer, loadPlayerTexture(newPlayer, texturePath));
+		this.renderer.addXiaEntity(this.database.bindingTextures.get(newPlayer));
 		return newPlayer;
 	}
 
 	public void removePlayerFromGame(HumanPlayer player) throws IllegalAccessException {
-		if (!database.removePlayerFromDatabase(player)) {
-			throw new IllegalAccessException();
-		}
+		this.renderer.removeXiaEneity(this.database.bindingTextures.get(player));
+		this.database.removePlayerFromDatabase(player);
+
 	}
 
 	public PlayerEntity loadPlayerTexture(ActualPlayerClass player, String texturePath) {
