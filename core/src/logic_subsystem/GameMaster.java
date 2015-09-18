@@ -130,4 +130,8 @@ public class GameMaster {
 	public void setMap(String mapPath) {
 		this.database.useMap(mapPath, this.renderer);
 	}
+
+	public void setHumansPlayer(HumanPlayer player) {
+		database.setHumansPlayer(player);
+	}
 }

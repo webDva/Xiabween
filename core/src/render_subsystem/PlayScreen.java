@@ -4,7 +4,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.math.Vector2;
 
 import backend.Main;
-import entities.Map_struct;
 import logic_subsystem.GameMaster;
 
 /* TODO: Once the architecture is finished being created, PlayScreen will just ask the logic servers to create players for it instead of
@@ -33,13 +32,9 @@ public class PlayScreen implements Screen {
 
 		gm = new GameMaster();
 		gm.setCameraZoom(viewPortWidth, viewPortHeight);
-
+		gm.setMap("grass.tmx");
 		gm.addPlayerToGame(new Vector2(0, 0), 3 * Math.PI / 2, "shana", "shana_final.atlas", null);
 		gm.addPlayerToGame(new Vector2(100, 100), 3 * Math.PI / 2, "pink", "pinkwitch.atlas", null);
-
-		onlymap = new Map_struct("grass.tmx");
-		determinator.maps.add(onlymap);
-		Loader.loadMaps(determinator.maps);
 
 		shana = determinator.registerNewPlayer("shana", "shana_final.atlas", renderer, new Vector2(0, 0));
 		determinator.setCurrentPlayerCharacter(shana);
