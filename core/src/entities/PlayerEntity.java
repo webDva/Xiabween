@@ -16,7 +16,6 @@ public class PlayerEntity extends XiaEntity {
 	public String direction;
 	public boolean isAnimating;
 	public PlayerTextures textures; // Contains idle and walking animation frames.
-	public String name;
 	public Rectangle playerRectangle;
 
 	public PlayerEntity(String name, Vector2 coordinates) {

@@ -113,8 +113,10 @@ public class Renderer {
 	}
 
 	public void followEntity(XiaEntity entity) {
+
 		this.entityToFollow = entity;
 		this.isFollowingEntity = true;
+
 	}
 
 	// TODO: Have a way to tell a Renderer object from a caller to control a camera based on the requests of a caller.
