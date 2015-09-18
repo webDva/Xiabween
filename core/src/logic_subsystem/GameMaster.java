@@ -107,24 +107,24 @@ public class GameMaster {
 
 		else if (Gdx.input.isKeyPressed(Bindings.MOVE_DOWN_KEY) && Gdx.input.isKeyPressed(Bindings.MOVE_LEFT_KEY)) {
 			container.movePlayer((ActualPlayerClass) (database.humansPlayer), (PlayerEntity) database.bindingTextures.get(database.humansPlayer),
-					Math.PI, PlayerEntity.LEFT, new Vector2(-1, -1));
+					Math.PI, PlayerEntity.LEFT, Control.MOVE_DOWN_LEFT);
 		} else if (Gdx.input.isKeyPressed(Bindings.MOVE_DOWN_KEY) && Gdx.input.isKeyPressed(Bindings.MOVE_RIGHT_KEY)) {
 			container.movePlayer((ActualPlayerClass) (database.humansPlayer), (PlayerEntity) database.bindingTextures.get(database.humansPlayer),
-					0 * Math.PI, PlayerEntity.RIGHT, new Vector2(1, -1));
+					0 * Math.PI, PlayerEntity.RIGHT, Control.MOVE_DOWN_RIGHT);
 		}
 
 		else if (Gdx.input.isKeyPressed(Bindings.MOVE_UP_KEY)) {
 			container.movePlayer((ActualPlayerClass) (database.humansPlayer), (PlayerEntity) database.bindingTextures.get(database.humansPlayer),
-					Math.PI / 2, PlayerEntity.UP, new Vector2(0, 1));
+					Math.PI / 2, PlayerEntity.UP, Control.MOVE_UP);
 		} else if (Gdx.input.isKeyPressed(Bindings.MOVE_LEFT_KEY)) {
 			container.movePlayer((ActualPlayerClass) (database.humansPlayer), (PlayerEntity) database.bindingTextures.get(database.humansPlayer),
-					Math.PI, PlayerEntity.LEFT, new Vector2(-1, 0));
+					Math.PI, PlayerEntity.LEFT, Control.MOVE_LEFT);
 		} else if (Gdx.input.isKeyPressed(Bindings.MOVE_DOWN_KEY)) {
 			container.movePlayer((ActualPlayerClass) (database.humansPlayer), (PlayerEntity) database.bindingTextures.get(database.humansPlayer),
-					3 * Math.PI / 2, PlayerEntity.DOWN, new Vector2(0, -1));
+					3 * Math.PI / 2, PlayerEntity.DOWN, Control.MOVE_DOWN);
 		} else if (Gdx.input.isKeyPressed(Bindings.MOVE_RIGHT_KEY)) {
 			container.movePlayer((ActualPlayerClass) (database.humansPlayer), (PlayerEntity) database.bindingTextures.get(database.humansPlayer),
-					0 * Math.PI, PlayerEntity.RIGHT, new Vector2(1, 0));
+					0 * Math.PI, PlayerEntity.RIGHT, Control.MOVE_RIGHT);
 		}
 	}
 
