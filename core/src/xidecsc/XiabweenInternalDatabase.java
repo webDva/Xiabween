@@ -10,6 +10,7 @@ import entities.XiaEntity;
 import player.ActualPlayerClass;
 import player.HumanPlayer;
 import render_subsystem.Loader;
+import render_subsystem.Renderer;
 
 /**
  * Functions as an internal database, holding a list of players, maps, etc. A
@@ -76,8 +77,9 @@ public class XiabweenInternalDatabase {
 		this.humansPlayer = player;
 	}
 
-	public void useMap(String mapPath) {
+	public void useMap(String mapPath, Renderer renderer) {
 		Loader.loadMap(mapPath, this.map);
+		renderer.setCurrentMap(this.map);
 	}
 
 }
