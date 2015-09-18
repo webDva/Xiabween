@@ -3,7 +3,6 @@ package render_subsystem;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.math.Vector2;
 
-import backend.Logician;
 import backend.Main;
 import entities.Map_struct;
 import logic_subsystem.GameMaster;
@@ -33,12 +32,10 @@ public class PlayScreen implements Screen {
 	public void show() {
 
 		gm = new GameMaster();
+		gm.setCameraZoom(viewPortWidth, viewPortHeight);
+
 		gm.addPlayerToGame(new Vector2(0, 0), 3 * Math.PI / 2, "shana", "shana_final.atlas", null);
-
-		renderer = new Renderer();
-		renderer.setCameraViewPorts(viewPortWidth, viewPortHeight);
-
-		determinator = new Logician();
+		gm.addPlayerToGame(new Vector2(100, 100), 3 * Math.PI / 2, "pink", "pinkwitch.atlas", null);
 
 		onlymap = new Map_struct("grass.tmx");
 		determinator.maps.add(onlymap);
