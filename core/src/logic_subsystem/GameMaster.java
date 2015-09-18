@@ -84,6 +84,7 @@ public class GameMaster {
 	}
 
 	public void renderStates() {
+		this.renderer.renderStates();
 	}
 
 	public void loop() {
