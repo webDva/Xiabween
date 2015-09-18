@@ -23,6 +23,7 @@ public class PlayScreen implements Screen {
 	public Main game;
 
 	private GameMaster gm;
+	private HumanPlayer shana;
 
 	public PlayScreen(final Main g) {
 		this.game = g;
@@ -34,26 +35,16 @@ public class PlayScreen implements Screen {
 		gm = new GameMaster();
 		gm.setCameraZoom(viewPortWidth, viewPortHeight);
 		gm.setMap("grass.tmx");
-		gm.addPlayerToGame(new Vector2(0, 0), 3 * Math.PI / 2, "shana", "shana_final.atlas", null);
+		shana = (HumanPlayer) gm.addPlayerToGame(new Vector2(0, 0), 3 * Math.PI / 2, "shana", "shana_final.atlas", null);
 		gm.addPlayerToGame(new Vector2(100, 100), 3 * Math.PI / 2, "pink", "pinkwitch.atlas", null);
-		gm.setHumansPlayer(gm.);
-
-		shana = determinator.registerNewPlayer("shana", "shana_final.atlas", renderer, new Vector2(0, 0));
-		determinator.setCurrentPlayerCharacter(shana);
-		player2 = determinator.registerNewPlayer("pink haired witch", "pinkwitch.atlas", renderer, new Vector2(100, 100));
-
-		renderer.setCurrentMap(determinator.maps.get(0));
-		renderer.followEntity(determinator.myPlayer);
+		gm.setHumansPlayer(shana);
+		gm.renderer.followEntity(gm.database.bindingTextures.get(shana));
 
 	}
 
 	@Override
 	public void render(float delta) {
-		// Game logic first...
-		determinator.processStates();
-
-		// ...then rendering.
-		renderer.renderStates(determinator);
+		gm.loop();
 
 	}
 
@@ -83,7 +74,7 @@ public class PlayScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		renderer.gpu_keeper.delete();
+		gm.disposeOpenGLObjects();
 	}
 
 }

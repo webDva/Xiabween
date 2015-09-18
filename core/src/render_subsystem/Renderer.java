@@ -16,7 +16,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
 
-import backend.Logician;
 import entities.Fireball;
 import entities.Map_struct;
 import entities.PlayerEntity;
@@ -119,7 +118,7 @@ public class Renderer {
 	}
 
 	// TODO: Have a way to tell a Renderer object from a caller to control a camera based on the requests of a caller.
-	public void renderStates(Logician logicdata) { // Will act as a main rendering loop.
+	public void renderStates() { // Will act as a main rendering loop.
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 

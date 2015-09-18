@@ -17,11 +17,11 @@ import xidecsc.XiabweenInternalDatabase;
 
 public class GameMaster {
 
-	protected XiabweenInternalDatabase database;
-	protected ExistenceCreator creator;
-	protected StateContainer container;
+	public XiabweenInternalDatabase database;
+	public ExistenceCreator creator;
+	public StateContainer container;
 
-	protected Renderer renderer;
+	public Renderer renderer;
 
 	public GameMaster() {
 		this.database = new XiabweenInternalDatabase();
