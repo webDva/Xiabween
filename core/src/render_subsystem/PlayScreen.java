@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 
 import backend.Main;
 import logic_subsystem.GameMaster;
+import player.HumanPlayer;
 
 /* TODO: Once the architecture is finished being created, PlayScreen will just ask the logic servers to create players for it instead of
  * it having to create them itself. Then all it needs to do is probably read a file containing game data to give to the logic servers.
@@ -35,6 +36,7 @@ public class PlayScreen implements Screen {
 		gm.setMap("grass.tmx");
 		gm.addPlayerToGame(new Vector2(0, 0), 3 * Math.PI / 2, "shana", "shana_final.atlas", null);
 		gm.addPlayerToGame(new Vector2(100, 100), 3 * Math.PI / 2, "pink", "pinkwitch.atlas", null);
+		gm.setHumansPlayer(gm.);
 
 		shana = determinator.registerNewPlayer("shana", "shana_final.atlas", renderer, new Vector2(0, 0));
 		determinator.setCurrentPlayerCharacter(shana);

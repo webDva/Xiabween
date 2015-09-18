@@ -49,7 +49,9 @@ public class GameMaster {
 	 * @return
 	 */
 	public void addPlayerToGame(Vector2 spawnLocation, double initialDirection, String name, String texturePath, StatsClass stats) {
-		database.addPlayerToDatabase(new HumanPlayer(spawnLocation.x, spawnLocation.y, initialDirection, name, texturePath, stats));
+		ActualPlayerClass newPlayer = new HumanPlayer(spawnLocation.x, spawnLocation.y, initialDirection, name, texturePath, stats);
+		database.addPlayerToDatabase(newPlayer);
+		return newPlayer;
 	}
 
 	public void removePlayerFromGame(HumanPlayer player) throws IllegalAccessException {
