@@ -134,6 +134,7 @@ public class Renderer {
 			}
 		}
 
+		/* Remove this eventually with something more robust and clean. */
 		this.camera.position.set(renderingList.get(0).position, 0);
 		this.camera.update();
 	}
