@@ -97,34 +97,33 @@ public class GameMaster {
 		Rectangle playersRectangle = playersEntity.playerRectangle;
 
 		if (Gdx.input.isKeyPressed(Bindings.MOVE_UP_KEY) && Gdx.input.isKeyPressed(Bindings.MOVE_LEFT_KEY)) {
-			if (!CollisionDetector.willPlayerCollide(playersRectangle, Control.MOVE_UP_LEFT, database.map.map)) {
-				container.movePlayer((database.humansPlayer), playersEntity, Math.PI, PlayerEntity.LEFT, Control.MOVE_UP_LEFT);
-			}
+			if (!CollisionDetector.willPlayerCollide(playersRectangle, Control.MOVE_UP_LEFT, database.map.map))
+				container.movePlayer(database.humansPlayer, playersEntity, Math.PI, PlayerEntity.LEFT, Control.MOVE_UP_LEFT);
 		} else if (Gdx.input.isKeyPressed(Bindings.MOVE_UP_KEY) && Gdx.input.isKeyPressed(Bindings.MOVE_RIGHT_KEY)) {
-			container.movePlayer((ActualPlayerClass) (database.humansPlayer), (PlayerEntity) database.bindingTextures.get(database.humansPlayer),
-					0 * Math.PI, PlayerEntity.RIGHT, Control.MOVE_UP_RIGHT);
+			if (!CollisionDetector.willPlayerCollide(playersRectangle, Control.MOVE_UP_RIGHT, database.map.map))
+				container.movePlayer(database.humansPlayer, playersEntity, 0 * Math.PI, PlayerEntity.RIGHT, Control.MOVE_UP_RIGHT);
 		}
 
 		else if (Gdx.input.isKeyPressed(Bindings.MOVE_DOWN_KEY) && Gdx.input.isKeyPressed(Bindings.MOVE_LEFT_KEY)) {
-			container.movePlayer((ActualPlayerClass) (database.humansPlayer), (PlayerEntity) database.bindingTextures.get(database.humansPlayer),
-					Math.PI, PlayerEntity.LEFT, Control.MOVE_DOWN_LEFT);
+			if (!CollisionDetector.willPlayerCollide(playersRectangle, Control.MOVE_DOWN_LEFT, database.map.map))
+				container.movePlayer(database.humansPlayer, playersEntity, Math.PI, PlayerEntity.LEFT, Control.MOVE_DOWN_LEFT);
 		} else if (Gdx.input.isKeyPressed(Bindings.MOVE_DOWN_KEY) && Gdx.input.isKeyPressed(Bindings.MOVE_RIGHT_KEY)) {
-			container.movePlayer((ActualPlayerClass) (database.humansPlayer), (PlayerEntity) database.bindingTextures.get(database.humansPlayer),
-					0 * Math.PI, PlayerEntity.RIGHT, Control.MOVE_DOWN_RIGHT);
+			if (!CollisionDetector.willPlayerCollide(playersRectangle, Control.MOVE_DOWN_RIGHT, database.map.map))
+				container.movePlayer(database.humansPlayer, playersEntity, 0 * Math.PI, PlayerEntity.RIGHT, Control.MOVE_DOWN_RIGHT);
 		}
 
 		else if (Gdx.input.isKeyPressed(Bindings.MOVE_UP_KEY)) {
-			container.movePlayer((ActualPlayerClass) (database.humansPlayer), (PlayerEntity) database.bindingTextures.get(database.humansPlayer),
-					Math.PI / 2, PlayerEntity.UP, Control.MOVE_UP);
+			if (!CollisionDetector.willPlayerCollide(playersRectangle, Control.MOVE_UP, database.map.map))
+				container.movePlayer(database.humansPlayer, playersEntity, Math.PI / 2, PlayerEntity.UP, Control.MOVE_UP);
 		} else if (Gdx.input.isKeyPressed(Bindings.MOVE_LEFT_KEY)) {
-			container.movePlayer((ActualPlayerClass) (database.humansPlayer), (PlayerEntity) database.bindingTextures.get(database.humansPlayer),
-					Math.PI, PlayerEntity.LEFT, Control.MOVE_LEFT);
+			if (!CollisionDetector.willPlayerCollide(playersRectangle, Control.MOVE_LEFT, database.map.map))
+				container.movePlayer(database.humansPlayer, playersEntity, Math.PI, PlayerEntity.LEFT, Control.MOVE_LEFT);
 		} else if (Gdx.input.isKeyPressed(Bindings.MOVE_DOWN_KEY)) {
-			container.movePlayer((ActualPlayerClass) (database.humansPlayer), (PlayerEntity) database.bindingTextures.get(database.humansPlayer),
-					3 * Math.PI / 2, PlayerEntity.DOWN, Control.MOVE_DOWN);
+			if (!CollisionDetector.willPlayerCollide(playersRectangle, Control.MOVE_DOWN, database.map.map))
+				container.movePlayer(database.humansPlayer, playersEntity, 3 * Math.PI / 2, PlayerEntity.DOWN, Control.MOVE_DOWN);
 		} else if (Gdx.input.isKeyPressed(Bindings.MOVE_RIGHT_KEY)) {
-			container.movePlayer((ActualPlayerClass) (database.humansPlayer), (PlayerEntity) database.bindingTextures.get(database.humansPlayer),
-					0 * Math.PI, PlayerEntity.RIGHT, Control.MOVE_RIGHT);
+			if (!CollisionDetector.willPlayerCollide(playersRectangle, Control.MOVE_RIGHT, database.map.map))
+				container.movePlayer(database.humansPlayer, playersEntity, 0 * Math.PI, PlayerEntity.RIGHT, Control.MOVE_RIGHT);
 		}
 	}
 
