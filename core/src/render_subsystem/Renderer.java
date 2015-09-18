@@ -14,7 +14,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.Vector2;
 
 import entities.Fireball;
 import entities.Map_struct;
@@ -28,7 +27,6 @@ public class Renderer {
 	private OrthographicCamera camera;
 
 	private Map_struct currentMap;
-	private XiaEntity entityToFollow;
 	private float seconds_lastFrameElapsed = 0;
 	public GPUKeeper gpu_keeper;
 	private List<XiaEntity> renderingList;
@@ -36,7 +34,6 @@ public class Renderer {
 	public static final float SPRITE_SCALING_FACTOR = 1.5f;
 
 	private ZBuffer depthBuffer;
-	private boolean isFollowingEntity;
 
 	private enum RenderingType {
 		DRAW_IDLE_PLAYER, DRAW_ANIMATING_PLAYER
@@ -112,13 +109,6 @@ public class Renderer {
 		this.currentMap = map;
 	}
 
-	public void followEntity(XiaEntity entity) {
-
-		this.entityToFollow = entity;
-		this.isFollowingEntity = true;
-
-	}
-
 	// TODO: Have a way to tell a Renderer object from a caller to control a camera based on the requests of a caller.
 	public void renderStates() { // Will act as a main rendering loop.
 		Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -144,9 +134,8 @@ public class Renderer {
 			}
 		}
 
-		if (isFollowingEntity) {
-			setCameraPosition(entityToFollow.position, false);
-		}
+		this.camera.position.set(renderingList.get(0).position, 0);
+		this.camera.update();
 	}
 
 	public void addToGPUKeeper(TextureAtlas atlas, Texture texture, Batch batch) {
@@ -168,18 +157,4 @@ public class Renderer {
 	public void removeXiaEneity(XiaEntity entity) {
 		this.renderingList.remove(entity);
 	}
-
-	/**
-	 * @param isFollowing
-	 *            Whether or not to follow a XiaEntity. If <code>false</code>,
-	 *            the camera will be following a XiaEntity.
-	 */
-	public void setCameraPosition(Vector2 coordinates, boolean isFollowing) {
-		this.camera.position.set(coordinates.x, coordinates.y, 0); // Don't know if the coordinates refer to the center or the lower left.
-		this.camera.update();
-		if (!isFollowing) {
-			this.isFollowingEntity = false;
-		}
-	}
-
 }
