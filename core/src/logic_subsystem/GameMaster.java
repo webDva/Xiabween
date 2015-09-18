@@ -47,8 +47,9 @@ public class GameMaster {
 	 * @param stats
 	 *            A structure of the player's stats.
 	 * @return
+	 * @return
 	 */
-	public void addPlayerToGame(Vector2 spawnLocation, double initialDirection, String name, String texturePath, StatsClass stats) {
+	public ActualPlayerClass addPlayerToGame(Vector2 spawnLocation, double initialDirection, String name, String texturePath, StatsClass stats) {
 		ActualPlayerClass newPlayer = new HumanPlayer(spawnLocation.x, spawnLocation.y, initialDirection, name, texturePath, stats);
 		database.addPlayerToDatabase(newPlayer);
 		return newPlayer;
