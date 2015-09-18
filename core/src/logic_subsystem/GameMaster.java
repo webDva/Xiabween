@@ -77,7 +77,7 @@ public class GameMaster {
 	}
 
 	public void processStates() {
-		checkIfMovementKeyIsPressed();
+		moveHumansPlayer();
 	}
 
 	public void renderStates() {
@@ -92,7 +92,7 @@ public class GameMaster {
 		this.renderer.gpu_keeper.delete();
 	}
 
-	public void checkIfMovementKeyIsPressed() {
+	public void moveHumansPlayer() {
 		PlayerEntity playersEntity = (PlayerEntity) database.bindingTextures.get(database.humansPlayer);
 		Rectangle playersRectangle = playersEntity.playerRectangle;
 
