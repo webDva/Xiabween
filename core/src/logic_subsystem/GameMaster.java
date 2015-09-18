@@ -98,8 +98,8 @@ public class GameMaster {
 		Rectangle playersRectangle = playersEntity.playerRectangle;
 
 		if (Gdx.input.isKeyPressed(Bindings.MOVE_UP_KEY) && Gdx.input.isKeyPressed(Keys.A)) {
-			if (!CollisionDetector.willPlayerCollide(playersRectangle, Control.MOVE_UP, database.map.map)) {
-				container.movePlayer((database.humansPlayer), playersEntity, Math.PI, PlayerEntity.LEFT, Control.MOVE_UP);
+			if (!CollisionDetector.willPlayerCollide(playersRectangle, Control.MOVE_UP_LEFT, database.map.map)) {
+				container.movePlayer((database.humansPlayer), playersEntity, Math.PI, PlayerEntity.LEFT, Control.MOVE_UP_LEFT);
 			}
 		} else if (Gdx.input.isKeyPressed(Keys.W) && Gdx.input.isKeyPressed(Keys.D)) {
 			container.movePlayer((ActualPlayerClass) (database.humansPlayer), (PlayerEntity) database.bindingTextures.get(database.humansPlayer),
