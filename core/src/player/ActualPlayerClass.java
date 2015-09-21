@@ -28,6 +28,6 @@ public abstract class ActualPlayerClass {
 	 */
 	public String texturePath;
 	public MobType mobType;
-	public StatsClass stats;
+	public float speed;
 
 }
