@@ -22,10 +22,10 @@ public class StateContainer {
 		 * Check for collision elsewhere, by the way, not here in this method.
 		 */
 
-		player.x += displacement.x;
-		player.y += displacement.y;
-		entity.position.x += displacement.x;
-		entity.position.y += displacement.y;
+		player.x += displacement.x * player.speed;
+		player.y += displacement.y * player.speed;
+		entity.position.x += displacement.x * player.speed;
+		entity.position.y += displacement.y * player.speed;
 
 		entity.playerRectangle.x = entity.position.x;
 		entity.playerRectangle.y = entity.position.y;
