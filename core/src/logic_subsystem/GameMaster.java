@@ -102,16 +102,16 @@ public class GameMaster {
 		Rectangle playersRectangle = playersEntity.playerRectangle;
 
 		if (Gdx.input.isKeyPressed(Bindings.MOVE_UP_KEY)) {
-			if (!CollisionDetector.willPlayerCollide(playersRectangle, Control.MOVE_UP, database.map.map))
+			if (!CollisionDetector.willPlayerCollide(playersRectangle, database.humansPlayer, Control.MOVE_UP, database.map.map))
 				container.movePlayer(database.humansPlayer, playersEntity, Math.PI / 2, PlayerEntity.UP, Control.MOVE_UP);
 		} else if (Gdx.input.isKeyPressed(Bindings.MOVE_LEFT_KEY)) {
-			if (!CollisionDetector.willPlayerCollide(playersRectangle, Control.MOVE_LEFT, database.map.map))
+			if (!CollisionDetector.willPlayerCollide(playersRectangle, database.humansPlayer, Control.MOVE_LEFT, database.map.map))
 				container.movePlayer(database.humansPlayer, playersEntity, Math.PI, PlayerEntity.LEFT, Control.MOVE_LEFT);
 		} else if (Gdx.input.isKeyPressed(Bindings.MOVE_DOWN_KEY)) {
-			if (!CollisionDetector.willPlayerCollide(playersRectangle, Control.MOVE_DOWN, database.map.map))
+			if (!CollisionDetector.willPlayerCollide(playersRectangle, database.humansPlayer, Control.MOVE_DOWN, database.map.map))
 				container.movePlayer(database.humansPlayer, playersEntity, 3 * Math.PI / 2, PlayerEntity.DOWN, Control.MOVE_DOWN);
 		} else if (Gdx.input.isKeyPressed(Bindings.MOVE_RIGHT_KEY)) {
-			if (!CollisionDetector.willPlayerCollide(playersRectangle, Control.MOVE_RIGHT, database.map.map))
+			if (!CollisionDetector.willPlayerCollide(playersRectangle, database.humansPlayer, Control.MOVE_RIGHT, database.map.map))
 				container.movePlayer(database.humansPlayer, playersEntity, 0 * Math.PI, PlayerEntity.RIGHT, Control.MOVE_RIGHT);
 		}
 	}

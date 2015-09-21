@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 import entities.PlayerEntity;
+import player.ActualPlayerClass;
 
 /**
  * Handles collision detection.
@@ -38,8 +39,9 @@ public class CollisionDetector {
 	 *            The displacement the {@link PlayerEntity} wants to move by.
 	 * @return true if the two objects will collide with each other.
 	 */
-	public static boolean willPlayerCollide(Rectangle playerRectangle, Vector2 displacement, TiledMap map) {
-		Rectangle feet = new Rectangle(playerRectangle.x + displacement.x, playerRectangle.y + displacement.y, playerRectangle.width, FEET_HEIGHT);
+	public static boolean willPlayerCollide(Rectangle playerRectangle, ActualPlayerClass player, Vector2 displacement, TiledMap map) {
+		Rectangle feet = new Rectangle(playerRectangle.x + displacement.x * player.speed, playerRectangle.y + displacement.y * player.speed,
+				playerRectangle.width, FEET_HEIGHT);
 
 		MapLayer objects_layer = map.getLayers().get("edge");
 		Array<RectangleMapObject> all_objects = objects_layer.getObjects().getByType(RectangleMapObject.class);
