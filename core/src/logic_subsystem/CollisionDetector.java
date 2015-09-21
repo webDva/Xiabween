@@ -1,8 +1,5 @@
 package logic_subsystem;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -46,8 +43,6 @@ public class CollisionDetector {
 
 		MapLayer objects_layer = map.getLayers().get("edge");
 		Array<RectangleMapObject> all_objects = objects_layer.getObjects().getByType(RectangleMapObject.class);
-		List<RectangleMapObject> collidables = new ArrayList<RectangleMapObject>();
-
 		for (RectangleMapObject object : all_objects) {
 			if (Intersector.overlaps(feet, object.getRectangle()))
 				return true;
