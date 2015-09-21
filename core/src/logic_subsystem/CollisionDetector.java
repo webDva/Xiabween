@@ -44,20 +44,13 @@ public class CollisionDetector {
 	public static boolean willPlayerCollide(Rectangle playerRectangle, Vector2 displacement, TiledMap map) {
 		Rectangle feet = new Rectangle(playerRectangle.x + displacement.x, playerRectangle.y + displacement.y, playerRectangle.width, FEET_HEIGHT);
 
-		MapLayer objects_layer = map.getLayers().get("objects_layer");
+		MapLayer objects_layer = map.getLayers().get("edge");
 		Array<RectangleMapObject> all_objects = objects_layer.getObjects().getByType(RectangleMapObject.class);
 		List<RectangleMapObject> collidables = new ArrayList<RectangleMapObject>();
 
 		for (RectangleMapObject object : all_objects) {
-			if ("true".equals(object.getProperties().get("collidable"))) {
-				collidables.add(object);
-			}
-		}
-
-		for (RectangleMapObject rectangle_object : collidables) {
-			if (Intersector.overlaps(feet, rectangle_object.getRectangle())) {
+			if (Intersector.overlaps(feet, object.getRectangle()))
 				return true;
-			}
 		}
 
 		return false;
