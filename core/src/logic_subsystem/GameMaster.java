@@ -8,7 +8,6 @@ import backend.Control;
 import entities.PlayerEntity;
 import player.ActualPlayerClass;
 import player.HumanPlayer;
-import player.StatsClass;
 import render_subsystem.Loader;
 import render_subsystem.Renderer;
 import xidecsc.ExistenceCreator;
@@ -49,8 +48,8 @@ public class GameMaster {
 	 * @return
 	 * @return
 	 */
-	public ActualPlayerClass addPlayerToGame(Vector2 spawnLocation, double initialDirection, String name, String texturePath, StatsClass stats) {
-		ActualPlayerClass newPlayer = new HumanPlayer(spawnLocation.x, spawnLocation.y, initialDirection, name, texturePath, stats);
+	public ActualPlayerClass addPlayerToGame(Vector2 spawnLocation, double initialDirection, String name, String texturePath, float speed) {
+		ActualPlayerClass newPlayer = new HumanPlayer(spawnLocation.x, spawnLocation.y, initialDirection, name, texturePath, speed);
 		this.database.addPlayerToDatabase(newPlayer);
 		this.database.bindingTextures.put(newPlayer, loadPlayerTexture(newPlayer, texturePath));
 		this.renderer.addXiaEntity(this.database.bindingTextures.get(newPlayer));

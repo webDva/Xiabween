@@ -35,8 +35,8 @@ public class PlayScreen implements Screen {
 		gm = new GameMaster();
 		gm.setCameraZoom(viewPortWidth, viewPortHeight);
 		gm.setMap("final.tmx");
-		shana = (HumanPlayer) gm.addPlayerToGame(new Vector2(200, 100), 3 * Math.PI / 2, "shana", "shana_final.atlas", null);
-		gm.addPlayerToGame(new Vector2(100, 100), 3 * Math.PI / 2, "pink", "pinkwitch.atlas", null);
+		shana = (HumanPlayer) gm.addPlayerToGame(new Vector2(200, 100), 3 * Math.PI / 2, "shana", "shana_final.atlas", 10);
+		gm.addPlayerToGame(new Vector2(100, 100), 3 * Math.PI / 2, "pink", "pinkwitch.atlas", 18);
 		gm.setHumansPlayer(shana);
 
 	}
